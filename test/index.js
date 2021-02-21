@@ -1,9 +1,16 @@
-const { Wall } = require("../dist");
-const b = new Wall();
+const { AnimeWallpaper } = require("../dist");
+const wall = new AnimeWallpaper();
 
-async function aa() {
-    const cok = await b.get({ search: "rikka takarada" });
-    return console.log(cok)
+async function Wallpaper1() {
+    const wallpaper = await wall.getAnimeWall1({ search: "to love ru", page: 1 })
+    return console.log(wallpaper)
 }
 
-aa()
+Wallpaper1()
+
+async function Wallpaper2() {
+    const wallpaper = await wall.getAnimeWall2("keqing")
+    return console.log(wallpaper)
+}
+
+// Wallpaper2()

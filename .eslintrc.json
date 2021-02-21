@@ -26,6 +26,7 @@
         ],
         "@typescript-eslint/no-empty-function": "off",
         "@typescript-eslint/indent": ["warn", 4],
+        "@typescript-eslint/no-unsafe-assignment": "off",
         "no-empty-function": "off",
         "comma-style": "error",
         "quotes": ["warn", "double"]

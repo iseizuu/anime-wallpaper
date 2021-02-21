@@ -1,7 +1,12 @@
 export interface AnimeWall1 {
     title: string,
     thumbnail: string,
-    url: string
+    image: string
+}
+
+export interface AnimeWall2 {
+    title: string,
+    image: string
 }
 
 export interface searchOpt {
