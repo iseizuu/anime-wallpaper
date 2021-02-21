@@ -1,9 +1,9 @@
-# Anime Wallpaper
+<h1 align="center">Anime Wallpaper</h1>
 <p align="center"> 
     <img src="https://i.imgur.com/DeP0Nlv.jpeg">
 </p>
 
-Get Anime wallpapers based on scapping from websites [Alphacoders](https://alphacoders.com) and [Wallpaper Cave](https://wallpapercave.com).
+Get Anime wallpapers based on scrapping from websites [Alphacoders](https://alphacoders.com) and [Wallpaper Cave](https://wallpapercave.com).
 
 - Documentation
 
