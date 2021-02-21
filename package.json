@@ -8,6 +8,7 @@
     "@typescript-eslint/eslint-plugin": "^4.15.1",
     "@typescript-eslint/parser": "^4.15.1",
     "eslint": "^7.20.0",
+    "typedoc": "^0.20.27",
     "typescript": "^4.1.5"
   },
   "dependencies": {
@@ -15,5 +16,5 @@
     "node-superfetch": "^0.1.11"
   },
   "repository": "https://github.com/iseizuu/anime-wallpaper.git",
-  "author": "Veguiizumi <andixviv@gmail.com>"
+  "author": "Aizuu"
 }
