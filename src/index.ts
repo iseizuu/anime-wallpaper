@@ -16,7 +16,7 @@ export class AnimeWallpaper {
             })
                 .then(x => {
                     const $ = cheerio.load(x);
-                    const arr: AnimeWall1[] = []
+                    const arr: AnimeWall1[] = [];
                     $("#page_container [class=\"center\"] [class=\"thumb-container\"]").each((i, elm) => {
                         const title = $(elm).find("a").attr("title");
                         const thumbnail = $(elm).find("[class=\"boxgrid\"] a source").attr("srcset");
