@@ -1,5 +1,5 @@
 {
-  "name": "untitled",
+  "name": "anime-wallpaper",
   "version": "1.0.0",
   "main": "index.js",
   "license": "MIT",
@@ -13,5 +13,7 @@
   "dependencies": {
     "cheerio": "^1.0.0-rc.5",
     "node-superfetch": "^0.1.11"
-  }
+  },
+  "repository": "https://github.com/iseizuu/anime-wallpaper.git",
+  "author": "Veguiizumi <andixviv@gmail.com>"
 }

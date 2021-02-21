@@ -1,8 +1,11 @@
+import { AnimeWall1 } from "./typings";
 interface searchOpt {
     search: string;
     page: string | number;
 }
 export default class Wallpaper {
-    get(title: searchOpt): Promise<unknown>;
+    constructor();
+    get(param: searchOpt): Promise<AnimeWall1[]>;
+    private _request;
 }
 export {};
