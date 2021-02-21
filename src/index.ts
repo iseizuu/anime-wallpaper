@@ -8,7 +8,7 @@ export class AnimeWallpaper {
     public getAnimeWall1(param: searchOpt): Promise<AnimeWall1[]> {
         if (!param || !param.search) throw new WallError("param must be specified");
         else if (!param.page) param.page = 0;
-        if (typeof param.page === "string") console.warn("Use number instead of string, on page options, this is will not affected")
+        if (typeof param.page === "string") console.warn("Use number instead of a string on `page` options, this is will not be affected");
         return new Promise((resolve, reject) => {
             this._request("https://wall.alphacoders.com/search.php", {
                 search: encodeURIComponent(param.search),
