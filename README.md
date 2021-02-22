@@ -5,7 +5,9 @@
 
 Get Anime wallpapers based on scrapping from websites [Alphacoders](https://alphacoders.com) and [Wallpaper Cave](https://wallpapercave.com).
 
-- Documentation
+- [Documentation](https://iseizuu.github.io/anime-wallpaper/)
+
+[![Version](https://nodei.co/npm/anime-wallpaper.png?compact=true)](https://nodei.co/npm/anime-wallpaper)
 
 # Example Usage
 - Getting Wallpaper from [Alphacoders](https://alphacoders.com)

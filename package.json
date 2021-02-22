@@ -1,8 +1,22 @@
 {
   "name": "anime-wallpaper",
   "version": "1.0.0",
-  "main": "index.js",
+  "description": "Get Anime wallpapers based on scrapping from websites Alphacoders and Wallpaper Cave.",
   "license": "MIT",
+  "main": "dist/index.js",
+  "types": "dist/index.d.ts",
+  "files": [
+    "dist/**/*"
+  ],
+  "keywords": [
+    "anime",
+    "anime-wallpapaer",
+    "wallpaper",
+    "images",
+    "scrape",
+    "alphacoders",
+    "wallpaper-cave"
+  ],
   "devDependencies": {
     "@types/node": "^14.14.31",
     "@typescript-eslint/eslint-plugin": "^4.15.1",
@@ -16,5 +30,9 @@
     "node-superfetch": "^0.1.11"
   },
   "repository": "https://github.com/iseizuu/anime-wallpaper.git",
-  "author": "Aizuu"
+  "author": "Aizuu",
+  "bugs": {
+    "url": "https://github.com/iseizuu/anime-wallpaper/issues"
+  },
+  "homepage": "https://github.com/iseizuu/anime-wallpaper#readme"
 }
