@@ -63,6 +63,27 @@ export class AnimeWallpaper {
         });
     }
 
+    public getAnimeWall3(): Promise<AnimeWall2[]> {
+        const baseUrl = "https://free4kwallpapers.com";
+        const random = Math.floor(Math.random() * 20) + 1;
+        return new Promise((resolve, reject) => {
+            this._request(`${baseUrl}/anime-wallpapers`, { page: random as unknown as string  })
+                .then(x => {
+                    const $ = cheerio.load(x);
+                    const results: AnimeWall2[] = [];
+                    $("#contents .container .row .cbody a img").each((i, elm) => {
+                        const title = $(elm).attr("title") as string;
+                        const image = `${baseUrl}/${$(elm).attr("data-src") as string}`;
+                        results.push({ title, image });
+                    });
+                    if (!results) throw new WallError("Images not found");
+                    resolve(results);
+                })
+                .catch(er => reject(er));
+        });
+        
+    }
+
     private _request(uri: string, options: Record<string, string>): Promise<Response> {
         // eslint-disable-next-line @typescript-eslint/no-var-requires
         const pkg: { name: string; version: string; repository:string } = require("../package.json");

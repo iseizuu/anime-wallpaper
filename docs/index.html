@@ -62,34 +62,51 @@
 				<p align="center">
 					<img src="https://i.imgur.com/DeP0Nlv.jpeg">
 				</p>
-				<p>Get Anime wallpapers based on scrapping from websites <a href="https://alphacoders.com">Alphacoders</a> and <a href="https://wallpapercave.com">Wallpaper Cave</a>.</p>
+				<p>Get Anime wallpapers based on scrapping from websites.</p>
 				<ul>
-					<li><a href="https://iseizuu.github.io/anime-wallpaper/">Documentation</a></li>
+					<li><del><a href="https://alphacoders.com">Alphacoders</a></del></li>
+					<li><a href="https://wallpapercave.com">Wallpaper Cave</a></li>
+					<li><a href="https://free4kwallpapers.com/">4K Wallpapers</a></li>
 				</ul>
 				<p><a href="https://nodei.co/npm/anime-wallpaper"><img src="https://nodei.co/npm/anime-wallpaper.png?compact=true" alt="Version"></a></p>
+				<a href="#documentation" id="documentation" style="color: inherit; text-decoration: none;">
+					<h6><a href="https://iseizuu.github.io/anime-wallpaper/">Documentation</a></h6>
+				</a>
 				<a href="#example-usage" id="example-usage" style="color: inherit; text-decoration: none;">
 					<h1>Example Usage</h1>
 				</a>
 				<ul>
-					<li>Getting Wallpaper from <a href="https://alphacoders.com">Alphacoders</a><pre><code class="language-js"><span style="color: #0000FF">const</span><span style="color: #000000"> { </span><span style="color: #0070C1">AnimeWallpaper</span><span style="color: #000000"> } = </span><span style="color: #795E26">require</span><span style="color: #000000">(</span><span style="color: #A31515">&quot;../dist&quot;</span><span style="color: #000000">);</span>
+					<li>Getting Wallpaper from <del><a href="https://alphacoders.com">Alphacoders</a></del> <em>currently not work</em></li>
+				</ul>
+				<pre><code class="language-js"><span style="color: #0000FF">const</span><span style="color: #000000"> { </span><span style="color: #0070C1">AnimeWallpaper</span><span style="color: #000000"> } = </span><span style="color: #795E26">require</span><span style="color: #000000">(</span><span style="color: #A31515">&quot;../dist&quot;</span><span style="color: #000000">);</span>
 <span style="color: #0000FF">const</span><span style="color: #000000"> </span><span style="color: #0070C1">wall</span><span style="color: #000000"> = </span><span style="color: #0000FF">new</span><span style="color: #000000"> </span><span style="color: #795E26">AnimeWallpaper</span><span style="color: #000000">();</span>
 
-</code></pre>
-					</li>
-				</ul>
-				<p>async function Wallpaper1() {
-					const wallpaper = await wall.getAnimeWall1({ search: &quot;to love ru&quot;, page: 1 })
-					return console.log(wallpaper)
-				}</p>
-				<p>Wallpaper1()</p>
-				<pre><code><span style="color: #000000">- </span><span style="color: #001080">Getting</span><span style="color: #000000"> </span><span style="color: #001080">Wallpaper</span><span style="color: #000000"> </span><span style="color: #001080">from</span><span style="color: #000000"> [</span><span style="color: #001080">Wallpaper</span><span style="color: #000000"> </span><span style="color: #001080">Cave</span><span style="color: #000000">](</span><span style="color: #001080">https</span><span style="color: #000000">:</span><span style="color: #008000">//wallpapercave.com)</span>
-<span style="color: #A31515">```js</span>
-<span style="color: #A31515">async function Wallpaper2() {</span>
-<span style="color: #A31515">    const wallpaper = await wall.getAnimeWall2(&quot;keqing&quot;)</span>
-<span style="color: #A31515">    return console.log(wallpaper)</span>
-<span style="color: #A31515">}</span>
+<span style="color: #0000FF">async</span><span style="color: #000000"> </span><span style="color: #0000FF">function</span><span style="color: #000000"> </span><span style="color: #795E26">Wallpaper1</span><span style="color: #000000">() {</span>
+<span style="color: #000000">    </span><span style="color: #0000FF">const</span><span style="color: #000000"> </span><span style="color: #0070C1">wallpaper</span><span style="color: #000000"> = </span><span style="color: #AF00DB">await</span><span style="color: #000000"> </span><span style="color: #001080">wall</span><span style="color: #000000">.</span><span style="color: #795E26">getAnimeWall1</span><span style="color: #000000">({ </span><span style="color: #001080">search:</span><span style="color: #000000"> </span><span style="color: #A31515">&quot;to love ru&quot;</span><span style="color: #000000">, </span><span style="color: #001080">page:</span><span style="color: #000000"> </span><span style="color: #098658">1</span><span style="color: #000000"> })</span>
+<span style="color: #000000">    </span><span style="color: #AF00DB">return</span><span style="color: #000000"> </span><span style="color: #001080">console</span><span style="color: #000000">.</span><span style="color: #795E26">log</span><span style="color: #000000">(</span><span style="color: #001080">wallpaper</span><span style="color: #000000">)</span>
+<span style="color: #000000">}</span>
 
-<span style="color: #A31515">Wallpaper2()</span>
+<span style="color: #795E26">Wallpaper1</span><span style="color: #000000">()</span>
+</code></pre>
+				<ul>
+					<li>Getting Wallpaper from <a href="https://wallpapercave.com">Wallpaper Cave</a></li>
+				</ul>
+				<pre><code class="language-js"><span style="color: #0000FF">async</span><span style="color: #000000"> </span><span style="color: #0000FF">function</span><span style="color: #000000"> </span><span style="color: #795E26">Wallpaper2</span><span style="color: #000000">() {</span>
+<span style="color: #000000">    </span><span style="color: #0000FF">const</span><span style="color: #000000"> </span><span style="color: #0070C1">wallpaper</span><span style="color: #000000"> = </span><span style="color: #AF00DB">await</span><span style="color: #000000"> </span><span style="color: #001080">wall</span><span style="color: #000000">.</span><span style="color: #795E26">getAnimeWall2</span><span style="color: #000000">(</span><span style="color: #A31515">&quot;keqing&quot;</span><span style="color: #000000">)</span>
+<span style="color: #000000">    </span><span style="color: #AF00DB">return</span><span style="color: #000000"> </span><span style="color: #001080">console</span><span style="color: #000000">.</span><span style="color: #795E26">log</span><span style="color: #000000">(</span><span style="color: #001080">wallpaper</span><span style="color: #000000">)</span>
+<span style="color: #000000">}</span>
+
+<span style="color: #795E26">Wallpaper2</span><span style="color: #000000">()</span>
+</code></pre>
+				<ul>
+					<li>Getting Ramdon Wallpaper from <a href="https://free4kwallpapers.com/">4K Wallpapers</a></li>
+				</ul>
+				<pre><code class="language-js"><span style="color: #0000FF">async</span><span style="color: #000000"> </span><span style="color: #0000FF">function</span><span style="color: #000000"> </span><span style="color: #795E26">Wallpaper3</span><span style="color: #000000">() {</span>
+<span style="color: #000000">    </span><span style="color: #0000FF">const</span><span style="color: #000000"> </span><span style="color: #0070C1">wallpaper</span><span style="color: #000000"> = </span><span style="color: #AF00DB">await</span><span style="color: #000000"> </span><span style="color: #001080">wall</span><span style="color: #000000">.</span><span style="color: #795E26">getAnimeWall3</span><span style="color: #000000">()</span>
+<span style="color: #000000">    </span><span style="color: #AF00DB">return</span><span style="color: #000000"> </span><span style="color: #001080">console</span><span style="color: #000000">.</span><span style="color: #795E26">log</span><span style="color: #000000">(</span><span style="color: #001080">wallpaper</span><span style="color: #000000">)</span>
+<span style="color: #000000">}</span>
+
+<span style="color: #795E26">Wallpaper3</span><span style="color: #000000">())</span>
 </code></pre>
 				<hr>
 				<p>© <a href="https://github.com/iseizuu">Aizuu</a></p>

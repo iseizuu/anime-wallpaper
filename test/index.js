@@ -6,11 +6,18 @@ async function Wallpaper1() {
     return console.log(wallpaper)
 }
 
-Wallpaper1()
+// Wallpaper1()
 
 async function Wallpaper2() {
     const wallpaper = await wall.getAnimeWall2("keqing")
     return console.log(wallpaper)
 }
 
-// Wallpaper2()
+Wallpaper2()
+
+async function Wallpaper3() {
+    const wallpaper = await wall.getAnimeWall3() //random imgs, not need query.
+    return console.log(wallpaper)
+}
+
+//Wallpaper3()
