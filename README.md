@@ -45,7 +45,7 @@ async function Wallpaper3() {
     return console.log(wallpaper)
 }
 
-Wallpaper3())
+Wallpaper3()
 ```
 
 <hr>
