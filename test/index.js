@@ -13,11 +13,11 @@ async function Wallpaper2() {
     return console.log(wallpaper)
 }
 
-Wallpaper2()
+//Wallpaper2()
 
-async function Wallpaper3() {
-    const wallpaper = await wall.getAnimeWall3() //random imgs, not need query.
+async function Wallpaper4() {
+    const wallpaper = await wall.getAnimeWall4({ title: "ganyu", type: "sketchy"})
     return console.log(wallpaper)
 }
 
-//Wallpaper3()
+Wallpaper4()
