@@ -31,7 +31,7 @@ export class AnimeWallpaper {
                     $("#page_container [class=\"center\"] [class=\"thumb-container\"]").each((i, elm) => {
                         const title = $(elm).find("a").attr("title");
                         const thumbnail = $(elm).find("[class=\"boxgrid\"] a source").attr("srcset");
-                        const image = `https://${thumbnail?.split("/")[2]}/${thumbnail?.split("/")[3]}/${thumbnail?.split("/")[4].split("-")[2]}`
+                        const image = $(elm).find("[class=\"boxgrid\"] a img").attr("src")?.replace(/thumbbig-/g, "")
                         arr.push({ title, thumbnail, image } as AnimeWall1);
                     })
                     if (!arr.length) throw new WallError("No result found");
