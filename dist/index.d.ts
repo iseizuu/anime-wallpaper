@@ -35,4 +35,5 @@ export declare class AnimeWallpaper {
      */
     getAnimeWall4(search: searchOpt2): Promise<AnimeWall3[]>;
     private _request;
+    private delay;
 }
