@@ -18,5 +18,4 @@ export interface searchOpt2 {
     title: string;
     page: string;
     type: "sfw" | "sketchy" | "both";
-    detail: boolean | false;
 }
