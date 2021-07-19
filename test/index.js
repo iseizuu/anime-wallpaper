@@ -16,7 +16,7 @@ async function Wallpaper2() {
 //Wallpaper2()
 
 async function Wallpaper4() {
-    const wallpaper = await wall.getAnimeWall4({ title: "ganyu", type: "sketchy"})
+    const wallpaper = await wall.getAnimeWall4({ title: "ganyu", type: "sfw" })
     return console.log(wallpaper)
 }
 
