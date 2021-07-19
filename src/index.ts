@@ -1,4 +1,3 @@
-/* eslint-disable @typescript-eslint/restrict-template-expressions */
 import req from "node-superfetch";
 import userAgent from "random-useragent";
 import cheerio from "cheerio";
@@ -12,8 +11,9 @@ export class AnimeWallpaper {
     /**
      * Scraping images wallpaper from AlphaCoders
      * 
-     * @param title.search the title of anime you want to search.
-     * @param title.page the page for image you want to search.
+     * @param {Object}
+     * @param {string} title.search the title of anime you want to search.
+     * @param {string|number} title.page the page for image you want to search.
      * @returns {AnimeWall1}
      */
     public getAnimeWall1(title: searchOpt): Promise<AnimeWall1[]> {
@@ -44,13 +44,13 @@ export class AnimeWallpaper {
     /**
      * Scraping images wallpaper from WallpaperCave
      * 
-     * @param param the title of anime that you want to search.
+     * @param title the title of anime that you want to search.
      * @returns {AnimeWall2}
      */
-    public getAnimeWall2(param: string): Promise<AnimeWall2[]> {
-        if (!param) throw new WallError("param must be specified");
+    public getAnimeWall2(title: string): Promise<AnimeWall2[]> {
+        if (!title) throw new WallError("title must be specified");
         return new Promise((resolve, reject) => {
-            this._request(`${webUrl.wallpaperCave}/search`, { q: param.split(" ").join("+") })
+            this._request(`${webUrl.wallpaperCave}/search`, { q: title.split(" ").join("+") })
                 .then(x => {
                     const $ = cheerio.load(x);
                     const arr: AnimeWall2[] = [];
@@ -117,9 +117,8 @@ export class AnimeWallpaper {
         if (!search || !search.title) throw new WallError("title must be specified");
         else if (!search.type) search.type === "sfw";
         else if (!Object.keys(type).includes(search.type)) throw new WallError("Please input on of them 'sfw, sketchy, both'");
-        const getPurity = type[search.type];
         return new Promise((resolve, reject) => {
-            this._request(`${webUrl.wallHaven as string}/search`, { q: search.title, page: search.page, purity: getPurity })
+            this._request(`${webUrl.wallHaven}/search`, { q: search.title, page: search.page, purity: type[search.type] })
                 .then(x => {
                     const $ = cheerio.load(x);
                     const results: AnimeWall3[] = [];
@@ -127,8 +126,8 @@ export class AnimeWallpaper {
                         let formatImg = ".jpg"
                         const isPng = $(elm).find(".thumb-info .png span").text();
                         if (isPng) formatImg = ".png";
-                        const parseUrl = $(elm).find(".preview").attr("href")?.split("/").pop();
-                        const image = `https://w.wallhaven.cc/full/${parseUrl?.split("").splice(0, 2).join("")}/wallhaven-${parseUrl}${formatImg}`;
+                        const parseUrl = $(elm).find(".preview").attr("href");
+                        const image = `https://w.wallhaven.cc/full/${parseUrl?.split("/").pop()?.split("").splice(0, 2).join("")}/wallhaven-${parseUrl?.split("/").pop()}${formatImg}`;
                         // console.log(image)
                         results.push({ image });
                     });
@@ -140,13 +139,13 @@ export class AnimeWallpaper {
 
     }
 
-    private _request(uri: string, options: Record<string, string>): Promise<Response> {
+    private _request(uri: string, options: Record<string, string>): Promise<string> {
         return new Promise((resolve, reject) => {
             void req.get(uri)
                 .query(options).set({
                     "user-agent": userAgent.getRandom() as string
                 })
-                .then(x => resolve(x.text as unknown as Response))
+                .then(x => resolve(x.text))
                 .catch(er => reject(er));
         });
     }
