@@ -4,18 +4,19 @@
 </p>
 
 Get Anime wallpapers based on scrapping from websites.
-* ~~[Alphacoders](https://alphacoders.com)~~
+* [Alphacoders](https://alphacoders.com)
 * [Wallpaper Cave](https://wallpapercave.com)
 * [4K Wallpapers](https://free4kwallpapers.com/)
+* [Wall Haven](https://wallhaven.cc)
 
 [![Version](https://nodei.co/npm/anime-wallpaper.png?compact=true)](https://nodei.co/npm/anime-wallpaper)
 ###### [Documentation](https://iseizuu.github.io/anime-wallpaper/)
 
 # Example Usage
- - Getting Wallpaper from ~~[Alphacoders](https://alphacoders.com)~~ _currently not work_
+ - Getting Wallpaper from [Alphacoders](https://alphacoders.com)
 
 ```js
-const { AnimeWallpaper } = require("../dist");
+const { AnimeWallpaper } = require("anime-wallpaper");
 const wall = new AnimeWallpaper();
 
 async function Wallpaper1() {
@@ -46,6 +47,17 @@ async function Wallpaper3() {
 }
 
 Wallpaper3()
+```
+
+- Getting Wallpaper from [WallHaven](https://wallhaven.cc)
+
+```js
+async function Wallpaper4() {
+    const wallpaper = await wall.getAnimeWall4({ title: "anime romance", type: "sfw", page: 1 })
+    return console.log(wallpaper)
+}
+
+Wallpaper4()
 ```
 
 <hr>
