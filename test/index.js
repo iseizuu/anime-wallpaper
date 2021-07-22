@@ -23,7 +23,7 @@ async function Wallpaper3() {
 //Wallpaper3()
 
 async function Wallpaper4() {
-    const wallpaper = await wall.getAnimeWall4({ title: "keqing", type: "sfw" })
+    const wallpaper = await wall.getAnimeWall4({ title: "keqing", type: "sfw", page: 2 })
     return console.log(wallpaper)
 }
 
