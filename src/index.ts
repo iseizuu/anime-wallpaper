@@ -1,4 +1,3 @@
-/* eslint-disable @typescript-eslint/unbound-method */
 import req from "node-superfetch";
 import userAgent from "random-useragent";
 import cheerio from "cheerio";
@@ -67,10 +66,10 @@ export class AnimeWallpaper {
                     const random = filteredRes[Math.floor(Math.random() * filteredRes.length)]
                     this._request(`${webUrl.wallpaperCave}${random}`, {})
                         .then(res => {
-                            const $$ = cheerio.load(res);
+                            const $$ = cheerio.load(res.text);
                             $$("#albumwp .wallpaper").each((i, elm) => {
-                                const title = $(elm).find("a.wpinkw img").attr("alt");
-                                const image = `${webUrl.wallpaperCave}${$(elm).find("a.wpinkw img").attr("src") as string}`;
+                                const title = $$(elm).find("a.wpinkw img").attr("alt");
+                                const image = `${webUrl.wallpaperCave}${$$(elm).find("a.wpinkw img").attr("src")}`;
                                 arr.push({ title, image } as AnimeWall2);
                             })
                             resolve(arr)
@@ -91,13 +90,13 @@ export class AnimeWallpaper {
     public getAnimeWall3(): Promise<AnimeWall2[]> {
         const random = Math.floor(Math.random() * 20) + 1;
         return new Promise((resolve, reject) => {
-            this._request(`${webUrl.free4kWallpaper}/anime-wallpapers`, { page: random as unknown as string })
+            this._request(`${webUrl.free4kWallpaper}/anime-wallpapers`, { page: random })
                 .then(x => {
                     const $ = cheerio.load(x.text);
                     const results: AnimeWall2[] = [];
                     $("#contents .container .row .cbody a img").each((i, elm) => {
                         const title = $(elm).attr("title") as string;
-                        const image = `${webUrl.free4kWallpaper}/${$(elm).attr("data-src") as string}`;
+                        const image = `${webUrl.free4kWallpaper}/${$(elm).attr("data-src")}`;
                         results.push({ title, image });
                     });
                     if (!results.length) throw new WallError("Images not found");
@@ -141,10 +140,11 @@ export class AnimeWallpaper {
 
     }
 
-    private _request(uri: string, options: Record<string, string>): Promise<Response> {
+    private _request(uri: string, options: Record<never, string|number>): Promise<Response> {
         return new Promise((resolve, reject) => {
             void req.get(uri)
-                .query(options).set({
+                .query(options)
+                .set({
                     "user-agent": userAgent.getRandom() as string
                 })
                 .then(x => resolve(x as unknown as Response))
