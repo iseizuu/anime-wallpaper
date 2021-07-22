@@ -49,7 +49,7 @@ async function Wallpaper3() {
 Wallpaper3()
 ```
 
-- Getting Wallpaper from [Wall Haven](https://wallhaven.cc)
+- Getting Wallpaper from [WallHaven](https://wallhaven.cc)
 
 ```js
 async function Wallpaper4() {
