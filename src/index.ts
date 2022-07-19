@@ -23,15 +23,14 @@ export class AnimeWallpaper {
         return new Promise((resolve, reject) => {
             this._request(webUrl.alphaCoders, { search: encodeURIComponent(title.search) })
                 .then(x => {
-                    void this._request(`${x.url}&page=${title.page}`, {})
+                    void this._request(`${x.url}${x.url.includes("?") ? "&" : "?"}page=${title.page}`, {})
                         .then((data) => {
                             const $ = cheerio.load(data.text);
                             const arr: AnimeWall1[] = [];
-                            $("#page_container [class=\"center\"] [class=\"thumb-container\"]").each((i, elm) => {
-                                const title = $(elm).find("a").attr("title");
+                            $("#big_container .page_container .thumb-container").each((i, elm) => {
+                                const title = $(elm).find("img").attr("alt");
                                 const thumbnail = $(elm).find("[class=\"boxgrid\"] a source").attr("srcset");
-                                const image = $(elm).find("[class=\"boxgrid\"] a img").attr("src")?.replace(/thumbbig-/g, "")
-                                void this.delay(4e3)
+                                const image = $(elm).find("img").attr("src")?.replace(/thumbbig-/g, "")
                                 arr.push({ title, thumbnail, image } as AnimeWall1);
                             })
                             if (!arr.length) throw new WallError("No result found");
@@ -49,7 +48,7 @@ export class AnimeWallpaper {
      * @param title the title of anime that you want to search.
      * @returns {AnimeWall2}
      */
-    public getAnimeWall2(title: string): Promise<AnimeWall2[]> {
+    private getAnimeWall2(title: string): Promise<AnimeWall2[]> {
         if (!title) throw new WallError("title must be specified");
         return new Promise((resolve, reject) => {
             this._request(`${webUrl.wallpaperCave}/search`, { q: title.split(" ").join("+") })
@@ -140,6 +139,31 @@ export class AnimeWallpaper {
 
     }
 
+    //     /**
+    //  * Scraping images wallpaper from WallpaperCave
+    //  * 
+    //  * @param title the title of anime that you want to search.
+    //  * @returns {AnimeWall2}
+    //  */
+    //      private getAnimeWall5(title: string): Promise<string[]> {
+    //         if (!title) throw new WallError("title must be specified");
+    //         return new Promise((resolve, reject) => {
+    //             this._request(`${webUrl.zerochan}/${title}`, {})
+    //                 .then(x => {
+    //                     const $ = cheerio.load(x.text);
+    //                     const arr: any[] = [];
+    //                     $("#wrapper #content ul li").each((i, elm) => {
+    //                         const title = $(elm).find("a img").attr("alt");
+    //                         const image = $(elm).find("a img").attr("src");
+    //                         const fullHd = `https://static.zerochan.net/${title?.split(" ").join(".")}.full.${$(elm).find("a").attr("href")?.replace(/\//gi, "")}.jpg`
+    //                         arr.push({ title, image, fullHd });
+    //                     });
+    //                     resolve(arr)
+    //                 })
+    //                 .catch(er => reject(er));
+    //         });
+    //     }
+
     private _request(uri: string, options: Record<never, string|number>): Promise<Response> {
         return new Promise((resolve, reject) => {
             void req.get(uri)
@@ -148,11 +172,7 @@ export class AnimeWallpaper {
                     "user-agent": userAgent.getRandom() as string
                 })
                 .then(x => resolve(x as unknown as Response))
-                .catch(er => reject(er));
+                .catch(er => reject(`Upss: ${er.message}`));
         });
-    }
-
-    private delay(amount: number): Promise<NodeJS.Timeout> {
-        return new Promise(resolve => setTimeout(resolve, amount));
     }
 }

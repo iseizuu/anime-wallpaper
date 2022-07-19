@@ -5,7 +5,7 @@
 
 Get Anime wallpapers based on scrapping from websites.
 * [Alphacoders](https://alphacoders.com)
-* [Wallpaper Cave](https://wallpapercave.com)
+* ~~[Wallpaper Cave](https://wallpapercave.com)~~ *Not working
 * [4K Wallpapers](https://free4kwallpapers.com/)
 * [Wall Haven](https://wallhaven.cc)
 
@@ -27,7 +27,7 @@ async function Wallpaper1() {
 Wallpaper1()
 ```
 
-- Getting Wallpaper from [Wallpaper Cave](https://wallpapercave.com)
+- ~~Getting Wallpaper from [Wallpaper Cave](https://wallpapercave.com)~~
 
 ```js
 async function Wallpaper2() {

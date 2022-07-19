@@ -16,7 +16,7 @@ export declare class AnimeWallpaper {
      * @param title the title of anime that you want to search.
      * @returns {AnimeWall2}
      */
-    getAnimeWall2(title: string): Promise<AnimeWall2[]>;
+    private getAnimeWall2;
     /**
      * Scraping images wallpaper from free4kWallpaper
      *
@@ -35,5 +35,4 @@ export declare class AnimeWallpaper {
      */
     getAnimeWall4(search: searchOpt2): Promise<AnimeWall3[]>;
     private _request;
-    private delay;
 }

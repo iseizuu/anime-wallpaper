@@ -2,11 +2,11 @@ const { AnimeWallpaper } = require("../dist");
 const wall = new AnimeWallpaper();
 
 async function Wallpaper1() {
-    const wallpaper = await wall.getAnimeWall1({ search: "genshin Impact", page: 2 })
-    return console.log(wallpaper[0])
+    const wallpaper = await wall.getAnimeWall1({ search: "keqing", page: 2 })
+    return console.log(wallpaper)
 }
 
-//Wallpaper1()
+Wallpaper1()
 
 async function Wallpaper2() {
     const wallpaper = await wall.getAnimeWall2("keqing")
@@ -23,8 +23,15 @@ async function Wallpaper3() {
 //Wallpaper3()
 
 async function Wallpaper4() {
-    const wallpaper = await wall.getAnimeWall4({ title: "keqing", type: "sfw", page: 2 })
+    const wallpaper = await wall.getAnimeWall4({ title: "griseo", type: "sfw", page: 1 })
     return console.log(wallpaper)
 }
 
-Wallpaper4()
+//Wallpaper4()
+
+// async function Wallpaper5() {
+//     const wallpaper = await wall.getAnimeWall5("hutao")
+//     return console.log(wallpaper)
+// }
+
+// Wallpaper5()
