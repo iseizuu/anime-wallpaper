@@ -8,6 +8,7 @@ Get Anime wallpapers based on scrapping from websites.
 * ~~[Wallpaper Cave](https://wallpapercave.com)~~ *Not working
 * [4K Wallpapers](https://free4kwallpapers.com/)
 * [Wall Haven](https://wallhaven.cc)
+* [ZeroChan](https://www.zerochan.net)
 
 [![Version](https://nodei.co/npm/anime-wallpaper.png?compact=true)](https://nodei.co/npm/anime-wallpaper)
 ###### [Documentation](https://iseizuu.github.io/anime-wallpaper/)
