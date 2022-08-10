@@ -2,7 +2,7 @@ const { AnimeWallpaper } = require("../dist");
 const wall = new AnimeWallpaper();
 
 async function Wallpaper1() {
-    const wallpaper = await wall.getAnimeWall1({ search: "keqing", page: 2 })
+    const wallpaper = await wall.getAnimeWall1({ search: "Arisa Ichigaya", page: 1 })
     return console.log(wallpaper)
 }
 
@@ -23,15 +23,15 @@ async function Wallpaper3() {
 //Wallpaper3()
 
 async function Wallpaper4() {
-    const wallpaper = await wall.getAnimeWall4({ title: "griseo", type: "sfw", page: 1 })
+    const wallpaper = await wall.getAnimeWall4({ title: "Yukina Minato", type: "sfw", page: 1 })
     return console.log(wallpaper)
 }
 
 //Wallpaper4()
 
-// async function Wallpaper5() {
-//     const wallpaper = await wall.getAnimeWall5("hutao")
-//     return console.log(wallpaper)
-// }
+async function Wallpaper5() {
+    const wallpaper = await wall.getAnimeWall5("makima")
+    return console.log(wallpaper)
+}
 
-// Wallpaper5()
+//Wallpaper5()
