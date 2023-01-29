@@ -56,6 +56,7 @@ export class AnimeWallpaper {
         return new Promise((resolve, reject) => {
             this._request(`${webUrl.free4kWallpaper}/anime-wallpapers`, { page: random })
                 .then(x => {
+                    // @ts-ignore
                     const $ = cheerio.load(x.text);
                     const results: dataImageFormat[] = [];
                     $("#contents .container .row .cbody a img").each((i, elm) => {
@@ -87,6 +88,7 @@ export class AnimeWallpaper {
         return new Promise((resolve, reject) => {
             this._request(`${webUrl.wallHaven}/search`, { q: search.title, page: search.page, purity: type[search.type] })
                 .then(x => {
+                    // @ts-ignore
                     const $ = cheerio.load(x.text);
                     const results: dataImageFormat[] = [];
                     $(".thumb-listing-page ul li .thumb").each((i, elm) => {
@@ -116,6 +118,7 @@ export class AnimeWallpaper {
         return new Promise((resolve, reject) => {
             this._request(`${webUrl.zerochan}/${search.title}`, {})
                 .then(x => {
+                    // @ts-ignore
                     const $ = cheerio.load(x.text);
                     const arr: dataImageFormat[] = [];
                     $("#wrapper #content ul li").each((i, elm) => {
