@@ -1,45 +1,52 @@
-import { dataImageFormat1, dataImageFormat2, dataImageFormat3, searchOpt, searchOpt2 } from "./typings";
+import { dataImageFormat, searchOpt } from "./typings";
+export declare enum AnimeSource {
+    WallHaven = 2,
+    ZeroChan = 3
+}
 export declare class AnimeWallpaper {
     constructor();
     /**
-     * Scraping images wallpaper from AlphaCoders
+     * Universal search function for all websites
      *
-     * @param {Object}
-     * @param {string} title.search the title of anime you want to search.
-     * @param {string|number} title.page the page for image you want to search.
-     * @returns {dataImageFormat1}
+     * this function will return an array of queried anime wallpapers
+     *
+     * @param search.title the title of the anime you want to search.
+     * @param search.type the type or purity of image sfw or sketchy image or even both.
+     * @param search.page the page for image you want to search, default is 1
+     * @returns {dataImageFormat}
      */
-    getAnimeWall1(title: searchOpt): Promise<dataImageFormat1[]>;
+    search(options: searchOpt, source?: AnimeSource): Promise<dataImageFormat[]>;
     /**
-     * Scraping images wallpaper from WallpaperCave
+     * Scrapes 4kWallpaper for a random Wallpaper
      *
-     * @param title the title of anime that you want to search.
-     * @returns {dataImageFormat2}
+     * This function will return an array of random Wallpapers
+     *
+     * @returns {dataImageFormat}
      */
-    private getAnimeWall2;
+    random(): Promise<dataImageFormat[]>;
     /**
      * Scraping images wallpaper from free4kWallpaper
      *
      * this function will be return random anime wallpaper
      *
-     * @returns {dataImageFormat2}
+     * @returns {dataImageFormat}
      */
-    getAnimeWall3(): Promise<dataImageFormat2[]>;
+    private scrapeFrom4kWallpaper;
     /**
      * Scraping images wallpaper from WallHaven
      *
      * @param search.title the title of the anime you want to search.
      * @param search.type the type or purity of image sfw or sketchy image or even both.
      * @param search.page the page for image you want to search, default is 1
-     * @returns {dataImageFormat3}
+     * @returns {dataImageFormat}
      */
-    getAnimeWall4(search: searchOpt2): Promise<dataImageFormat3[]>;
+    private scrapeFromWallHaven;
     /**
  * Scraping images wallpaper from zerochan
  *
- * @param title the title of anime that you want to search.
- * @returns {dataImageFormat2}
+ * @param search.title the title of anime that you want to search.
+ * @returns {dataImageFormat}
  */
-    getAnimeWall5(title: string): Promise<dataImageFormat1[]>;
+    private scrapeFromZeroChan;
     private _request;
 }
