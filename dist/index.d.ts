@@ -42,11 +42,11 @@ export declare class AnimeWallpaper {
      */
     private scrapeFromWallHaven;
     /**
- * Scraping images wallpaper from zerochan
- *
- * @param search.title the title of anime that you want to search.
- * @returns {dataImageFormat}
- */
+    * Scraping images wallpaper from zerochan
+    *
+    * @param search.title the title of anime that you want to search.
+    * @returns {dataImageFormat}
+    */
     private scrapeFromZeroChan;
     private _request;
 }
