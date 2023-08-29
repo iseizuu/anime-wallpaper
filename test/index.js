@@ -1,30 +1,15 @@
-const { AnimeWallpaper } = require("../dist");
+const { AnimeWallpaper, AnimeSource } = require("../dist");
 const wall = new AnimeWallpaper();
 
-async function Wallpaper1() {
-    const wallpaper = await wall.getAnimeWall1({ search: "genshin Impact", page: 2 })
-    return console.log(wallpaper[0])
+/**
+* Uncomment the snippets below to try out new configurations
+*/
+async function WallpaperSearch() {
+    const wallpaper = await wall.search({ title: "Misaka Mikoto" });
+    // const wallpaper = await wall.search({ title: "Misaka Mikoto" }, AnimeSource.ZeroChan);
+    // const wallpaper = await wall.search({ title: "Misaka Mikoto" }, AnimeSource.ZeroChan);
+    // const wallpaper = await wall.random();
+    return console.log(wallpaper);
 }
 
-//Wallpaper1()
-
-async function Wallpaper2() {
-    const wallpaper = await wall.getAnimeWall2("keqing")
-    return console.log(wallpaper)
-}
-
-//Wallpaper2()
-
-async function Wallpaper3() {
-    const wallpaper = await wall.getAnimeWall3()
-    return console.log(wallpaper)
-}
-
-//Wallpaper3()
-
-async function Wallpaper4() {
-    const wallpaper = await wall.getAnimeWall4({ title: "keqing", type: "sfw", page: 2 })
-    return console.log(wallpaper)
-}
-
-Wallpaper4()
+WallpaperSearch();

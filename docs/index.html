@@ -60,64 +60,66 @@
 			<div class="tsd-panel tsd-typography">
 				<h1 align="center">Anime Wallpaper</h1>
 				<p align="center">
+					<a href="https://github.com/beyluta/WinWidgets">
+						<img src="https://img.shields.io/npm/v/anime-wallpaper.svg?logo=npm&logoColor=fff&label=Version&color=limegreen" alt="Version" />
+					</a>
+					<a href="https://www.npmjs.com/package/anime-wallpaper">
+						<img src="https://img.shields.io/npm/v/anime-wallpaper.svg?logo=npm&logoColor=fff&label=NPM+package&color=red" alt="Anime Wallpaper on npm" />
+					</a>
+				</p>
+				<p align="center">
 					<img src="https://i.imgur.com/DeP0Nlv.jpeg">
 				</p>
 				<p>Get Anime wallpapers based on scrapping from websites.</p>
 				<ul>
-					<li><a href="https://alphacoders.com">Alphacoders</a></li>
-					<li><a href="https://wallpapercave.com">Wallpaper Cave</a></li>
 					<li><a href="https://free4kwallpapers.com/">4K Wallpapers</a></li>
 					<li><a href="https://wallhaven.cc">Wall Haven</a></li>
+					<li><a href="https://www.zerochan.net">ZeroChan</a><br>
+					</li>
 				</ul>
 				<p><a href="https://nodei.co/npm/anime-wallpaper"><img src="https://nodei.co/npm/anime-wallpaper.png?compact=true" alt="Version"></a></p>
 				<a href="#documentation" id="documentation" style="color: inherit; text-decoration: none;">
 					<h6><a href="https://iseizuu.github.io/anime-wallpaper/">Documentation</a></h6>
 				</a>
+				<a href="#installing" id="installing" style="color: inherit; text-decoration: none;">
+					<h1>Installing</h1>
+				</a>
+				<pre><code><span style="color: #001080">npm</span><span style="color: #000000"> </span><span style="color: #001080">install</span><span style="color: #000000"> </span><span style="color: #001080">anime</span><span style="color: #000000">-</span><span style="color: #001080">wallpaper</span>
+</code></pre>
 				<a href="#example-usage" id="example-usage" style="color: inherit; text-decoration: none;">
 					<h1>Example Usage</h1>
 				</a>
-				<ul>
-					<li>Getting Wallpaper from <a href="https://alphacoders.com">Alphacoders</a></li>
-				</ul>
-				<pre><code class="language-js"><span style="color: #0000FF">const</span><span style="color: #000000"> { </span><span style="color: #0070C1">AnimeWallpaper</span><span style="color: #000000"> } = </span><span style="color: #795E26">require</span><span style="color: #000000">(</span><span style="color: #A31515">&quot;anime-wallpaper&quot;</span><span style="color: #000000">);</span>
-<span style="color: #0000FF">const</span><span style="color: #000000"> </span><span style="color: #0070C1">wall</span><span style="color: #000000"> = </span><span style="color: #0000FF">new</span><span style="color: #000000"> </span><span style="color: #795E26">AnimeWallpaper</span><span style="color: #000000">();</span>
-
-<span style="color: #0000FF">async</span><span style="color: #000000"> </span><span style="color: #0000FF">function</span><span style="color: #000000"> </span><span style="color: #795E26">Wallpaper1</span><span style="color: #000000">() {</span>
-<span style="color: #000000">    </span><span style="color: #0000FF">const</span><span style="color: #000000"> </span><span style="color: #0070C1">wallpaper</span><span style="color: #000000"> = </span><span style="color: #AF00DB">await</span><span style="color: #000000"> </span><span style="color: #001080">wall</span><span style="color: #000000">.</span><span style="color: #795E26">getAnimeWall1</span><span style="color: #000000">({ </span><span style="color: #001080">search:</span><span style="color: #000000"> </span><span style="color: #A31515">&quot;to love ru&quot;</span><span style="color: #000000">, </span><span style="color: #001080">page:</span><span style="color: #000000"> </span><span style="color: #098658">1</span><span style="color: #000000"> })</span>
-<span style="color: #000000">    </span><span style="color: #AF00DB">return</span><span style="color: #000000"> </span><span style="color: #001080">console</span><span style="color: #000000">.</span><span style="color: #795E26">log</span><span style="color: #000000">(</span><span style="color: #001080">wallpaper</span><span style="color: #000000">)</span>
-<span style="color: #000000">}</span>
-
-<span style="color: #795E26">Wallpaper1</span><span style="color: #000000">()</span>
+				<p>At the head of your file, start by importing the necessary classes</p>
+				<pre><code class="language-js"><span style="color: #0000FF">const</span><span style="color: #000000"> { </span><span style="color: #0070C1">AnimeWallpaper</span><span style="color: #000000">, </span><span style="color: #0070C1">AnimeSource</span><span style="color: #000000"> } = </span><span style="color: #795E26">require</span><span style="color: #000000">(</span><span style="color: #A31515">&#039;anime-wallpaper&#039;</span><span style="color: #000000">);</span>
+<span style="color: #0000FF">const</span><span style="color: #000000"> </span><span style="color: #0070C1">wallpaper</span><span style="color: #000000"> = </span><span style="color: #0000FF">new</span><span style="color: #000000"> </span><span style="color: #795E26">AnimeWallpaper</span><span style="color: #000000">();</span>
 </code></pre>
 				<ul>
-					<li>Getting Wallpaper from <a href="https://wallpapercave.com">Wallpaper Cave</a></li>
+					<li>Getting a random wallpaper from <a href="https://free4kwallpapers.com/">4K Wallpapers</a> <img align="center" width="15" src="https://cdn.discordapp.com/emojis/735119429016485920.webp?size=128&quality=lossless"></li>
 				</ul>
-				<pre><code class="language-js"><span style="color: #0000FF">async</span><span style="color: #000000"> </span><span style="color: #0000FF">function</span><span style="color: #000000"> </span><span style="color: #795E26">Wallpaper2</span><span style="color: #000000">() {</span>
-<span style="color: #000000">    </span><span style="color: #0000FF">const</span><span style="color: #000000"> </span><span style="color: #0070C1">wallpaper</span><span style="color: #000000"> = </span><span style="color: #AF00DB">await</span><span style="color: #000000"> </span><span style="color: #001080">wall</span><span style="color: #000000">.</span><span style="color: #795E26">getAnimeWall2</span><span style="color: #000000">(</span><span style="color: #A31515">&quot;keqing&quot;</span><span style="color: #000000">)</span>
-<span style="color: #000000">    </span><span style="color: #AF00DB">return</span><span style="color: #000000"> </span><span style="color: #001080">console</span><span style="color: #000000">.</span><span style="color: #795E26">log</span><span style="color: #000000">(</span><span style="color: #001080">wallpaper</span><span style="color: #000000">)</span>
-<span style="color: #000000">}</span>
-
-<span style="color: #795E26">Wallpaper2</span><span style="color: #000000">()</span>
+				<pre><code class="language-js"><span style="color: #0000FF">const</span><span style="color: #000000"> </span><span style="color: #0070C1">wallpaper</span><span style="color: #000000"> = </span><span style="color: #AF00DB">await</span><span style="color: #000000"> </span><span style="color: #001080">wallpaper</span><span style="color: #000000">.</span><span style="color: #795E26">random</span><span style="color: #000000">();</span>
 </code></pre>
 				<ul>
-					<li>Getting Ramdon Wallpaper from <a href="https://free4kwallpapers.com/">4K Wallpapers</a></li>
+					<li>Getting Wallpaper from <a href="https://wallhaven.cc">WallHaven</a> <img align="center" width="15" src="https://cdn.discordapp.com/emojis/735119429016485920.webp?size=128&quality=lossless"></li>
 				</ul>
-				<pre><code class="language-js"><span style="color: #0000FF">async</span><span style="color: #000000"> </span><span style="color: #0000FF">function</span><span style="color: #000000"> </span><span style="color: #795E26">Wallpaper3</span><span style="color: #000000">() {</span>
-<span style="color: #000000">    </span><span style="color: #0000FF">const</span><span style="color: #000000"> </span><span style="color: #0070C1">wallpaper</span><span style="color: #000000"> = </span><span style="color: #AF00DB">await</span><span style="color: #000000"> </span><span style="color: #001080">wall</span><span style="color: #000000">.</span><span style="color: #795E26">getAnimeWall3</span><span style="color: #000000">()</span>
-<span style="color: #000000">    </span><span style="color: #AF00DB">return</span><span style="color: #000000"> </span><span style="color: #001080">console</span><span style="color: #000000">.</span><span style="color: #795E26">log</span><span style="color: #000000">(</span><span style="color: #001080">wallpaper</span><span style="color: #000000">)</span>
-<span style="color: #000000">}</span>
-
-<span style="color: #795E26">Wallpaper3</span><span style="color: #000000">()</span>
+				<pre><code class="language-js"><span style="color: #0000FF">const</span><span style="color: #000000"> </span><span style="color: #0070C1">wallpaper</span><span style="color: #000000"> = </span><span style="color: #AF00DB">await</span><span style="color: #000000"> </span><span style="color: #001080">wallpaper</span><span style="color: #000000">.</span><span style="color: #795E26">search</span><span style="color: #000000">({ </span><span style="color: #001080">title:</span><span style="color: #000000"> </span><span style="color: #A31515">&quot;Misaka Mikoto&quot;</span><span style="color: #000000"> }, </span><span style="color: #001080">AnimeSource</span><span style="color: #000000">.</span><span style="color: #001080">WallHaven</span><span style="color: #000000">);</span>
 </code></pre>
 				<ul>
-					<li>Getting Wallpaper from <a href="https://wallhaven.cc">WallHaven</a></li>
+					<li>Getting Wallpaper from <a href="https://www.zerochan.net">ZeroChan</a> <img align="center" width="15" src="https://cdn.discordapp.com/emojis/735119429016485920.webp?size=128&quality=lossless"></li>
 				</ul>
-				<pre><code class="language-js"><span style="color: #0000FF">async</span><span style="color: #000000"> </span><span style="color: #0000FF">function</span><span style="color: #000000"> </span><span style="color: #795E26">Wallpaper4</span><span style="color: #000000">() {</span>
-<span style="color: #000000">    </span><span style="color: #0000FF">const</span><span style="color: #000000"> </span><span style="color: #0070C1">wallpaper</span><span style="color: #000000"> = </span><span style="color: #AF00DB">await</span><span style="color: #000000"> </span><span style="color: #001080">wall</span><span style="color: #000000">.</span><span style="color: #795E26">getAnimeWall4</span><span style="color: #000000">({ </span><span style="color: #001080">title:</span><span style="color: #000000"> </span><span style="color: #A31515">&quot;anime romance&quot;</span><span style="color: #000000">, </span><span style="color: #001080">type:</span><span style="color: #000000"> </span><span style="color: #A31515">&quot;sfw&quot;</span><span style="color: #000000">, </span><span style="color: #001080">page:</span><span style="color: #000000"> </span><span style="color: #098658">1</span><span style="color: #000000"> })</span>
-<span style="color: #000000">    </span><span style="color: #AF00DB">return</span><span style="color: #000000"> </span><span style="color: #001080">console</span><span style="color: #000000">.</span><span style="color: #795E26">log</span><span style="color: #000000">(</span><span style="color: #001080">wallpaper</span><span style="color: #000000">)</span>
-<span style="color: #000000">}</span>
-
-<span style="color: #795E26">Wallpaper4</span><span style="color: #000000">()</span>
+				<pre><code class="language-js"><span style="color: #0000FF">const</span><span style="color: #000000"> </span><span style="color: #0070C1">wallpaper</span><span style="color: #000000"> = </span><span style="color: #AF00DB">await</span><span style="color: #000000"> </span><span style="color: #001080">wallpaper</span><span style="color: #000000">.</span><span style="color: #795E26">search</span><span style="color: #000000">({ </span><span style="color: #001080">title:</span><span style="color: #000000"> </span><span style="color: #A31515">&quot;Misaka Mikoto&quot;</span><span style="color: #000000"> }, </span><span style="color: #001080">AnimeSource</span><span style="color: #000000">.</span><span style="color: #001080">ZeroChan</span><span style="color: #000000">);</span>
+</code></pre>
+				<a href="#warning" id="warning" style="color: inherit; text-decoration: none;">
+					<h2>Warning</h2>
+				</a>
+				<p>In some rare cases, the fetching process might fail due to inconsistencies when scraping websites.<br><br></p>
+				<a href="#contributors" id="contributors" style="color: inherit; text-decoration: none;">
+					<h1>Contributors</h1>
+				</a>
+				<p>Fork then clone the project and install its dependencies:</p>
+				<pre><code><span style="color: #001080">npm</span><span style="color: #000000"> </span><span style="color: #001080">i</span>
+</code></pre>
+				<p>In the root folder of the project type the following to compile the .ts into .js</p>
+				<pre><code><span style="color: #001080">tsc</span>
 </code></pre>
 				<hr>
 				<p>© <a href="https://github.com/iseizuu">Aizuu</a></p>
@@ -128,15 +130,6 @@
 				<ul>
 					<li class=" ">
 						<a href="modules.html">Exports</a>
-					</li>
-					<li class=" tsd-kind-module">
-						<a href="modules/index.html">index</a>
-					</li>
-					<li class=" tsd-kind-module">
-						<a href="modules/typings.html">typings</a>
-					</li>
-					<li class=" tsd-kind-module">
-						<a href="modules/utils_error.html">utils/<wbr>Error</a>
 					</li>
 				</ul>
 			</nav>
@@ -151,12 +144,6 @@
 	<div class="container">
 		<h2>Legend</h2>
 		<div class="tsd-legend-group">
-			<ul class="tsd-legend">
-				<li class="tsd-kind-interface"><span class="tsd-kind-icon">Interface</span></li>
-			</ul>
-			<ul class="tsd-legend">
-				<li class="tsd-kind-class"><span class="tsd-kind-icon">Class</span></li>
-			</ul>
 		</div>
 	</div>
 </footer>

@@ -1,63 +1,67 @@
 <h1 align="center">Anime Wallpaper</h1>
+<p align="center">
+  <a href="https://github.com/beyluta/WinWidgets">
+    <img src="https://img.shields.io/npm/v/anime-wallpaper.svg?logo=npm&logoColor=fff&label=Version&color=limegreen" alt="Version" />
+  </a>
+  <a href="https://www.npmjs.com/package/anime-wallpaper">
+    <img src="https://img.shields.io/npm/v/anime-wallpaper.svg?logo=npm&logoColor=fff&label=NPM+package&color=red" alt="Anime Wallpaper on npm" />
+  </a>
+</p>
 <p align="center"> 
     <img src="https://i.imgur.com/DeP0Nlv.jpeg">
 </p>
 
 Get Anime wallpapers based on scrapping from websites.
-* [Alphacoders](https://alphacoders.com)
-* [Wallpaper Cave](https://wallpapercave.com)
 * [4K Wallpapers](https://free4kwallpapers.com/)
 * [Wall Haven](https://wallhaven.cc)
+* [ZeroChan](https://www.zerochan.net)
+<br>
 
 [![Version](https://nodei.co/npm/anime-wallpaper.png?compact=true)](https://nodei.co/npm/anime-wallpaper)
 ###### [Documentation](https://iseizuu.github.io/anime-wallpaper/)
 
+# Installing
+```
+npm install anime-wallpaper
+```
+
 # Example Usage
- - Getting Wallpaper from [Alphacoders](https://alphacoders.com)
-
+At the head of your file, start by importing the necessary classes
 ```js
-const { AnimeWallpaper } = require("anime-wallpaper");
-const wall = new AnimeWallpaper();
-
-async function Wallpaper1() {
-    const wallpaper = await wall.getAnimeWall1({ search: "to love ru", page: 1 })
-    return console.log(wallpaper)
-}
-
-Wallpaper1()
+const { AnimeWallpaper, AnimeSource } = require('anime-wallpaper');
+const wallpaper = new AnimeWallpaper();
 ```
 
-- Getting Wallpaper from [Wallpaper Cave](https://wallpapercave.com)
+- Getting a random wallpaper from [4K Wallpapers](https://free4kwallpapers.com/) <img align="center" width="15" src="https://cdn.discordapp.com/emojis/735119429016485920.webp?size=128&quality=lossless">
 
 ```js
-async function Wallpaper2() {
-    const wallpaper = await wall.getAnimeWall2("keqing")
-    return console.log(wallpaper)
-}
-
-Wallpaper2()
+const wallpaper = await wallpaper.random();
 ```
 
-- Getting Ramdon Wallpaper from [4K Wallpapers](https://free4kwallpapers.com/)
+- Getting Wallpaper from [WallHaven](https://wallhaven.cc) <img align="center" width="15" src="https://cdn.discordapp.com/emojis/735119429016485920.webp?size=128&quality=lossless">
 
 ```js
-async function Wallpaper3() {
-    const wallpaper = await wall.getAnimeWall3()
-    return console.log(wallpaper)
-}
-
-Wallpaper3()
+const wallpaper = await wallpaper.search({ title: "Misaka Mikoto" }, AnimeSource.WallHaven);
 ```
 
-- Getting Wallpaper from [WallHaven](https://wallhaven.cc)
+- Getting Wallpaper from [ZeroChan](https://www.zerochan.net) <img align="center" width="15" src="https://cdn.discordapp.com/emojis/735119429016485920.webp?size=128&quality=lossless">
 
 ```js
-async function Wallpaper4() {
-    const wallpaper = await wall.getAnimeWall4({ title: "anime romance", type: "sfw", page: 1 })
-    return console.log(wallpaper)
-}
+const wallpaper = await wallpaper.search({ title: "Misaka Mikoto" }, AnimeSource.ZeroChan);
+```
+## Warning
+In some rare cases, the fetching process might fail due to inconsistencies when scraping websites.<br><br>
 
-Wallpaper4()
+
+# Contributors
+Fork then clone the project and install its dependencies:
+```
+npm i
+```
+
+In the root folder of the project type the following to compile the .ts into .js
+```
+tsc
 ```
 
 <hr>
