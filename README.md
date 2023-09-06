@@ -15,6 +15,7 @@ Get Anime wallpapers based on scrapping from websites.
 * [4K Wallpapers](https://free4kwallpapers.com/)
 * [Wall Haven](https://wallhaven.cc)
 * [ZeroChan](https://www.zerochan.net)
+* [Wallpapers.com](https://wallapapers.com)
 <br>
 
 [![Version](https://nodei.co/npm/anime-wallpaper.png?compact=true)](https://nodei.co/npm/anime-wallpaper)
@@ -42,6 +43,12 @@ const wallpaper = await wallpaper.random();
 
 ```js
 const wallpaper = await wallpaper.search({ title: "Misaka Mikoto" }, AnimeSource.WallHaven);
+```
+
+- Getting Wallpaper from [Wallpapers.com](https://wallpapers.com) <img align="center" width="15" src="https://cdn.discordapp.com/emojis/735119429016485920.webp?size=128&quality=lossless">
+
+```js
+const wallpaper = await wallpaper.search({ title: "Keqing" }, AnimeSource.Wallpapers);
 ```
 
 - Getting Wallpaper from [ZeroChan](https://www.zerochan.net) <img align="center" width="15" src="https://cdn.discordapp.com/emojis/735119429016485920.webp?size=128&quality=lossless">

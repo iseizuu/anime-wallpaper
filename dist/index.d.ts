@@ -1,7 +1,8 @@
 import { dataImageFormat, searchOpt } from "./typings";
 export declare enum AnimeSource {
     WallHaven = 2,
-    ZeroChan = 3
+    ZeroChan = 3,
+    Wallpapers = 4
 }
 export declare class AnimeWallpaper {
     constructor();
@@ -31,7 +32,14 @@ export declare class AnimeWallpaper {
      *
      * @returns {dataImageFormat}
      */
-    private scrapeFrom4kWallpaper;
+    scrapeFrom4kWallpaper(): Promise<dataImageFormat[]>;
+    /**
+     * Scraping images wallpaper from Wallpapers.com
+     *
+     * @param search.title the title of the anime you want to search.
+     * @returns {dataImageFormat}
+     */
+    scrapeFromWallpapersDotCom(search: searchOpt): Promise<dataImageFormat[]>;
     /**
      * Scraping images wallpaper from WallHaven
      *
@@ -40,22 +48,13 @@ export declare class AnimeWallpaper {
      * @param search.page the page for image you want to search, default is 1
      * @returns {dataImageFormat}
      */
-    private scrapeFromWallHaven;
+    scrapeFromWallHaven(search: searchOpt): Promise<dataImageFormat[]>;
     /**
-<<<<<<< Updated upstream
     * Scraping images wallpaper from zerochan
     *
     * @param search.title the title of anime that you want to search.
     * @returns {dataImageFormat}
     */
-    private scrapeFromZeroChan;
-=======
-      * Scraping images wallpaper from zerochan
-      *
-      * @param title the title of anime that you want to search.
-      * @returns {dataImageFormat2}
-      */
-    getAnimeWall5(title: string): Promise<dataImageFormat1[]>;
->>>>>>> Stashed changes
+    scrapeFromZeroChan(search: searchOpt): Promise<dataImageFormat[]>;
     private _request;
 }

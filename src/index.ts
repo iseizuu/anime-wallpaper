@@ -1,4 +1,4 @@
-import req, { AxiosResponse } from "axios";
+import req from "node-superfetch";
 import userAgent from "random-useragent";
 import cheerio from "cheerio";
 import webUrl, { type } from "./config.json"
@@ -7,7 +7,8 @@ import { dataImageFormat, searchOpt } from "./typings";
 
 export enum AnimeSource {
     WallHaven = 2,
-    ZeroChan = 3
+    ZeroChan = 3,
+    Wallpapers = 4
 }
 
 
@@ -24,36 +25,15 @@ export class AnimeWallpaper {
      * @param search.page the page for image you want to search, default is 1
      * @returns {dataImageFormat}
      */
-<<<<<<< Updated upstream
     public async search(options: searchOpt, source: AnimeSource = AnimeSource.WallHaven): Promise<dataImageFormat[]> {
         switch (source) {
             case AnimeSource.WallHaven:
                 return await this.scrapeFromWallHaven(options);
             case AnimeSource.ZeroChan:
                 return await this.scrapeFromZeroChan(options);
+            case AnimeSource.Wallpapers:
+                return await this.scrapeFromWallpapersDotCom(options)
         }
-=======
-    public getAnimeWall1(title: searchOpt): Promise<dataImageFormat1[]> {
-        if (!title || !title.search) throw new WallError("title must be specified");
-        else if (!title.page) title.page = 0;
-        if (typeof title.page === "string") console.warn("Use number instead of a string on `page` options, this is will not be affected");
-        return new Promise((resolve, reject) => {
-            this._request(webUrl.alphaCoders, { search: encodeURIComponent(title.search), page: title.page })
-                .then(data => {
-                    const $ = cheerio.load(data.data);
-                    const arr: dataImageFormat1[] = [];
-                    $("#big_container .page_container .thumb-container").each((i, elm) => {
-                        const title = $(elm).find("img").attr("alt");
-                        const thumbnail = $(elm).find("[class=\"boxgrid\"] a source").attr("srcset");
-                        const image = $(elm).find("img").attr("src")?.replace(/thumbbig-/g, "")
-                        arr.push({ title, thumbnail, image } as dataImageFormat1);
-                    })
-                    if (!arr.length) throw new WallError("No result found");
-                    resolve(arr)
-                })
-                .catch(er => reject(er));
-        })
->>>>>>> Stashed changes
     }
 
     /**
@@ -63,40 +43,8 @@ export class AnimeWallpaper {
      * 
      * @returns {dataImageFormat}
      */
-<<<<<<< Updated upstream
     public async random(): Promise<dataImageFormat[]> {
         return await this.scrapeFrom4kWallpaper();
-=======
-    private getAnimeWall2(title: string): Promise<dataImageFormat2[]> {
-        if (!title) throw new WallError("title must be specified");
-        return new Promise((resolve, reject) => {
-            this._request(`${webUrl.wallpaperCave}/search`, { q: title.split(" ").join("+") })
-                .then(x => {
-                    const $ = cheerio.load(x.data);
-                    const arr: dataImageFormat2[] = [];
-                    const results: string[] = [];
-                    $("#content #popular a").each((i, elm) => {
-                        const title = $(elm).attr("href");
-                        results.push(title as string);
-                    });
-                    const filteredRes = results.filter(x => !x.startsWith("/w/") && !x.startsWith("/latest-upload"));
-                    if (!filteredRes.length) throw new WallError("No result found");
-                    const random = filteredRes[Math.floor(Math.random() * filteredRes.length)]
-                    this._request(`${webUrl.wallpaperCave}${random}`, {})
-                        .then(res => {
-                            const $$ = cheerio.load(res.data);
-                            $$("#albumwp .wallpaper").each((i, elm) => {
-                                const title = $$(elm).find("a.wpinkw img").attr("alt");
-                                const image = `${webUrl.wallpaperCave}${$$(elm).find("a.wpinkw img").attr("src")}`;
-                                arr.push({ title, image } as dataImageFormat2);
-                            })
-                            resolve(arr)
-                        })
-                        .catch(er => reject(er));
-                })
-                .catch(er => reject(er));
-        });
->>>>>>> Stashed changes
     }
 
     /**
@@ -106,18 +54,13 @@ export class AnimeWallpaper {
      * 
      * @returns {dataImageFormat}
      */
-    private scrapeFrom4kWallpaper(): Promise<dataImageFormat[]> {
+    public scrapeFrom4kWallpaper(): Promise<dataImageFormat[]> {
         const random = Math.floor(Math.random() * 20) + 1;
         return new Promise((resolve, reject) => {
             this._request(`${webUrl.free4kWallpaper}/anime-wallpapers`, { page: random })
                 .then(x => {
-<<<<<<< Updated upstream
                     const $ = cheerio.load(x.text);
                     const results: dataImageFormat[] = [];
-=======
-                    const $ = cheerio.load(x.data);
-                    const results: dataImageFormat2[] = [];
->>>>>>> Stashed changes
                     $("#contents .container .row .cbody a img").each((i, elm) => {
                         const title = $(elm).attr("title") as string;
                         const image = `${webUrl.free4kWallpaper}/${$(elm).attr("data-src")}`;
@@ -132,6 +75,34 @@ export class AnimeWallpaper {
     }
 
     /**
+     * Scraping images wallpaper from Wallpapers.com
+     * 
+     * @param search.title the title of the anime you want to search.
+     * @returns {dataImageFormat}
+     */
+    public scrapeFromWallpapersDotCom(search: searchOpt): Promise<dataImageFormat[]> {
+        if (!search || !search.title) throw new WallError("title must be specified");
+
+        return new Promise((resolve, reject) => {
+            this._request(`${webUrl.wallpapers}/search/${search.title}`, {})
+                .then(x => {
+                    const $ = cheerio.load(x.text);
+                    const results: dataImageFormat[] = [];
+                    $(".tab-content ul.kw-contents li").each((i, elm) => {
+                        const title = $(elm).find(" figure").data("title");
+                        const thumbnail = $(elm).find(" a").attr("href")
+                        const image = `${webUrl.wallpapers}/downloads/high/${$(elm).find("figure").data("key")}.png`
+                        results.push({ title, thumbnail, image });
+                    });
+                    const filteredImage = results.filter(e => { return e.title?.length !== undefined })
+                    if (!filteredImage.length) throw new WallError("Image data is empty or can't find the images");
+                    else resolve(filteredImage);
+                })
+                .catch(er => reject(er));
+        });
+    }
+
+    /**
      * Scraping images wallpaper from WallHaven
      * 
      * @param search.title the title of the anime you want to search.
@@ -139,7 +110,7 @@ export class AnimeWallpaper {
      * @param search.page the page for image you want to search, default is 1
      * @returns {dataImageFormat}
      */
-    private scrapeFromWallHaven(search: searchOpt): Promise<dataImageFormat[]> {
+    public scrapeFromWallHaven(search: searchOpt): Promise<dataImageFormat[]> {
         if (!search || !search.title) throw new WallError("title must be specified");
         else if (!search.type) search.type = "sfw";
         else if (!Object.keys(type).includes(search.type)) throw new WallError("Please input on of them 'sfw, sketchy, both'");
@@ -147,13 +118,8 @@ export class AnimeWallpaper {
         return new Promise((resolve, reject) => {
             this._request(`${webUrl.wallHaven}/search`, { q: search.title, page: search.page, purity: type[search.type] })
                 .then(x => {
-<<<<<<< Updated upstream
                     const $ = cheerio.load(x.text);
                     const results: dataImageFormat[] = [];
-=======
-                    const $ = cheerio.load(x.data);
-                    const results: dataImageFormat3[] = [];
->>>>>>> Stashed changes
                     $(".thumb-listing-page ul li .thumb").each((i, elm) => {
                         let formatImg = ".jpg"
                         const isPng = $(elm).find(".thumb-info .png span").text();
@@ -171,13 +137,12 @@ export class AnimeWallpaper {
     }
 
     /**
-<<<<<<< Updated upstream
     * Scraping images wallpaper from zerochan
     * 
     * @param search.title the title of anime that you want to search.
     * @returns {dataImageFormat}
     */
-    private scrapeFromZeroChan(search: searchOpt): Promise<dataImageFormat[]> {
+    public scrapeFromZeroChan(search: searchOpt): Promise<dataImageFormat[]> {
         if (!search.title) throw new WallError("title must be specified");
         return new Promise((resolve, reject) => {
             this._request(`${webUrl.zerochan}/${search.title}`, {})
@@ -197,50 +162,14 @@ export class AnimeWallpaper {
     }
 
     private _request(uri: string, options: Record<never, string | number>): Promise<Response> {
-=======
-      * Scraping images wallpaper from zerochan
-      * 
-      * @param title the title of anime that you want to search.
-      * @returns {dataImageFormat2}
-      */
-    public getAnimeWall5(title: string): Promise<dataImageFormat1[]> {
-        if (!title) throw new WallError("title must be specified");
->>>>>>> Stashed changes
         return new Promise((resolve, reject) => {
-            this._request(`${webUrl.zerochan}/${title}`, {})
-                .then(x => {
-                    const $ = cheerio.load(x.data);
-                    const arr: dataImageFormat1[] = [];
-                    $("#wrapper #content ul li").each((i, elm) => {
-                        const title = $(elm).find("a img").attr("alt") as string;
-                        const thumbnail = $(elm).find("a img").attr("src") as string;
-                        const image = $(elm).find("p a").attr("href") as string; //`https://static.zerochan.net/${title?.split(" ").join(".")}.full.${$(elm).find("a").attr("href")?.replace(/\//gi, "")}.jpg`
-                        arr.push({ title, thumbnail, image });
-                    });
-                    resolve(arr.filter(data => data.title))
+            void req.get(uri)
+                .query(options)
+                .set({
+                    "user-agent": userAgent.getRandom() as string
                 })
-<<<<<<< Updated upstream
                 .then(x => resolve(x as unknown as Response))
                 .catch((e: Error) => reject(`Upss: ${e.message}`));
-=======
-                .catch(er => reject(er));
-        });
-    }
-
-    private _request(uri: string, options: Record<never, string | number>): Promise<AxiosResponse> {
-        return new Promise((resolve, reject) => {
-            void req.create({
-                headers: {
-                    
-                        
-                    "Accept-Encoding": "gzip, deflate, br"
-                    
-                }
-            })
-                .get(uri, { params: options })
-                .then(x => resolve(x))
-                .catch((er: Error) => reject(`Upss: ${er.message}`));
->>>>>>> Stashed changes
         });
     }
 }
