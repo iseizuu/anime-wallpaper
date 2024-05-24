@@ -70,25 +70,29 @@
 				<p align="center">
 					<img src="https://i.imgur.com/DeP0Nlv.jpeg">
 				</p>
+				<a href="#documentation" id="documentation" style="color: inherit; text-decoration: none;">
+					<h4>[<a href="https://iseizuu.github.io/anime-wallpaper/">Documentation</a>]</h4>
+				</a>
 				<p>Get Anime wallpapers based on scrapping from websites.</p>
 				<ul>
 					<li><a href="https://free4kwallpapers.com/">4K Wallpapers</a></li>
 					<li><a href="https://wallhaven.cc">Wall Haven</a></li>
 					<li><a href="https://www.zerochan.net">ZeroChan</a></li>
-					<li><a href="https://wallapapers.com">Wallpapers.com</a><br>
+					<li><a href="https://wallapapers.com">Wallpapers.com</a></li>
+					<li><a href="https://www.hoyolab.com/">Hoyolab</a><br>
 					</li>
 				</ul>
 				<p><a href="https://nodei.co/npm/anime-wallpaper"><img src="https://nodei.co/npm/anime-wallpaper.png?compact=true" alt="Version"></a></p>
-				<a href="#documentation" id="documentation" style="color: inherit; text-decoration: none;">
-					<h6><a href="https://iseizuu.github.io/anime-wallpaper/">Documentation</a></h6>
-				</a>
 				<a href="#installing" id="installing" style="color: inherit; text-decoration: none;">
 					<h1>Installing</h1>
 				</a>
 				<pre><code><span style="color: #001080">npm</span><span style="color: #000000"> </span><span style="color: #001080">install</span><span style="color: #000000"> </span><span style="color: #001080">anime</span><span style="color: #000000">-</span><span style="color: #001080">wallpaper</span>
 </code></pre>
-				<a href="#example-usage" id="example-usage" style="color: inherit; text-decoration: none;">
-					<h1>Example Usage</h1>
+				<p>or</p>
+				<pre><code><span style="color: #001080">yarn</span><span style="color: #000000"> </span><span style="color: #001080">add</span><span style="color: #000000"> </span><span style="color: #001080">anime</span><span style="color: #000000">-</span><span style="color: #001080">wallpaper</span>
+</code></pre>
+				<a href="#example-usage-from-website" id="example-usage-from-website" style="color: inherit; text-decoration: none;">
+					<h1>Example Usage from Website</h1>
 				</a>
 				<p>At the head of your file, start by importing the necessary classes</p>
 				<pre><code class="language-js"><span style="color: #0000FF">const</span><span style="color: #000000"> { </span><span style="color: #0070C1">AnimeWallpaper</span><span style="color: #000000">, </span><span style="color: #0070C1">AnimeSource</span><span style="color: #000000"> } = </span><span style="color: #795E26">require</span><span style="color: #000000">(</span><span style="color: #A31515">&#039;anime-wallpaper&#039;</span><span style="color: #000000">);</span>
@@ -98,21 +102,49 @@
 					<li>Getting a random wallpaper from <a href="https://free4kwallpapers.com/">4K Wallpapers</a> <img align="center" width="15" src="https://cdn.discordapp.com/emojis/735119429016485920.webp?size=128&quality=lossless"></li>
 				</ul>
 				<pre><code class="language-js"><span style="color: #0000FF">const</span><span style="color: #000000"> </span><span style="color: #0070C1">wallpaper</span><span style="color: #000000"> = </span><span style="color: #AF00DB">await</span><span style="color: #000000"> </span><span style="color: #001080">wallpaper</span><span style="color: #000000">.</span><span style="color: #795E26">random</span><span style="color: #000000">();</span>
+<span style="color: #AF00DB">return</span><span style="color: #000000"> </span><span style="color: #001080">console</span><span style="color: #000000">.</span><span style="color: #795E26">log</span><span style="color: #000000">(</span><span style="color: #001080">wallpaper</span><span style="color: #000000">)</span>
 </code></pre>
 				<ul>
 					<li>Getting Wallpaper from <a href="https://wallhaven.cc">WallHaven</a> <img align="center" width="15" src="https://cdn.discordapp.com/emojis/735119429016485920.webp?size=128&quality=lossless"></li>
 				</ul>
-				<pre><code class="language-js"><span style="color: #0000FF">const</span><span style="color: #000000"> </span><span style="color: #0070C1">wallpaper</span><span style="color: #000000"> = </span><span style="color: #AF00DB">await</span><span style="color: #000000"> </span><span style="color: #001080">wallpaper</span><span style="color: #000000">.</span><span style="color: #795E26">search</span><span style="color: #000000">({ </span><span style="color: #001080">title:</span><span style="color: #000000"> </span><span style="color: #A31515">&quot;Misaka Mikoto&quot;</span><span style="color: #000000"> }, </span><span style="color: #001080">AnimeSource</span><span style="color: #000000">.</span><span style="color: #001080">WallHaven</span><span style="color: #000000">);</span>
+				<pre><code class="language-js"><span style="color: #0000FF">const</span><span style="color: #000000"> </span><span style="color: #0070C1">wallpaper</span><span style="color: #000000"> = </span><span style="color: #AF00DB">await</span><span style="color: #000000"> </span><span style="color: #001080">wall</span><span style="color: #000000">.</span><span style="color: #795E26">search</span><span style="color: #000000">({ </span><span style="color: #001080">title:</span><span style="color: #000000"> </span><span style="color: #A31515">&quot;firefly honkai&quot;</span><span style="color: #000000">, </span><span style="color: #001080">page:</span><span style="color: #000000"> </span><span style="color: #098658">1</span><span style="color: #000000">, </span><span style="color: #001080">type:</span><span style="color: #000000"> </span><span style="color: #A31515">&quot;sfw&quot;</span><span style="color: #000000">, </span><span style="color: #001080">aiArt:</span><span style="color: #000000"> </span><span style="color: #0000FF">true</span><span style="color: #000000"> }, </span><span style="color: #001080">AnimeSource</span><span style="color: #000000">.</span><span style="color: #001080">WallHaven</span><span style="color: #000000">);</span>
+<span style="color: #AF00DB">return</span><span style="color: #000000"> </span><span style="color: #001080">console</span><span style="color: #000000">.</span><span style="color: #795E26">log</span><span style="color: #000000">(</span><span style="color: #001080">wallpaper</span><span style="color: #000000">)</span>
 </code></pre>
 				<ul>
 					<li>Getting Wallpaper from <a href="https://wallpapers.com">Wallpapers.com</a> <img align="center" width="15" src="https://cdn.discordapp.com/emojis/735119429016485920.webp?size=128&quality=lossless"></li>
 				</ul>
 				<pre><code class="language-js"><span style="color: #0000FF">const</span><span style="color: #000000"> </span><span style="color: #0070C1">wallpaper</span><span style="color: #000000"> = </span><span style="color: #AF00DB">await</span><span style="color: #000000"> </span><span style="color: #001080">wallpaper</span><span style="color: #000000">.</span><span style="color: #795E26">search</span><span style="color: #000000">({ </span><span style="color: #001080">title:</span><span style="color: #000000"> </span><span style="color: #A31515">&quot;Keqing&quot;</span><span style="color: #000000"> }, </span><span style="color: #001080">AnimeSource</span><span style="color: #000000">.</span><span style="color: #001080">Wallpapers</span><span style="color: #000000">);</span>
+<span style="color: #AF00DB">return</span><span style="color: #000000"> </span><span style="color: #001080">console</span><span style="color: #000000">.</span><span style="color: #795E26">log</span><span style="color: #000000">(</span><span style="color: #001080">wallpaper</span><span style="color: #000000">)</span>
 </code></pre>
 				<ul>
 					<li>Getting Wallpaper from <a href="https://www.zerochan.net">ZeroChan</a> <img align="center" width="15" src="https://cdn.discordapp.com/emojis/735119429016485920.webp?size=128&quality=lossless"></li>
 				</ul>
 				<pre><code class="language-js"><span style="color: #0000FF">const</span><span style="color: #000000"> </span><span style="color: #0070C1">wallpaper</span><span style="color: #000000"> = </span><span style="color: #AF00DB">await</span><span style="color: #000000"> </span><span style="color: #001080">wallpaper</span><span style="color: #000000">.</span><span style="color: #795E26">search</span><span style="color: #000000">({ </span><span style="color: #001080">title:</span><span style="color: #000000"> </span><span style="color: #A31515">&quot;Misaka Mikoto&quot;</span><span style="color: #000000"> }, </span><span style="color: #001080">AnimeSource</span><span style="color: #000000">.</span><span style="color: #001080">ZeroChan</span><span style="color: #000000">);</span>
+<span style="color: #AF00DB">return</span><span style="color: #000000"> </span><span style="color: #001080">console</span><span style="color: #000000">.</span><span style="color: #795E26">log</span><span style="color: #000000">(</span><span style="color: #001080">wallpaper</span><span style="color: #000000">)</span>
+</code></pre>
+				<a href="#hoyolab-example" id="hoyolab-example" style="color: inherit; text-decoration: none;">
+					<h1>Hoyolab Example</h1>
+				</a>
+				<ul>
+					<li>Get fanart from hoyolab</li>
+				</ul>
+				<pre><code class="language-js"><span style="color: #0000FF">const</span><span style="color: #000000"> </span><span style="color: #0070C1">wallpaper</span><span style="color: #000000"> = </span><span style="color: #AF00DB">await</span><span style="color: #000000"> </span><span style="color: #001080">wall</span><span style="color: #000000">.</span><span style="color: #795E26">Hoyolab</span><span style="color: #000000">({ </span><span style="color: #001080">game:</span><span style="color: #000000"> </span><span style="color: #A31515">&quot;GenshinImpact&quot;</span><span style="color: #000000">, </span><span style="color: #001080">postType:</span><span style="color: #000000"> </span><span style="color: #A31515">&quot;Trending&quot;</span><span style="color: #000000"> });</span>
+<span style="color: #AF00DB">return</span><span style="color: #000000"> </span><span style="color: #001080">console</span><span style="color: #000000">.</span><span style="color: #795E26">log</span><span style="color: #000000">(</span><span style="color: #001080">wallpaper</span><span style="color: #000000">)</span>
+</code></pre>
+				<a href="#result" id="result" style="color: inherit; text-decoration: none;">
+					<h4>Result</h4>
+				</a>
+				<pre><code class="language-json"><span style="color: #000000">data: {</span>
+<span style="color: #000000">  </span><span style="color: #CD3131">list</span><span style="color: #000000">: [</span>
+<span style="color: #000000">    {</span>
+<span style="color: #000000">      </span><span style="color: #CD3131">game</span><span style="color: #000000">: {</span><span style="color: #CD3131">...</span><span style="color: #000000">},</span>
+<span style="color: #000000">      </span><span style="color: #CD3131">post</span><span style="color: #000000">: {</span><span style="color: #CD3131">...</span><span style="color: #000000">},</span>
+<span style="color: #000000">      </span><span style="color: #CD3131">topics</span><span style="color: #000000">: [{</span><span style="color: #CD3131">...</span><span style="color: #000000">}]</span>
+<span style="color: #000000">      </span><span style="color: #CD3131">user:</span><span style="color: #000000"> {</span><span style="color: #CD3131">...</span><span style="color: #000000">}</span>
+<span style="color: #000000">    }</span>
+<span style="color: #000000">  ]</span>
+<span style="color: #000000">}</span>
+
 </code></pre>
 				<a href="#warning" id="warning" style="color: inherit; text-decoration: none;">
 					<h2>Warning</h2>
@@ -137,16 +169,37 @@
 					<li class=" ">
 						<a href="modules.html">Exports</a>
 					</li>
+					<li class=" tsd-kind-module">
+						<a href="modules/hoyo.html">hoyo</a>
+					</li>
+					<li class=" tsd-kind-module">
+						<a href="modules/index.html">index</a>
+					</li>
+					<li class=" tsd-kind-module">
+						<a href="modules/structure_client.html">structure/client</a>
+					</li>
+					<li class=" tsd-kind-module">
+						<a href="modules/typings.html">typings</a>
+					</li>
+					<li class=" tsd-kind-module">
+						<a href="modules/typings_enum.html">typings/enum</a>
+					</li>
+					<li class=" tsd-kind-module">
+						<a href="modules/typings_typing.html">typings/typing</a>
+					</li>
+					<li class=" tsd-kind-module">
+						<a href="modules/utils_error.html">utils/error</a>
+					</li>
+					<li class=" tsd-kind-module">
+						<a href="modules/utils_request.html">utils/request</a>
+					</li>
+					<li class=" tsd-kind-module">
+						<a href="modules/wallpaper.html">wallpaper</a>
+					</li>
 				</ul>
 			</nav>
 			<nav class="tsd-navigation secondary menu-sticky">
 				<ul class="before-current">
-					<li class=" tsd-kind-enum">
-						<a href="enums/animesource.html" class="tsd-kind-icon">Anime<wbr>Source</a>
-					</li>
-					<li class=" tsd-kind-class">
-						<a href="classes/animewallpaper.html" class="tsd-kind-icon">Anime<wbr>Wallpaper</a>
-					</li>
 				</ul>
 			</nav>
 		</div>
@@ -157,11 +210,13 @@
 		<h2>Legend</h2>
 		<div class="tsd-legend-group">
 			<ul class="tsd-legend">
-				<li class="tsd-kind-constructor tsd-parent-kind-class"><span class="tsd-kind-icon">Constructor</span></li>
-				<li class="tsd-kind-method tsd-parent-kind-class"><span class="tsd-kind-icon">Method</span></li>
+				<li class="tsd-kind-enum"><span class="tsd-kind-icon">Enumeration</span></li>
 			</ul>
 			<ul class="tsd-legend">
-				<li class="tsd-kind-method tsd-parent-kind-class tsd-is-private"><span class="tsd-kind-icon">Private method</span></li>
+				<li class="tsd-kind-interface"><span class="tsd-kind-icon">Interface</span></li>
+			</ul>
+			<ul class="tsd-legend">
+				<li class="tsd-kind-class"><span class="tsd-kind-icon">Class</span></li>
 			</ul>
 		</div>
 	</div>

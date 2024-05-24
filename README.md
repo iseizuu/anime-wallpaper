@@ -11,22 +11,28 @@
     <img src="https://i.imgur.com/DeP0Nlv.jpeg">
 </p>
 
+#### [[Documentation](https://iseizuu.github.io/anime-wallpaper/)]
+
 Get Anime wallpapers based on scrapping from websites.
 * [4K Wallpapers](https://free4kwallpapers.com/)
 * [Wall Haven](https://wallhaven.cc)
 * [ZeroChan](https://www.zerochan.net)
 * [Wallpapers.com](https://wallapapers.com)
+* [Hoyolab](https://www.hoyolab.com/)
 <br>
 
 [![Version](https://nodei.co/npm/anime-wallpaper.png?compact=true)](https://nodei.co/npm/anime-wallpaper)
-###### [Documentation](https://iseizuu.github.io/anime-wallpaper/)
 
 # Installing
 ```
 npm install anime-wallpaper
 ```
+or
+```
+yarn add anime-wallpaper
+```
 
-# Example Usage
+# Example Usage from Website
 At the head of your file, start by importing the necessary classes
 ```js
 const { AnimeWallpaper, AnimeSource } = require('anime-wallpaper');
@@ -37,25 +43,52 @@ const wallpaper = new AnimeWallpaper();
 
 ```js
 const wallpaper = await wallpaper.random();
+return console.log(wallpaper)
 ```
 
 - Getting Wallpaper from [WallHaven](https://wallhaven.cc) <img align="center" width="15" src="https://cdn.discordapp.com/emojis/735119429016485920.webp?size=128&quality=lossless">
 
 ```js
-const wallpaper = await wallpaper.search({ title: "Misaka Mikoto" }, AnimeSource.WallHaven);
+const wallpaper = await wall.search({ title: "firefly honkai", page: 1, type: "sfw", aiArt: true }, AnimeSource.WallHaven);
+return console.log(wallpaper)
 ```
 
 - Getting Wallpaper from [Wallpapers.com](https://wallpapers.com) <img align="center" width="15" src="https://cdn.discordapp.com/emojis/735119429016485920.webp?size=128&quality=lossless">
 
 ```js
 const wallpaper = await wallpaper.search({ title: "Keqing" }, AnimeSource.Wallpapers);
+return console.log(wallpaper)
 ```
 
 - Getting Wallpaper from [ZeroChan](https://www.zerochan.net) <img align="center" width="15" src="https://cdn.discordapp.com/emojis/735119429016485920.webp?size=128&quality=lossless">
 
 ```js
 const wallpaper = await wallpaper.search({ title: "Misaka Mikoto" }, AnimeSource.ZeroChan);
+return console.log(wallpaper)
 ```
+
+# Hoyolab Example
+- Get fanart from hoyolab
+
+```js
+const wallpaper = await wall.Hoyolab({ game: "GenshinImpact", postType: "Trending" });
+return console.log(wallpaper)
+```
+#### Result
+```json
+data: {
+  list: [
+    {
+      game: {...},
+      post: {...},
+      topics: [{...}]
+      user: {...}
+    }
+  ]
+}
+
+```
+
 ## Warning
 In some rare cases, the fetching process might fail due to inconsistencies when scraping websites.<br><br>
 
