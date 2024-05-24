@@ -75,16 +75,18 @@ const wallpaper = await wall.Hoyolab({ game: "GenshinImpact", postType: "Trendin
 return console.log(wallpaper)
 ```
 #### Result
-```json
-data: {
-  list: [
-    {
-      game: {...},
-      post: {...},
-      topics: [{...}]
-      user: {...}
-    }
-  ]
+```txt
+{
+  data: {
+    list: [
+      {
+        game: {...},
+        post: {...},
+        topics: [{...}]
+        user: {...}
+      }
+    ]
+  }
 }
 
 ```
