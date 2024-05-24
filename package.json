@@ -1,10 +1,10 @@
 {
   "name": "anime-wallpaper",
-  "version": "3.0.0",
+  "version": "3.0.6",
   "description": "Get Anime wallpapers based on scrapping from websites.",
   "license": "MIT",
   "main": "dist/index.js",
-  "types": "dist/typings/index.ts",
+  "types": "dist/index.d.ts",
   "scripts": {
     "build": "tsc",
     "start": "node test"
