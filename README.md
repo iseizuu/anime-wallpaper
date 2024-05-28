@@ -17,7 +17,7 @@ Get Anime wallpapers based on scrapping from websites.
 * [4K Wallpapers](https://free4kwallpapers.com/)
 * [Wall Haven](https://wallhaven.cc)
 * [ZeroChan](https://www.zerochan.net)
-* [Wallpapers.com](https://wallapapers.com)
+* [Wallpapers.com](https://wallpapers.com)
 * [Hoyolab](https://www.hoyolab.com/)
 <br>
 
