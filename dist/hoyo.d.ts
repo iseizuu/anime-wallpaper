@@ -9,5 +9,4 @@ export default class Hoyolab {
      * @throws {AnimeWallError} - If result is empty or error.
      */
     getHoyoArt(options: hoyolab): Promise<hoyoResult>;
-    private HoyoTools;
 }
