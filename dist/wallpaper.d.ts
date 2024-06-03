@@ -30,6 +30,14 @@ export declare class AnimeWallpaper {
      */
     Hoyolab(params: hoyolab): Promise<hoyoResult>;
     /**
+     * Retrieves anime wallpapers from Pinterest based on a search query.
+     *
+     * @param {string} query - The search query for the wallpapers.
+     * @returns {Promise<dataImageFormat[]>} - A promise that resolves to an array of dataImageFormat objects.
+     * @throws {WallError} - If the search query is not provided.
+     */
+    pinterest(query: string): Promise<dataImageFormat[]>;
+    /**
      * Scrapes a random anime wallpaper from free4kWallpaper.
      *
      * @returns {Promise<dataImageFormat[]>} An array of dataImageFormat objects.

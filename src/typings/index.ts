@@ -24,4 +24,4 @@ export interface hoyolab {
     postType: "Trending" | "Featured" | "NewPost" | "NewReply"
 }
 
-export { hoyoResult, AnimeSource, hoyoApp, hoyoOptions }
+export { hoyoResult, AnimeSource, hoyoApp, hoyoOptions };

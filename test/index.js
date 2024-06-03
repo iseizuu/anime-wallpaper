@@ -7,9 +7,10 @@ const wall = new AnimeWallpaper();
 async function WallpaperSearch() {
     // const wallpaper = await wall.Hoyolab({ game: "HonkaiStarRail", postType: "Trending" });
     // const wallpaper = await wall.search({ title: "firefly honkai", page: 1, type: "both", aiArt: true }, AnimeSource.WallHaven);
-    const wallpaper = await wall.search({ title: "Furina" }, AnimeSource.Wallpapers);
+    // const wallpaper = await wall.search({ title: "Furina" }, AnimeSource.Wallpapers);
     // const wallpaper = await wall.search({ title: "robin honkai star rail" }, AnimeSource.ZeroChan);
     // const wallpaper = await wall.random();
+    const wallpaper = await wall.pinterest("Firefly Honkai Star Rail");
     return console.log(wallpaper);
 }
 

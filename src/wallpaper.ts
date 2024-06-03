@@ -27,7 +27,7 @@ export class AnimeWallpaper {
             case AnimeSource.ZeroChan:
                 return await this.scrapeFromZeroChan(options as searchOpt);
             case AnimeSource.Wallpapers:
-                return await this.scrapeFromWallpapersDotCom(options as searchOpt)
+                return await this.scrapeFromWallpapersDotCom(options as searchOpt);
         }
     }
 
@@ -50,6 +50,40 @@ export class AnimeWallpaper {
      */
     public async Hoyolab(params: hoyolab): Promise<hoyoResult> {
         return await this.client.mihoyo().getHoyoArt(params);
+    }
+
+    /**
+     * Retrieves anime wallpapers from Pinterest based on a search query.
+     *
+     * @param {string} query - The search query for the wallpapers.
+     * @returns {Promise<dataImageFormat[]>} - A promise that resolves to an array of dataImageFormat objects.
+     * @throws {WallError} - If the search query is not provided.
+     */
+    public async pinterest(query: string): Promise<dataImageFormat[]> {
+        if (!query) throw new WallError("Please provide a search query");
+
+        return new Promise((resolve, reject) => {
+            this.client.get.request(this.client.config.pinterest, {
+                autologin: true, q: query
+            })
+                .then(x => {
+                    const results: dataImageFormat[] = [];
+                    const $ = cheerio.load(x.text);
+                    $("img").each((i, elm) => {
+                        const title = $(elm).attr("alt")?.length === 0
+                            ? `Anime-Wallpaper: Title for ${query} isn't loaded`
+                            : $(elm).attr("alt");
+                        const thumbnail = $(elm).attr("src")
+                            ?.replace(/https:\/\/i\.pinimg\.com\/[^/]+\//, "https://i.pinimg.com/736x/");
+                        const image = thumbnail
+                            ?.replace(/https:\/\/i\.pinimg\.com\/[^/]+\//, "https://i.pinimg.com/originals/");
+                        results.push({ title, thumbnail, image });
+                    });
+                    if (!results.length) throw new WallError("No images found");
+                    return resolve(results);
+                })
+                .catch(er => reject(new WallError(er)));
+        });
     }
 
     /**
@@ -91,11 +125,11 @@ export class AnimeWallpaper {
                     const results: dataImageFormat[] = [];
                     $(".tab-content ul.kw-contents li").each((i, elm) => {
                         const title = $(elm).find(" figure").data("title");
-                        const thumbnail = $(elm).find(" a").attr("href")
-                        const image = `${this.client.config.wallpapers}/downloads/high/${$(elm).find("figure").data("key")}.png`
+                        const thumbnail = $(elm).find(" a").attr("href");
+                        const image = `${this.client.config.wallpapers}/downloads/high/${$(elm).find("figure").data("key")}.png`;
                         results.push({ title, thumbnail, image });
                     });
-                    const filteredImage = results.filter(e => { return e.title?.length !== undefined })
+                    const filteredImage = results.filter(e => { return e.title?.length !== undefined; });
                     if (!filteredImage.length) throw new WallError("Image data is empty or can't find the images");
                     else resolve(filteredImage);
                 })
@@ -125,7 +159,7 @@ export class AnimeWallpaper {
                     const $ = cheerio.load(x.text);
                     const results: dataImageFormat[] = [];
                     $(".thumb-listing-page ul li .thumb").each((i, elm) => {
-                        let formatImg = ".jpg"
+                        let formatImg = ".jpg";
                         const isPng = $(elm).find(".thumb-info .png span").text();
                         if (isPng) formatImg = ".png";
                         const parseUrl = $(elm).find(".preview").attr("href");
@@ -152,7 +186,7 @@ export class AnimeWallpaper {
         return new Promise((resolve, reject) => {
             this.client.get.request(`${this.client.config.zerochan}/${search.title}`, {})
                 .then(x => {
-                    console.log(x.url)
+                    console.log(x.url);
                     const $ = cheerio.load(x.text);
                     const arr: dataImageFormat[] = [];
                     $("#wrapper #content ul li").each((i, elm) => {
@@ -161,7 +195,7 @@ export class AnimeWallpaper {
                         const thumbnail = `https://s1.zerochan.net/${$(elm).find("p a").attr("href")?.replace(/https:\/\/static.zerochan.net/g, "") as string}.600.${$(elm).find("a").attr("href")?.replace(/\//g, "")}.jpg`;
                         arr.push({ title, thumbnail, image });
                     });
-                    resolve(arr.filter(data => data.title))
+                    resolve(arr.filter(data => data.title));
                 })
                 .catch(er => reject(er));
         });

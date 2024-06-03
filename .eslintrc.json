@@ -1,4 +1,3 @@
-
 {
     "env": {
         "browser": true,
@@ -25,10 +24,12 @@
             "warn", { "before": false, "after": true }
         ],
         "@typescript-eslint/no-empty-function": "off",
-        "@typescript-eslint/indent": ["warn", 4],
+        "@typescript-eslint/indent": "warn",
         "@typescript-eslint/no-unsafe-assignment": "off",
         "@typescript-eslint/restrict-template-expressions": "off",
+        "@typescript-eslint/no-unused-vars": "error",
         "@typescript-eslint/unbound-method": "off",
+        "@typescript-eslint/semi": "error",
         "no-empty-function": "off",
         "comma-style": "error",
         "quotes": ["warn", "double"]
