@@ -186,7 +186,6 @@ export class AnimeWallpaper {
         return new Promise((resolve, reject) => {
             this.client.get.request(`${this.client.config.zerochan}/${search.title}`, {})
                 .then(x => {
-                    console.log(x.url);
                     const $ = cheerio.load(x.text);
                     const arr: dataImageFormat[] = [];
                     $("#wrapper #content ul li").each((i, elm) => {
