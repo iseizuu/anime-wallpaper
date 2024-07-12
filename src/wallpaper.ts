@@ -2,11 +2,9 @@ import cheerio from "cheerio";
 import WallError from "./utils/error";
 import { AnimeSource, dataImageFormat, hoyoResult, hoyolab, searchForWallhaven, searchOpt } from "./typings";
 import Client from "./structure/client";
-import Hoyolab from "./hoyo";
 
 export class AnimeWallpaper {
     private client = new Client();
-    private hoyo = new Hoyolab();
     public constructor() {
     }
 
@@ -48,24 +46,24 @@ export class AnimeWallpaper {
      * @param {hoyolab} params - Parameters for the Hoyolab request.
      * @returns {Promise<hoyoResult>} - A promise that resolves to the result of the request.
      */
-    public async Hoyolab(params: hoyolab): Promise<hoyoResult> {
+    public async hoyolab(params: hoyolab): Promise<hoyoResult> {
         return await this.client.mihoyo().getHoyoArt(params);
     }
 
     /**
-     * Retrieves anime wallpapers from Pinterest based on a search query.
+     * Retrieves images from Pinterest based on a search query.
      *
-     * @param {string} query - The search query for the wallpapers.
-     * @returns {Promise<dataImageFormat[]>} - A promise that resolves to an array of dataImageFormat objects.
-     * @throws {WallError} - If the search query is not provided.
+     * @param {string} query - The search query to use for retrieving images.
+     * @returns {Promise<dataImageFormat[]>} - A promise that resolves to an array of dataImageFormat objects containing information about the retrieved images.
+     * @throws {WallError} - If the search query is empty or no images are found.
      */
     public async pinterest(query: string): Promise<dataImageFormat[]> {
         if (!query) throw new WallError("Please provide a search query");
 
         return new Promise((resolve, reject) => {
-            this.client.get.request(this.client.config.pinterest, {
-                autologin: true, q: query
-            })
+            this.client.get.request(
+                this.client.config.pinterest, { autologin: true, q: query },
+                "_auth=1; _b=\"AVna7S1p7l1C5I9u0+nR3YzijpvXOPc6d09SyCzO+DcwpersQH36SmGiYfymBKhZcGg=\"; _pinterest_sess=TWc9PSZHamJOZ0JobUFiSEpSN3Z4a2NsMk9wZ3gxL1NSc2k2NkFLaUw5bVY5cXR5alZHR0gxY2h2MVZDZlNQalNpUUJFRVR5L3NlYy9JZkthekp3bHo5bXFuaFZzVHJFMnkrR3lTbm56U3YvQXBBTW96VUgzVUhuK1Z4VURGKzczUi9hNHdDeTJ5Y2pBTmxhc2owZ2hkSGlDemtUSnYvVXh5dDNkaDN3TjZCTk8ycTdHRHVsOFg2b2NQWCtpOWxqeDNjNkk3cS85MkhhSklSb0hwTnZvZVFyZmJEUllwbG9UVnpCYVNTRzZxOXNJcmduOVc4aURtM3NtRFo3STlmWjJvSjlWTU5ITzg0VUg1NGhOTEZzME9SNFNhVWJRWjRJK3pGMFA4Q3UvcHBnWHdaYXZpa2FUNkx6Z3RNQjEzTFJEOHZoaHRvazc1c1UrYlRuUmdKcDg3ZEY4cjNtZlBLRTRBZjNYK0lPTXZJTzQ5dU8ybDdVS015bWJKT0tjTWYyRlBzclpiamdsNmtpeUZnRjlwVGJXUmdOMXdTUkFHRWloVjBMR0JlTE5YcmhxVHdoNzFHbDZ0YmFHZ1VLQXU1QnpkM1FqUTNMTnhYb3VKeDVGbnhNSkdkNXFSMXQybjRGL3pyZXRLR0ZTc0xHZ0JvbTJCNnAzQzE0cW1WTndIK0trY05HV1gxS09NRktadnFCSDR2YzBoWmRiUGZiWXFQNjcwWmZhaDZQRm1UbzNxc21pV1p5WDlabm1UWGQzanc1SGlrZXB1bDVDWXQvUis3elN2SVFDbm1DSVE5Z0d4YW1sa2hsSkZJb1h0MTFpck5BdDR0d0lZOW1Pa2RDVzNySWpXWmUwOUFhQmFSVUpaOFQ3WlhOQldNMkExeDIvMjZHeXdnNjdMYWdiQUhUSEFBUlhUVTdBMThRRmh1ekJMYWZ2YTJkNlg0cmFCdnU2WEpwcXlPOVZYcGNhNkZDd051S3lGZmo0eHV0ZE42NW8xRm5aRWpoQnNKNnNlSGFad1MzOHNkdWtER0xQTFN5Z3lmRERsZnZWWE5CZEJneVRlMDd2VmNPMjloK0g5eCswZUVJTS9CRkFweHc5RUh6K1JocGN6clc1JmZtL3JhRE1sc0NMTFlpMVErRGtPcllvTGdldz0=; _ir=0")
                 .then(x => {
                     const results: dataImageFormat[] = [];
                     const $ = cheerio.load(x.text);
@@ -113,7 +111,7 @@ export class AnimeWallpaper {
      * Scraping images wallpaper from Wallpapers.com
      * 
      * @param search.title the title of the anime you want to search.
-     * @returns {dataImageFormat}
+     * @returns {dataImageFormat} A promise that resolves to an array of dataImageFormat objects containing information about the retrieved images.
      */
     private scrapeFromWallpapersDotCom(search: searchOpt): Promise<dataImageFormat[]> {
         if (!search || !search.title) throw new WallError("title must be specified");
@@ -144,7 +142,7 @@ export class AnimeWallpaper {
      * @param search.type the type or purity of image sfw or sketchy image or even both.
      * @param search.page the page for image you want to search, default is 1
      * @param search.aiArt show the ai art included if user input true or false, default is false
-     * @returns {dataImageFormat}
+     * @returns {dataImageFormat} A promise that resolves to an array of dataImageFormat objects containing information about the retrieved images.
      */
     private scrapeFromWallHaven(search: searchForWallhaven): Promise<dataImageFormat[]> {
         if (!search || !search.title) throw new WallError("title must be specified");
@@ -179,7 +177,7 @@ export class AnimeWallpaper {
     * Scraping images wallpaper from zerochan
     * 
     * @param search.title the title of anime that you want to search.
-    * @returns {dataImageFormat}
+    * @returns {dataImageFormat} A promise that resolves to an array of dataImageFormat objects containing information about the retrieved images.
     */
     private scrapeFromZeroChan(search: searchOpt): Promise<dataImageFormat[]> {
         if (!search.title) throw new WallError("title must be specified");
