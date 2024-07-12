@@ -78,8 +78,9 @@
 					<li><a href="https://free4kwallpapers.com/">4K Wallpapers</a></li>
 					<li><a href="https://wallhaven.cc">Wall Haven</a></li>
 					<li><a href="https://www.zerochan.net">ZeroChan</a></li>
-					<li><a href="https://wallapapers.com">Wallpapers.com</a></li>
-					<li><a href="https://www.hoyolab.com/">Hoyolab</a><br>
+					<li><a href="https://wallpapers.com">Wallpapers.com</a></li>
+					<li><a href="https://www.hoyolab.com/">Hoyolab</a> (New)</li>
+					<li><a href="https://pinterest.com/">Pinterest</a> (New)<br>
 					</li>
 				</ul>
 				<p><a href="https://nodei.co/npm/anime-wallpaper"><img src="https://nodei.co/npm/anime-wallpaper.png?compact=true" alt="Version"></a></p>
@@ -126,9 +127,9 @@
 					<h1>Hoyolab Example</h1>
 				</a>
 				<ul>
-					<li>Get fanart from hoyolab</li>
+					<li>Get fanart from hoyolab <img align="center" width="15" src="https://cdn.discordapp.com/emojis/735119429016485920.webp?size=128&quality=lossless"></li>
 				</ul>
-				<pre><code class="language-js"><span style="color: #0000FF">const</span><span style="color: #000000"> </span><span style="color: #0070C1">wallpaper</span><span style="color: #000000"> = </span><span style="color: #AF00DB">await</span><span style="color: #000000"> </span><span style="color: #001080">wall</span><span style="color: #000000">.</span><span style="color: #795E26">Hoyolab</span><span style="color: #000000">({ </span><span style="color: #001080">game:</span><span style="color: #000000"> </span><span style="color: #A31515">&quot;GenshinImpact&quot;</span><span style="color: #000000">, </span><span style="color: #001080">postType:</span><span style="color: #000000"> </span><span style="color: #A31515">&quot;Trending&quot;</span><span style="color: #000000"> });</span>
+				<pre><code class="language-js"><span style="color: #0000FF">const</span><span style="color: #000000"> </span><span style="color: #0070C1">wallpaper</span><span style="color: #000000"> = </span><span style="color: #AF00DB">await</span><span style="color: #000000"> </span><span style="color: #001080">wall</span><span style="color: #000000">.</span><span style="color: #795E26">hoyolab</span><span style="color: #000000">({ </span><span style="color: #001080">game:</span><span style="color: #000000"> </span><span style="color: #A31515">&quot;GenshinImpact&quot;</span><span style="color: #000000">, </span><span style="color: #001080">postType:</span><span style="color: #000000"> </span><span style="color: #A31515">&quot;Trending&quot;</span><span style="color: #000000"> });</span>
 <span style="color: #AF00DB">return</span><span style="color: #000000"> </span><span style="color: #001080">console</span><span style="color: #000000">.</span><span style="color: #795E26">log</span><span style="color: #000000">(</span><span style="color: #001080">wallpaper</span><span style="color: #000000">)</span>
 </code></pre>
 				<a href="#result" id="result" style="color: inherit; text-decoration: none;">
@@ -147,6 +148,18 @@
   }
 }
 </code></pre>
+				<a href="#pinterest" id="pinterest" style="color: inherit; text-decoration: none;">
+					<h1>Pinterest</h1>
+				</a>
+				<ul>
+					<li>Getting image from pinterest <img align="center" width="20" src="https://cdn3.emoji.gg/emojis/5505-idle-status.png"></li>
+				</ul>
+				<pre><code class="language-js"><span style="color: #0000FF">const</span><span style="color: #000000"> </span><span style="color: #0070C1">wallpaper</span><span style="color: #000000"> = </span><span style="color: #AF00DB">await</span><span style="color: #000000"> </span><span style="color: #001080">wall</span><span style="color: #000000">.</span><span style="color: #795E26">pinterest</span><span style="color: #000000">(</span><span style="color: #A31515">&quot;Ellen Joe ZzZ&quot;</span><span style="color: #000000">);</span>
+<span style="color: #AF00DB">return</span><span style="color: #000000"> </span><span style="color: #001080">console</span><span style="color: #000000">.</span><span style="color: #795E26">log</span><span style="color: #000000">(</span><span style="color: #001080">wallpaper</span><span style="color: #000000">)</span>
+</code></pre>
+				<ul>
+					<li>nb: sometimes it might be fail when scraping pinterest, just try again and over again :&gt;</li>
+				</ul>
 				<a href="#warning" id="warning" style="color: inherit; text-decoration: none;">
 					<h2>Warning</h2>
 				</a>
@@ -169,6 +182,9 @@
 				<ul>
 					<li class=" ">
 						<a href="modules.html">Exports</a>
+					</li>
+					<li class=" tsd-kind-module">
+						<a href="modules/config.html">config</a>
 					</li>
 					<li class=" tsd-kind-module">
 						<a href="modules/hoyo.html">hoyo</a>
@@ -210,6 +226,9 @@
 	<div class="container">
 		<h2>Legend</h2>
 		<div class="tsd-legend-group">
+			<ul class="tsd-legend">
+				<li class="tsd-kind-variable"><span class="tsd-kind-icon">Variable</span></li>
+			</ul>
 			<ul class="tsd-legend">
 				<li class="tsd-kind-enum"><span class="tsd-kind-icon">Enumeration</span></li>
 			</ul>

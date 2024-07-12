@@ -1,16 +1,13 @@
 {
   "name": "anime-wallpaper",
-  "version": "3.1.0",
+  "version": "3.2.1",
   "description": "Get Anime wallpapers based on scrapping from websites.",
   "license": "MIT",
-  "main": "dist/index.js",
-  "types": "dist/index.d.ts",
-  "scripts": {
-    "build": "tsc",
-    "start": "node test"
-  },
+  "main": "./dist/index.js",
+  "module": "./dist/index.mjs",
+  "types": "./dist/index.d.ts",
   "files": [
-    "dist/**/*"
+    "dist"
   ],
   "keywords": [
     "anime",
@@ -18,7 +15,8 @@
     "wallpaper",
     "images",
     "scrape",
-    "hoyolab"
+    "hoyolab",
+    "pinterest"
   ],
   "devDependencies": {
     "@types/node": "^14.14.31",
