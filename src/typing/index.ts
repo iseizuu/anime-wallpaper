@@ -7,9 +7,16 @@ export interface dataImageFormat {
     image?: string,
 }
 
+export interface live2D {
+    title?: string,
+    thumbnail?: string,
+    video?: string,
+    url?: string,
+}
+
 export interface searchOpt {
     title: string,
-    page: string,
+    page?: string,
 }
 
 export interface searchForWallhaven {

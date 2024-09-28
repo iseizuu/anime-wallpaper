@@ -3,6 +3,7 @@ export declare const wallHaven = "https://wallhaven.cc";
 export declare const zerochan = "https://www.zerochan.net";
 export declare const wallpapers = "https://wallpapers.com";
 export declare const pinterest = "https://id.pinterest.com/search/pins/";
+export declare const moewall = "https://moewalls.com";
 export declare const type: {
     sfw: string;
     sketchy: string;

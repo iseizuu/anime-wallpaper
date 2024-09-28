@@ -43,7 +43,7 @@ class Hoyolab {
                     page_size: 30
                 })
                     .then(x => {
-                    const result = x.body;
+                    const result = x.data;
                     if (!result)
                         throw new error_1.default("Request Failed!");
                     if (!result.data.list)

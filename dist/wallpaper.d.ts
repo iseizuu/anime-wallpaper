@@ -1,4 +1,4 @@
-import { AnimeSource, dataImageFormat, hoyoResult, hoyolab, searchForWallhaven, searchOpt } from "./typings";
+import { AnimeSource, dataImageFormat, hoyoResult, hoyolab, live2D, searchForWallhaven, searchOpt } from "./typings";
 export declare class AnimeWallpaper {
     private client;
     constructor();
@@ -14,6 +14,15 @@ export declare class AnimeWallpaper {
      */
     search(options: searchOpt | searchForWallhaven, source?: AnimeSource): Promise<dataImageFormat[]>;
     /**
+     * Scrapes live2D images from moewalls.
+     *
+     * @param title the title of anime that you want to search.
+     * @returns {Promise<live2D[]>} A promise that resolves to an array of live2D objects containing information about the retrieved images.
+     * @throws {WallError} - If the search query is empty or no images are found.
+     */
+    live2d(title: string): Promise<live2D[]>;
+    /**
+     * @deprecated
      * Scrapes 4kWallpaper for a random Wallpaper
      *
      * This function will return an array of random Wallpapers
@@ -66,5 +75,13 @@ export declare class AnimeWallpaper {
     * @returns {dataImageFormat} A promise that resolves to an array of dataImageFormat objects containing information about the retrieved images.
     */
     private scrapeFromZeroChan;
+    /**
+     * Scrapes live2D images from moewalls.
+     *
+     * @param search the title of anime that you want to search.
+     * @returns {Promise<live2D[]>} A promise that resolves to an array of live2D objects containing information about the retrieved images.
+     * @throws {WallError} - If the search query is empty or no images are found.
+     */
+    private scrapeFromMoewall;
 }
 export { AnimeSource };

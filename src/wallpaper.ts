@@ -1,6 +1,6 @@
-import cheerio from "cheerio";
+import * as cheerio from "cheerio";
 import WallError from "./utils/error";
-import { AnimeSource, dataImageFormat, hoyoResult, hoyolab, searchForWallhaven, searchOpt } from "./typings";
+import { AnimeSource, dataImageFormat, hoyoResult, hoyolab, live2D, searchForWallhaven, searchOpt } from "./typing";
 import Client from "./structure/client";
 
 export class AnimeWallpaper {
@@ -13,10 +13,9 @@ export class AnimeWallpaper {
      * 
      * this function will return an array of queried anime wallpapers
      * 
-     * @param search.title the title of the anime you want to search.
-     * @param search.type the type or purity of image sfw or sketchy image or even both.
-     * @param search.page the page for image you want to search, default is 1
-     * @returns {dataImageFormat}
+     * @param {searchOpt | searchForWallhaven} options - The search options.
+     * @param {AnimeSource} [source=AnimeSource.WallHaven] - The source to search from.
+     * @returns {Promise<dataImageFormat[]>}
      */
     public async search(options: searchOpt | searchForWallhaven, source: AnimeSource = AnimeSource.WallHaven): Promise<dataImageFormat[]> {
         switch (source) {
@@ -29,7 +28,20 @@ export class AnimeWallpaper {
         }
     }
 
+
     /**
+     * Scrapes live2D images from moewalls.
+     * 
+     * @param title the title of anime that you want to search.
+     * @returns {Promise<live2D[]>} A promise that resolves to an array of live2D objects containing information about the retrieved images.
+     * @throws {WallError} - If the search query is empty or no images are found.
+     */
+    public async live2d(title: string): Promise<live2D[]> {
+        return await this.scrapeFromMoewall(title);
+    }
+
+    /**
+     * @deprecated
      * Scrapes 4kWallpaper for a random Wallpaper
      * 
      * This function will return an array of random Wallpapers
@@ -37,6 +49,7 @@ export class AnimeWallpaper {
      * @returns {dataImageFormat}
      */
     public async random(): Promise<dataImageFormat[]> {
+        console.warn("The 'random' method is deprecated. Please use 'search' method instead.");
         return await this.scrapeRandomWallpaper();
     }
 
@@ -66,7 +79,7 @@ export class AnimeWallpaper {
                 "_auth=1; _b=\"AVna7S1p7l1C5I9u0+nR3YzijpvXOPc6d09SyCzO+DcwpersQH36SmGiYfymBKhZcGg=\"; _pinterest_sess=TWc9PSZHamJOZ0JobUFiSEpSN3Z4a2NsMk9wZ3gxL1NSc2k2NkFLaUw5bVY5cXR5alZHR0gxY2h2MVZDZlNQalNpUUJFRVR5L3NlYy9JZkthekp3bHo5bXFuaFZzVHJFMnkrR3lTbm56U3YvQXBBTW96VUgzVUhuK1Z4VURGKzczUi9hNHdDeTJ5Y2pBTmxhc2owZ2hkSGlDemtUSnYvVXh5dDNkaDN3TjZCTk8ycTdHRHVsOFg2b2NQWCtpOWxqeDNjNkk3cS85MkhhSklSb0hwTnZvZVFyZmJEUllwbG9UVnpCYVNTRzZxOXNJcmduOVc4aURtM3NtRFo3STlmWjJvSjlWTU5ITzg0VUg1NGhOTEZzME9SNFNhVWJRWjRJK3pGMFA4Q3UvcHBnWHdaYXZpa2FUNkx6Z3RNQjEzTFJEOHZoaHRvazc1c1UrYlRuUmdKcDg3ZEY4cjNtZlBLRTRBZjNYK0lPTXZJTzQ5dU8ybDdVS015bWJKT0tjTWYyRlBzclpiamdsNmtpeUZnRjlwVGJXUmdOMXdTUkFHRWloVjBMR0JlTE5YcmhxVHdoNzFHbDZ0YmFHZ1VLQXU1QnpkM1FqUTNMTnhYb3VKeDVGbnhNSkdkNXFSMXQybjRGL3pyZXRLR0ZTc0xHZ0JvbTJCNnAzQzE0cW1WTndIK0trY05HV1gxS09NRktadnFCSDR2YzBoWmRiUGZiWXFQNjcwWmZhaDZQRm1UbzNxc21pV1p5WDlabm1UWGQzanc1SGlrZXB1bDVDWXQvUis3elN2SVFDbm1DSVE5Z0d4YW1sa2hsSkZJb1h0MTFpck5BdDR0d0lZOW1Pa2RDVzNySWpXWmUwOUFhQmFSVUpaOFQ3WlhOQldNMkExeDIvMjZHeXdnNjdMYWdiQUhUSEFBUlhUVTdBMThRRmh1ekJMYWZ2YTJkNlg0cmFCdnU2WEpwcXlPOVZYcGNhNkZDd051S3lGZmo0eHV0ZE42NW8xRm5aRWpoQnNKNnNlSGFad1MzOHNkdWtER0xQTFN5Z3lmRERsZnZWWE5CZEJneVRlMDd2VmNPMjloK0g5eCswZUVJTS9CRkFweHc5RUh6K1JocGN6clc1JmZtL3JhRE1sc0NMTFlpMVErRGtPcllvTGdldz0=; _ir=0")
                 .then(x => {
                     const results: dataImageFormat[] = [];
-                    const $ = cheerio.load(x.text);
+                    const $ = cheerio.load(x.data);
                     $("img").each((i, elm) => {
                         const title = $(elm).attr("alt")?.length === 0
                             ? `Anime-Wallpaper: Title for ${query} isn't loaded`
@@ -92,7 +105,7 @@ export class AnimeWallpaper {
     private async scrapeRandomWallpaper(): Promise<dataImageFormat[]> {
         const randomPage = Math.floor(Math.random() * 20) + 1;
         const response = await this.client.get.request(`${this.client.config.free4kWallpaper}/anime-wallpapers`, { page: `${randomPage}` });
-        const $ = cheerio.load(response.text);
+        const $ = cheerio.load(response.data);
 
         const wallpapers: dataImageFormat[] = [];
         $("#contents .container .row .cbody a img").each((i, elm) => {
@@ -119,10 +132,10 @@ export class AnimeWallpaper {
         return new Promise((resolve, reject) => {
             this.client.get.request(`${this.client.config.wallpapers}/search/${search.title}`, {})
                 .then(x => {
-                    const $ = cheerio.load(x.text);
+                    const $ = cheerio.load(x.data);
                     const results: dataImageFormat[] = [];
                     $(".tab-content ul.kw-contents li").each((i, elm) => {
-                        const title = $(elm).find(" figure").data("title");
+                        const title = $(elm).find(" figure").data("title") as string;
                         const thumbnail = $(elm).find(" a").attr("href");
                         const image = `${this.client.config.wallpapers}/downloads/high/${$(elm).find("figure").data("key")}.png`;
                         results.push({ title, thumbnail, image });
@@ -154,7 +167,7 @@ export class AnimeWallpaper {
                 q: search.title, page: search.page, purity: this.client.config.type[search.type], ai_art_filter: !search.aiArt ? 1 : 0
             })
                 .then(x => {
-                    const $ = cheerio.load(x.text);
+                    const $ = cheerio.load(x.data);
                     const results: dataImageFormat[] = [];
                     $(".thumb-listing-page ul li .thumb").each((i, elm) => {
                         let formatImg = ".jpg";
@@ -184,7 +197,7 @@ export class AnimeWallpaper {
         return new Promise((resolve, reject) => {
             this.client.get.request(`${this.client.config.zerochan}/${search.title}`, {})
                 .then(x => {
-                    const $ = cheerio.load(x.text);
+                    const $ = cheerio.load(x.data);
                     const arr: dataImageFormat[] = [];
                     $("#wrapper #content ul li").each((i, elm) => {
                         const title = $(elm).find("a img").attr("alt") as string;
@@ -197,6 +210,38 @@ export class AnimeWallpaper {
                 .catch(er => reject(er));
         });
     }
+
+
+
+
+    /**
+     * Scrapes live2D images from moewalls.
+     * 
+     * @param search the title of anime that you want to search.
+     * @returns {Promise<live2D[]>} A promise that resolves to an array of live2D objects containing information about the retrieved images.
+     * @throws {WallError} - If the search query is empty or no images are found.
+     */
+    private scrapeFromMoewall(search?: string): Promise<live2D[]> {
+        if (!search) console.log("[Anime Wallpaper] search is empty, showing random images");
+        const regex = /\/(\d{4})\/\d{2}\/([a-z0-9-]+)-thumb/;
+        return new Promise((resolve, reject) => {
+            this.client.get.request(!search ? `${this.client.config.moewall}` : this.client.config.moewall, { s: search})
+                .then(x => {
+                    const $ = cheerio.load(x.data);
+                    const arr: live2D[] = [];
+                    $("#primary ul li").each((i, elm) => {
+                        const title = $(elm).find("a").attr("title");
+                        const url = $(elm).find("a").attr("href");
+                        const thumbnail = $(elm).find("img").attr("src") as string;
+                        const video = `https://static.moewalls.com/videos/preview/${regex.exec(thumbnail)?.[1]}/${regex.exec(thumbnail)?.[2]}-preview.mp4`;
+                        arr.push({ title, thumbnail, video, url });
+                    });
+                    resolve(arr.filter(res => res.title));
+                })
+                .catch(er => reject(er));
+        })
+    }
+
 }
 
 export { AnimeSource };

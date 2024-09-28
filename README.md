@@ -7,19 +7,24 @@
     <img src="https://img.shields.io/npm/v/anime-wallpaper.svg?logo=npm&logoColor=fff&label=NPM+package&color=red" alt="Anime Wallpaper on npm" />
   </a>
 </p>
-<p align="center"> 
+<p align="center" style="center"> 
     <img src="https://i.imgur.com/DeP0Nlv.jpeg">
 </p>
 
 #### [[Documentation](https://iseizuu.github.io/anime-wallpaper/)]
 
 Get Anime wallpapers based on scrapping from websites.
-* [4K Wallpapers](https://free4kwallpapers.com/)
-* [Wall Haven](https://wallhaven.cc)
-* [ZeroChan](https://www.zerochan.net)
-* [Wallpapers.com](https://wallpapers.com)
-* [Hoyolab](https://www.hoyolab.com/) (New)
-* [Pinterest](https://pinterest.com/) (New)
+
+| Website | Type | Status |
+|---------|------|-----------|
+| [4K Wallpapers](https://free4kwallpapers.com/) | Image | ❌ |
+| [Wall Haven](https://wallhaven.cc) | Image | ✔ |
+| [ZeroChan](https://www.zerochan.net) | Image | ✔ |
+| [Wallpapers.com](https://wallpapers.com) | Image | ✔ |
+| [Hoyolab](https://www.hoyolab.com/) | Image | ✔ |
+| [Pinterest](https://pinterest.com/) | Image | ✔ |
+| [Moe Walls](https://moewalls.com) | Video/Image | ✔ |
+
 <br>
 
 [![Version](https://nodei.co/npm/anime-wallpaper.png?compact=true)](https://nodei.co/npm/anime-wallpaper)
@@ -40,7 +45,7 @@ const { AnimeWallpaper, AnimeSource } = require('anime-wallpaper');
 const wallpaper = new AnimeWallpaper();
 ```
 
-- Getting a random wallpaper from [4K Wallpapers](https://free4kwallpapers.com/) <img align="center" width="15" src="https://cdn.discordapp.com/emojis/735119429016485920.webp?size=128&quality=lossless">
+- ~~Getting a random wallpaper from [4K Wallpapers](https://free4kwallpapers.com/)~~ ❌
 
 ```js
 const wallpaper = await wallpaper.random();
@@ -65,6 +70,15 @@ return console.log(wallpaper)
 
 ```js
 const wallpaper = await wallpaper.search({ title: "Misaka Mikoto" }, AnimeSource.ZeroChan);
+return console.log(wallpaper)
+```
+
+# Live 2D
+
+- Getting Live 2D from [Moe Walls](https://moewalls.com) <img align="center" width="15" src="https://cdn.discordapp.com/emojis/735119429016485920.webp?size=128&quality=lossless">
+
+```js
+const wallpaper = await wallpaper.live2d("Jane Doe");
 return console.log(wallpaper)
 ```
 

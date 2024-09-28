@@ -6,7 +6,7 @@ var AnimeSource;
     AnimeSource[AnimeSource["WallHaven"] = 2] = "WallHaven";
     AnimeSource[AnimeSource["ZeroChan"] = 3] = "ZeroChan";
     AnimeSource[AnimeSource["Wallpapers"] = 4] = "Wallpapers";
-})(AnimeSource = exports.AnimeSource || (exports.AnimeSource = {}));
+})(AnimeSource || (exports.AnimeSource = AnimeSource = {}));
 var hoyoApp;
 (function (hoyoApp) {
     hoyoApp[hoyoApp["ZenlessZoneZero"] = 8] = "ZenlessZoneZero";
@@ -14,12 +14,12 @@ var hoyoApp;
     hoyoApp[hoyoApp["HonkaiImpact"] = 1] = "HonkaiImpact";
     hoyoApp[hoyoApp["HonkaiStarRail"] = 6] = "HonkaiStarRail";
     hoyoApp[hoyoApp["TearOfThemis"] = 4] = "TearOfThemis";
-})(hoyoApp = exports.hoyoApp || (exports.hoyoApp = {}));
+})(hoyoApp || (exports.hoyoApp = hoyoApp = {}));
 var hoyoOptions;
 (function (hoyoOptions) {
     hoyoOptions["Trending"] = "";
     hoyoOptions["Featured"] = "/elite";
     hoyoOptions["NewPost"] = "/new";
     hoyoOptions["NewReply"] = "/reply";
-})(hoyoOptions = exports.hoyoOptions || (exports.hoyoOptions = {}));
-//# sourceMappingURL=data:application/json;base64,eyJ2ZXJzaW9uIjozLCJmaWxlIjoiZW51bS5qcyIsInNvdXJjZVJvb3QiOiIiLCJzb3VyY2VzIjpbIi4uLy4uL3NyYy90eXBpbmdzL2VudW0udHMiXSwibmFtZXMiOltdLCJtYXBwaW5ncyI6Ijs7O0FBQUEsSUFBWSxXQUlYO0FBSkQsV0FBWSxXQUFXO0lBQ25CLHVEQUFhLENBQUE7SUFDYixxREFBWSxDQUFBO0lBQ1oseURBQWMsQ0FBQTtBQUNsQixDQUFDLEVBSlcsV0FBVyxHQUFYLG1CQUFXLEtBQVgsbUJBQVcsUUFJdEI7QUFFRCxJQUFZLE9BTVg7QUFORCxXQUFZLE9BQU87SUFDZiwyREFBbUIsQ0FBQTtJQUNuQix1REFBaUIsQ0FBQTtJQUNqQixxREFBZ0IsQ0FBQTtJQUNoQix5REFBa0IsQ0FBQTtJQUNsQixxREFBZ0IsQ0FBQTtBQUNwQixDQUFDLEVBTlcsT0FBTyxHQUFQLGVBQU8sS0FBUCxlQUFPLFFBTWxCO0FBRUQsSUFBWSxXQUtYO0FBTEQsV0FBWSxXQUFXO0lBQ25CLDRCQUFhLENBQUE7SUFDYixrQ0FBbUIsQ0FBQTtJQUNuQiwrQkFBZ0IsQ0FBQTtJQUNoQixrQ0FBbUIsQ0FBQTtBQUN2QixDQUFDLEVBTFcsV0FBVyxHQUFYLG1CQUFXLEtBQVgsbUJBQVcsUUFLdEIifQ==
+})(hoyoOptions || (exports.hoyoOptions = hoyoOptions = {}));
+//# sourceMappingURL=data:application/json;base64,eyJ2ZXJzaW9uIjozLCJmaWxlIjoiZW51bS5qcyIsInNvdXJjZVJvb3QiOiIiLCJzb3VyY2VzIjpbIi4uLy4uL3NyYy90eXBpbmdzL2VudW0udHMiXSwibmFtZXMiOltdLCJtYXBwaW5ncyI6Ijs7O0FBQUEsSUFBWSxXQUlYO0FBSkQsV0FBWSxXQUFXO0lBQ25CLHVEQUFhLENBQUE7SUFDYixxREFBWSxDQUFBO0lBQ1oseURBQWMsQ0FBQTtBQUNsQixDQUFDLEVBSlcsV0FBVywyQkFBWCxXQUFXLFFBSXRCO0FBRUQsSUFBWSxPQU1YO0FBTkQsV0FBWSxPQUFPO0lBQ2YsMkRBQW1CLENBQUE7SUFDbkIsdURBQWlCLENBQUE7SUFDakIscURBQWdCLENBQUE7SUFDaEIseURBQWtCLENBQUE7SUFDbEIscURBQWdCLENBQUE7QUFDcEIsQ0FBQyxFQU5XLE9BQU8sdUJBQVAsT0FBTyxRQU1sQjtBQUVELElBQVksV0FLWDtBQUxELFdBQVksV0FBVztJQUNuQiw0QkFBYSxDQUFBO0lBQ2Isa0NBQW1CLENBQUE7SUFDbkIsK0JBQWdCLENBQUE7SUFDaEIsa0NBQW1CLENBQUE7QUFDdkIsQ0FBQyxFQUxXLFdBQVcsMkJBQVgsV0FBVyxRQUt0QiJ9

@@ -1,4 +1,4 @@
-import { hoyoApp, hoyoOptions, hoyoResult, hoyolab } from "./typings";
+import { hoyoApp, hoyoOptions, hoyoResult, hoyolab } from "./typing";
 import Client from "./structure/client";
 import AnimeWallError from "./utils/error";
 
@@ -29,7 +29,7 @@ export default class Hoyolab {
                 page_size: 30
             })
                 .then(x => {
-                    const result = x.body as hoyoResult | null;
+                    const result = x.data as hoyoResult | null;
                     if (!result) throw new AnimeWallError("Request Failed!");
                     if (!result.data.list) throw new AnimeWallError("Request is successful but no post found, please check the example request in the README.md");
                     resolve(result);

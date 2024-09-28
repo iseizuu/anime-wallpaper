@@ -1,0 +1,12 @@
+{
+  "entryPoints": ["src", "src/typing/*"],
+  "out": "docs",
+  "includeVersion": true,
+  "readme": "README.md",
+  "categoryOrder": [
+    "Interfaces",
+    "Enums",
+    "Classes",
+    "Modules"
+  ]
+}

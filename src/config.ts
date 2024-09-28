@@ -3,6 +3,7 @@ export const wallHaven = "https://wallhaven.cc";
 export const zerochan = "https://www.zerochan.net";
 export const wallpapers = "https://wallpapers.com";
 export const pinterest = "https://id.pinterest.com/search/pins/";
+export const moewall = "https://moewalls.com";
 export const type = {
     "sfw": "100",
     "sketchy": "010",
