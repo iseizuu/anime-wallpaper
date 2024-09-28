@@ -19,15 +19,14 @@ export class AnimeWallpaper {
      */
     public async search(options: searchOpt | searchForWallhaven, source: AnimeSource = AnimeSource.WallHaven): Promise<dataImageFormat[]> {
         switch (source) {
-            case AnimeSource.WallHaven:
-                return await this.scrapeFromWallHaven(options as searchForWallhaven);
-            case AnimeSource.ZeroChan:
-                return await this.scrapeFromZeroChan(options as searchOpt);
-            case AnimeSource.Wallpapers:
-                return await this.scrapeFromWallpapersDotCom(options as searchOpt);
+        case AnimeSource.WallHaven:
+            return await this.scrapeFromWallHaven(options as searchForWallhaven);
+        case AnimeSource.ZeroChan:
+            return await this.scrapeFromZeroChan(options as searchOpt);
+        case AnimeSource.Wallpapers:
+            return await this.scrapeFromWallpapersDotCom(options as searchOpt);
         }
     }
-
 
     /**
      * Scrapes live2D images from moewalls.
@@ -60,7 +59,7 @@ export class AnimeWallpaper {
      * @returns {Promise<hoyoResult>} - A promise that resolves to the result of the request.
      */
     public async hoyolab(params: hoyolab): Promise<hoyoResult> {
-        return await this.client.mihoyo().getHoyoArt(params);
+        return await this.client.mihoyo(params);
     }
 
     /**
@@ -79,7 +78,7 @@ export class AnimeWallpaper {
                 "_auth=1; _b=\"AVna7S1p7l1C5I9u0+nR3YzijpvXOPc6d09SyCzO+DcwpersQH36SmGiYfymBKhZcGg=\"; _pinterest_sess=TWc9PSZHamJOZ0JobUFiSEpSN3Z4a2NsMk9wZ3gxL1NSc2k2NkFLaUw5bVY5cXR5alZHR0gxY2h2MVZDZlNQalNpUUJFRVR5L3NlYy9JZkthekp3bHo5bXFuaFZzVHJFMnkrR3lTbm56U3YvQXBBTW96VUgzVUhuK1Z4VURGKzczUi9hNHdDeTJ5Y2pBTmxhc2owZ2hkSGlDemtUSnYvVXh5dDNkaDN3TjZCTk8ycTdHRHVsOFg2b2NQWCtpOWxqeDNjNkk3cS85MkhhSklSb0hwTnZvZVFyZmJEUllwbG9UVnpCYVNTRzZxOXNJcmduOVc4aURtM3NtRFo3STlmWjJvSjlWTU5ITzg0VUg1NGhOTEZzME9SNFNhVWJRWjRJK3pGMFA4Q3UvcHBnWHdaYXZpa2FUNkx6Z3RNQjEzTFJEOHZoaHRvazc1c1UrYlRuUmdKcDg3ZEY4cjNtZlBLRTRBZjNYK0lPTXZJTzQ5dU8ybDdVS015bWJKT0tjTWYyRlBzclpiamdsNmtpeUZnRjlwVGJXUmdOMXdTUkFHRWloVjBMR0JlTE5YcmhxVHdoNzFHbDZ0YmFHZ1VLQXU1QnpkM1FqUTNMTnhYb3VKeDVGbnhNSkdkNXFSMXQybjRGL3pyZXRLR0ZTc0xHZ0JvbTJCNnAzQzE0cW1WTndIK0trY05HV1gxS09NRktadnFCSDR2YzBoWmRiUGZiWXFQNjcwWmZhaDZQRm1UbzNxc21pV1p5WDlabm1UWGQzanc1SGlrZXB1bDVDWXQvUis3elN2SVFDbm1DSVE5Z0d4YW1sa2hsSkZJb1h0MTFpck5BdDR0d0lZOW1Pa2RDVzNySWpXWmUwOUFhQmFSVUpaOFQ3WlhOQldNMkExeDIvMjZHeXdnNjdMYWdiQUhUSEFBUlhUVTdBMThRRmh1ekJMYWZ2YTJkNlg0cmFCdnU2WEpwcXlPOVZYcGNhNkZDd051S3lGZmo0eHV0ZE42NW8xRm5aRWpoQnNKNnNlSGFad1MzOHNkdWtER0xQTFN5Z3lmRERsZnZWWE5CZEJneVRlMDd2VmNPMjloK0g5eCswZUVJTS9CRkFweHc5RUh6K1JocGN6clc1JmZtL3JhRE1sc0NMTFlpMVErRGtPcllvTGdldz0=; _ir=0")
                 .then(x => {
                     const results: dataImageFormat[] = [];
-                    const $ = cheerio.load(x.data);
+                    const $ = cheerio.load(x.data as string);
                     $("img").each((i, elm) => {
                         const title = $(elm).attr("alt")?.length === 0
                             ? `Anime-Wallpaper: Title for ${query} isn't loaded`
@@ -93,7 +92,7 @@ export class AnimeWallpaper {
                     if (!results.length) throw new WallError("No images found");
                     return resolve(results);
                 })
-                .catch(er => reject(new WallError(er)));
+                .catch((er: Error) => reject(new WallError(er.message)));
         });
     }
 
@@ -104,7 +103,7 @@ export class AnimeWallpaper {
      */
     private async scrapeRandomWallpaper(): Promise<dataImageFormat[]> {
         const randomPage = Math.floor(Math.random() * 20) + 1;
-        const response = await this.client.get.request(`${this.client.config.free4kWallpaper}/anime-wallpapers`, { page: `${randomPage}` });
+        const response: { data: string } = await this.client.get.request(`${this.client.config.free4kWallpaper}/anime-wallpapers`, { page: `${randomPage}` });
         const $ = cheerio.load(response.data);
 
         const wallpapers: dataImageFormat[] = [];
@@ -131,20 +130,20 @@ export class AnimeWallpaper {
 
         return new Promise((resolve, reject) => {
             this.client.get.request(`${this.client.config.wallpapers}/search/${search.title}`, {})
-                .then(x => {
+                .then((x: { data: string }) => {
                     const $ = cheerio.load(x.data);
                     const results: dataImageFormat[] = [];
                     $(".tab-content ul.kw-contents li").each((i, elm) => {
                         const title = $(elm).find(" figure").data("title") as string;
                         const thumbnail = $(elm).find(" a").attr("href");
-                        const image = `${this.client.config.wallpapers}/downloads/high/${$(elm).find("figure").data("key")}.png`;
+                        const image = `${this.client.config.wallpapers}/downloads/high/${$(elm).find("figure").data("key") as string}.png`;
                         results.push({ title, thumbnail, image });
                     });
                     const filteredImage = results.filter(e => { return e.title?.length !== undefined; });
                     if (!filteredImage.length) throw new WallError("Image data is empty or can't find the images");
                     else resolve(filteredImage);
                 })
-                .catch(er => reject(er));
+                .catch((er: Error) => reject(new WallError(er.message)));
         });
     }
 
@@ -166,7 +165,7 @@ export class AnimeWallpaper {
             this.client.get.request(`${this.client.config.wallHaven}/search`, {
                 q: search.title, page: search.page, purity: this.client.config.type[search.type], ai_art_filter: !search.aiArt ? 1 : 0
             })
-                .then(x => {
+                .then((x: { data: string }) => {
                     const $ = cheerio.load(x.data);
                     const results: dataImageFormat[] = [];
                     $(".thumb-listing-page ul li .thumb").each((i, elm) => {
@@ -181,7 +180,7 @@ export class AnimeWallpaper {
                     console.log(`Wallhaven: Ai Art is: ${search.aiArt ? "enabled" : "disabled"}`);
                     resolve(results);
                 })
-                .catch(er => reject(er));
+                .catch((er: Error) => reject(new WallError(er.message)));
         });
 
     }
@@ -196,7 +195,7 @@ export class AnimeWallpaper {
         if (!search.title) throw new WallError("title must be specified");
         return new Promise((resolve, reject) => {
             this.client.get.request(`${this.client.config.zerochan}/${search.title}`, {})
-                .then(x => {
+                .then((x: { data: string }) => {
                     const $ = cheerio.load(x.data);
                     const arr: dataImageFormat[] = [];
                     $("#wrapper #content ul li").each((i, elm) => {
@@ -207,12 +206,9 @@ export class AnimeWallpaper {
                     });
                     resolve(arr.filter(data => data.title));
                 })
-                .catch(er => reject(er));
+                .catch((er: Error) => reject(new WallError(er.message)));
         });
     }
-
-
-
 
     /**
      * Scrapes live2D images from moewalls.
@@ -225,8 +221,8 @@ export class AnimeWallpaper {
         if (!search) console.log("[Anime Wallpaper] search is empty, showing random images");
         const regex = /\/(\d{4})\/\d{2}\/([a-z0-9-]+)-thumb/;
         return new Promise((resolve, reject) => {
-            this.client.get.request(!search ? `${this.client.config.moewall}` : this.client.config.moewall, { s: search})
-                .then(x => {
+            this.client.get.request(!search ? `${this.client.config.moewall}` : this.client.config.moewall, { s: search })
+                .then((x: { data: string }) => {
                     const $ = cheerio.load(x.data);
                     const arr: live2D[] = [];
                     $("#primary ul li").each((i, elm) => {
@@ -238,11 +234,8 @@ export class AnimeWallpaper {
                     });
                     resolve(arr.filter(res => res.title));
                 })
-                .catch(er => reject(er));
-        })
-    }
-
-}
+                .catch((er: Error) => reject(new WallError(er.message)));
+        });
+    }}
 
 export { AnimeSource };
-

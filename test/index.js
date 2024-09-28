@@ -12,7 +12,7 @@ async function WallpaperSearch() {
     // const wallpaper = await wall.search({ title: "robin honkai star rail" }, AnimeSource.ZeroChan);
     // const wallpaper = await wall.random();
     // const wallpaper = await wall.pinterest("ellen joe");
-    const wallpaper = await wall.live2d("ellen joe");
+    const wallpaper = await wall.live2d("furina");
     return console.log(wallpaper);
 }
 

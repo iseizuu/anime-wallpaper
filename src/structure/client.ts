@@ -1,6 +1,7 @@
 import Hoyolab from "../hoyo";
 import Requested from "../utils/request";
 import * as config from "../config";
+import { hoyolab, hoyoResult } from "../typing";
 
 export default class Client {
     public get = new Requested();
@@ -12,8 +13,8 @@ export default class Client {
         return Buffer.from(b64, "base64").toString("utf8");
     }
 
-    public mihoyo(): Hoyolab {
-        return new Hoyolab();
+    public mihoyo(query: hoyolab): Promise<hoyoResult> {
+        return new Hoyolab().getHoyoArt(query);
     }
 }
 

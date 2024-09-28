@@ -1,4 +1,4 @@
-import { AnimeSource, dataImageFormat, hoyoResult, hoyolab, live2D, searchForWallhaven, searchOpt } from "./typings";
+import { AnimeSource, dataImageFormat, hoyoResult, hoyolab, live2D, searchForWallhaven, searchOpt } from "./typing";
 export declare class AnimeWallpaper {
     private client;
     constructor();
@@ -7,10 +7,9 @@ export declare class AnimeWallpaper {
      *
      * this function will return an array of queried anime wallpapers
      *
-     * @param search.title the title of the anime you want to search.
-     * @param search.type the type or purity of image sfw or sketchy image or even both.
-     * @param search.page the page for image you want to search, default is 1
-     * @returns {dataImageFormat}
+     * @param {searchOpt | searchForWallhaven} options - The search options.
+     * @param {AnimeSource} [source=AnimeSource.WallHaven] - The source to search from.
+     * @returns {Promise<dataImageFormat[]>}
      */
     search(options: searchOpt | searchForWallhaven, source?: AnimeSource): Promise<dataImageFormat[]>;
     /**

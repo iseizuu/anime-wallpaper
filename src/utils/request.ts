@@ -13,7 +13,7 @@ export default class Requested {
         // };
         const headers = {
             "sec-ch-ua": "\"Google Chrome\";v=\"95\", \"Chromium\";v=\"95\", \";Not A Brand\";v=\"99\"",
-            "User-Agent": userAgent.getRandom() as string, Cookie: cookie !== undefined ? cookie : ""
+            "User-Agent": userAgent.getRandom(), Cookie: cookie !== undefined ? cookie : ""
         };
         const request = await req.get(url, { headers: headers, params: queryParams });
         return request ;

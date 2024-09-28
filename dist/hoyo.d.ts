@@ -1,4 +1,4 @@
-import { hoyoResult, hoyolab } from "./typings";
+import { hoyoResult, hoyolab } from "./typing";
 export default class Hoyolab {
     private client;
     constructor();

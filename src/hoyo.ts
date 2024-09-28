@@ -34,7 +34,7 @@ export default class Hoyolab {
                     if (!result.data.list) throw new AnimeWallError("Request is successful but no post found, please check the example request in the README.md");
                     resolve(result);
                 })
-                .catch(er => reject(new AnimeWallError(er)));
+                .catch((er: Error) => reject(new AnimeWallError(er.message)));
         });
     }
 }
