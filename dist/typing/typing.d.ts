@@ -1,4 +1,4 @@
-export interface hoyoResult {
+export interface hoyolabResult {
     data: {
         list: [
             {

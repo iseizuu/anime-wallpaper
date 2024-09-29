@@ -1,4 +1,4 @@
-import { hoyoResult, hoyolab } from "./typing";
+import { hoyolabResult, hoyolabSearchQuery } from "../typing";
 export default class Hoyolab {
     private client;
     constructor();
@@ -8,5 +8,5 @@ export default class Hoyolab {
      * @returns {Promise<hoyoResult>} - A Promise that resolves to the hoyoResult object containing the post data.
      * @throws {AnimeWallError} - If result is empty or error.
      */
-    getHoyoArt(options: hoyolab): Promise<hoyoResult>;
+    getHoyoArt(options: hoyolabSearchQuery): Promise<hoyolabResult>;
 }

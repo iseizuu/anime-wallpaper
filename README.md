@@ -15,15 +15,15 @@
 
 Get Anime wallpapers based on scrapping from websites.
 
-| Website | Type | Status |
-|---------|------|-----------|
-| [4K Wallpapers](https://free4kwallpapers.com/) | Image | ❌ |
-| [Wall Haven](https://wallhaven.cc) | Image | ✔ |
-| [ZeroChan](https://www.zerochan.net) | Image | ✔ |
-| [Wallpapers.com](https://wallpapers.com) | Image | ✔ |
-| [Hoyolab](https://www.hoyolab.com/) | Image | ✔ |
-| [Pinterest](https://pinterest.com/) | Image | ✔ |
-| [Moe Walls](https://moewalls.com) | Video/Image | ✔ |
+| Website                                  | Type        | Status |
+| ---------------------------------------- | ----------- | ------ |
+| [Hqdwalls](https://hdqwalls.com) [NEW]   | Image       | ✔      |
+| [Wall Haven](https://wallhaven.cc)       | Image       | ✔      |
+| [ZeroChan](https://www.zerochan.net)     | Image       | ✔      |
+| [Wallpapers.com](https://wallpapers.com) | Image       | ✔      |
+| [Hoyolab](https://www.hoyolab.com/)      | Image       | ✔      |
+| [Pinterest](https://pinterest.com/)      | Image       | ✔      |
+| [Moe Walls](https://moewalls.com) [NEW]  | Video/Image | ✔      |
 
 <br>
 
@@ -45,10 +45,10 @@ const { AnimeWallpaper, AnimeSource } = require('anime-wallpaper');
 const wallpaper = new AnimeWallpaper();
 ```
 
-- ~~Getting a random wallpaper from [4K Wallpapers](https://free4kwallpapers.com/)~~ ❌
+- Getting a random wallpaper from [Hqdwalls](https://hdqwalls.com) <img align="center" width="15" src="https://cdn.discordapp.com/emojis/735119429016485920.webp?size=128&quality=lossless">
 
 ```js
-const wallpaper = await wallpaper.random();
+const wallpaper = await wallpaper.random({ resolution: "1920x1080" });
 return console.log(wallpaper)
 ```
 

@@ -18,5 +18,6 @@ bin-release/
 # information for Eclipse / Flash Builder.
 node_modules
 .npmignore
-.eslintrc.json
+es.json
+CNAME
 yarn.lock

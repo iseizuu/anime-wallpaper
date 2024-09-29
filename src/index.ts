@@ -1,2 +1,2 @@
-import { AnimeWallpaper, AnimeSource } from "./wallpaper";
+import { AnimeWallpaper, AnimeSource } from "./classes/wallpaper";
 export { AnimeWallpaper, AnimeSource };

@@ -4,7 +4,7 @@ export enum AnimeSource {
     Wallpapers = 4
 }
 
-export enum hoyoApp {
+export enum hoyolabGames {
     ZenlessZoneZero = 8,
     GenshinImpact = 2,
     HonkaiImpact = 1,
@@ -12,7 +12,7 @@ export enum hoyoApp {
     TearOfThemis = 4
 }
 
-export enum hoyoOptions {
+export enum hoyolabPostType {
     Trending = "",
     Featured = "/elite",
     NewPost = "/new",

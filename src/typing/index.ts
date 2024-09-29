@@ -1,5 +1,5 @@
-import { AnimeSource, hoyoApp, hoyoOptions } from "./enum";
-import { hoyoResult } from "./typing";
+import { AnimeSource, hoyolabGames, hoyolabPostType } from "./enum";
+import { hoyolabResult } from "./typing";
 
 export interface dataImageFormat {
     title?: string,
@@ -14,7 +14,7 @@ export interface live2D {
     url?: string,
 }
 
-export interface searchOpt {
+export interface searchOptions {
     title: string,
     page?: string,
 }
@@ -26,9 +26,13 @@ export interface searchForWallhaven {
     aiArt: boolean
 }
 
-export interface hoyolab {
+export interface resolutionList {
+    resolutions: "1080x1920" | "720x1280" | "1440x2560" | "750x1334" | "1280x800" | "1920x1080" | "2560x1440" | "3840x2160" | "5120x2880" | "0"
+}
+
+export interface hoyolabSearchQuery {
     game: "ZenlessZoneZero" | "GenshinImpact" | "HonkaiImpact" | "HonkaiStarRail" | "TearOfThemis",
     postType: "Trending" | "Featured" | "NewPost" | "NewReply"
 }
 
-export { hoyoResult, AnimeSource, hoyoApp, hoyoOptions };
+export { hoyolabResult, AnimeSource, hoyolabGames, hoyolabPostType };

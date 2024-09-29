@@ -3,14 +3,14 @@ export declare enum AnimeSource {
     ZeroChan = 3,
     Wallpapers = 4
 }
-export declare enum hoyoApp {
+export declare enum hoyolabGames {
     ZenlessZoneZero = 8,
     GenshinImpact = 2,
     HonkaiImpact = 1,
     HonkaiStarRail = 6,
     TearOfThemis = 4
 }
-export declare enum hoyoOptions {
+export declare enum hoyolabPostType {
     Trending = "",
     Featured = "/elite",
     NewPost = "/new",

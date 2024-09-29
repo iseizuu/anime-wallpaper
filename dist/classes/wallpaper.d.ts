@@ -1,4 +1,4 @@
-import { AnimeSource, dataImageFormat, hoyoResult, hoyolab, live2D, searchForWallhaven, searchOpt } from "./typing";
+import { AnimeSource, dataImageFormat, hoyolabResult, hoyolabSearchQuery, live2D, resolutionList, searchForWallhaven, searchOptions } from "../typing";
 export declare class AnimeWallpaper {
     private client;
     constructor();
@@ -7,11 +7,11 @@ export declare class AnimeWallpaper {
      *
      * this function will return an array of queried anime wallpapers
      *
-     * @param {searchOpt | searchForWallhaven} options - The search options.
+     * @param {searchOptions | searchForWallhaven} options - The search options.
      * @param {AnimeSource} [source=AnimeSource.WallHaven] - The source to search from.
      * @returns {Promise<dataImageFormat[]>}
      */
-    search(options: searchOpt | searchForWallhaven, source?: AnimeSource): Promise<dataImageFormat[]>;
+    search(options: searchOptions | searchForWallhaven, source?: AnimeSource): Promise<dataImageFormat[]>;
     /**
      * Scrapes live2D images from moewalls.
      *
@@ -21,21 +21,21 @@ export declare class AnimeWallpaper {
      */
     live2d(title: string): Promise<live2D[]>;
     /**
-     * @deprecated
      * Scrapes 4kWallpaper for a random Wallpaper
      *
      * This function will return an array of random Wallpapers
      *
-     * @returns {dataImageFormat}
+     * @param {resolutionList} [resolution] - The resolution to use for scrapping.
+     * @returns {Promise<dataImageFormat[]>}
      */
-    random(): Promise<dataImageFormat[]>;
+    random(resolution?: resolutionList): Promise<dataImageFormat[]>;
     /**
      * Retrieves fanart from the Hoyolab.
      *
-     * @param {hoyolab} params - Parameters for the Hoyolab request.
-     * @returns {Promise<hoyoResult>} - A promise that resolves to the result of the request.
+     * @param {hoyolabSearchQuery} params - Parameters for the Hoyolab request.
+     * @returns {Promise<hoyolabResult>} - A promise that resolves to the result of the request.
      */
-    hoyolab(params: hoyolab): Promise<hoyoResult>;
+    hoyolab(params: hoyolabSearchQuery): Promise<hoyolabResult>;
     /**
      * Retrieves images from Pinterest based on a search query.
      *
@@ -44,12 +44,6 @@ export declare class AnimeWallpaper {
      * @throws {WallError} - If the search query is empty or no images are found.
      */
     pinterest(query: string): Promise<dataImageFormat[]>;
-    /**
-     * Scrapes a random anime wallpaper from free4kWallpaper.
-     *
-     * @returns {Promise<dataImageFormat[]>} An array of dataImageFormat objects.
-     */
-    private scrapeRandomWallpaper;
     /**
      * Scraping images wallpaper from Wallpapers.com
      *
@@ -82,5 +76,12 @@ export declare class AnimeWallpaper {
      * @throws {WallError} - If the search query is empty or no images are found.
      */
     private scrapeFromMoewall;
+    /**
+     * Scrapes images from hdqwalls.com
+     * @param resolution Resolutions of image that you want to search.
+     * @returns {Promise<dataImageFormat[]>} A promise that resolves to an array of dataImageFormat objects containing information about the retrieved images.
+     * @throws {WallError} - If the search query is empty or no images are found.
+     */
+    private scrapeHdqWallpaper;
 }
 export { AnimeSource };

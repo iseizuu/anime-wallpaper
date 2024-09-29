@@ -1,7 +1,8 @@
 import * as cheerio from "cheerio";
-import WallError from "./utils/error";
-import { AnimeSource, dataImageFormat, hoyoResult, hoyolab, live2D, searchForWallhaven, searchOpt } from "./typing";
-import Client from "./structure/client";
+import WallError from "../utils/error";
+import { AnimeSource, dataImageFormat, hoyolabResult, hoyolabSearchQuery, live2D, resolutionList, searchForWallhaven, searchOptions } from "../typing";
+import Client from "../structure/client";
+import { desktopResolution } from "../config";
 
 export class AnimeWallpaper {
     private client = new Client();
@@ -13,18 +14,18 @@ export class AnimeWallpaper {
      * 
      * this function will return an array of queried anime wallpapers
      * 
-     * @param {searchOpt | searchForWallhaven} options - The search options.
+     * @param {searchOptions | searchForWallhaven} options - The search options.
      * @param {AnimeSource} [source=AnimeSource.WallHaven] - The source to search from.
      * @returns {Promise<dataImageFormat[]>}
      */
-    public async search(options: searchOpt | searchForWallhaven, source: AnimeSource = AnimeSource.WallHaven): Promise<dataImageFormat[]> {
+    public async search(options: searchOptions | searchForWallhaven, source: AnimeSource = AnimeSource.WallHaven): Promise<dataImageFormat[]> {
         switch (source) {
         case AnimeSource.WallHaven:
             return await this.scrapeFromWallHaven(options as searchForWallhaven);
         case AnimeSource.ZeroChan:
-            return await this.scrapeFromZeroChan(options as searchOpt);
+            return await this.scrapeFromZeroChan(options as searchOptions);
         case AnimeSource.Wallpapers:
-            return await this.scrapeFromWallpapersDotCom(options as searchOpt);
+            return await this.scrapeFromWallpapersDotCom(options as searchOptions);
         }
     }
 
@@ -40,25 +41,24 @@ export class AnimeWallpaper {
     }
 
     /**
-     * @deprecated
      * Scrapes 4kWallpaper for a random Wallpaper
      * 
      * This function will return an array of random Wallpapers
      * 
-     * @returns {dataImageFormat}
+     * @param {resolutionList} [resolution] - The resolution to use for scrapping.
+     * @returns {Promise<dataImageFormat[]>}
      */
-    public async random(): Promise<dataImageFormat[]> {
-        console.warn("The 'random' method is deprecated. Please use 'search' method instead.");
-        return await this.scrapeRandomWallpaper();
+    public async random(resolution?: resolutionList): Promise<dataImageFormat[]> {
+        return await this.scrapeHdqWallpaper(resolution);
     }
 
     /**
      * Retrieves fanart from the Hoyolab.
      *
-     * @param {hoyolab} params - Parameters for the Hoyolab request.
-     * @returns {Promise<hoyoResult>} - A promise that resolves to the result of the request.
+     * @param {hoyolabSearchQuery} params - Parameters for the Hoyolab request.
+     * @returns {Promise<hoyolabResult>} - A promise that resolves to the result of the request.
      */
-    public async hoyolab(params: hoyolab): Promise<hoyoResult> {
+    public async hoyolab(params: hoyolabSearchQuery): Promise<hoyolabResult> {
         return await this.client.mihoyo(params);
     }
 
@@ -74,8 +74,7 @@ export class AnimeWallpaper {
 
         return new Promise((resolve, reject) => {
             this.client.get.request(
-                this.client.config.pinterest, { autologin: true, q: query },
-                "_auth=1; _b=\"AVna7S1p7l1C5I9u0+nR3YzijpvXOPc6d09SyCzO+DcwpersQH36SmGiYfymBKhZcGg=\"; _pinterest_sess=TWc9PSZHamJOZ0JobUFiSEpSN3Z4a2NsMk9wZ3gxL1NSc2k2NkFLaUw5bVY5cXR5alZHR0gxY2h2MVZDZlNQalNpUUJFRVR5L3NlYy9JZkthekp3bHo5bXFuaFZzVHJFMnkrR3lTbm56U3YvQXBBTW96VUgzVUhuK1Z4VURGKzczUi9hNHdDeTJ5Y2pBTmxhc2owZ2hkSGlDemtUSnYvVXh5dDNkaDN3TjZCTk8ycTdHRHVsOFg2b2NQWCtpOWxqeDNjNkk3cS85MkhhSklSb0hwTnZvZVFyZmJEUllwbG9UVnpCYVNTRzZxOXNJcmduOVc4aURtM3NtRFo3STlmWjJvSjlWTU5ITzg0VUg1NGhOTEZzME9SNFNhVWJRWjRJK3pGMFA4Q3UvcHBnWHdaYXZpa2FUNkx6Z3RNQjEzTFJEOHZoaHRvazc1c1UrYlRuUmdKcDg3ZEY4cjNtZlBLRTRBZjNYK0lPTXZJTzQ5dU8ybDdVS015bWJKT0tjTWYyRlBzclpiamdsNmtpeUZnRjlwVGJXUmdOMXdTUkFHRWloVjBMR0JlTE5YcmhxVHdoNzFHbDZ0YmFHZ1VLQXU1QnpkM1FqUTNMTnhYb3VKeDVGbnhNSkdkNXFSMXQybjRGL3pyZXRLR0ZTc0xHZ0JvbTJCNnAzQzE0cW1WTndIK0trY05HV1gxS09NRktadnFCSDR2YzBoWmRiUGZiWXFQNjcwWmZhaDZQRm1UbzNxc21pV1p5WDlabm1UWGQzanc1SGlrZXB1bDVDWXQvUis3elN2SVFDbm1DSVE5Z0d4YW1sa2hsSkZJb1h0MTFpck5BdDR0d0lZOW1Pa2RDVzNySWpXWmUwOUFhQmFSVUpaOFQ3WlhOQldNMkExeDIvMjZHeXdnNjdMYWdiQUhUSEFBUlhUVTdBMThRRmh1ekJMYWZ2YTJkNlg0cmFCdnU2WEpwcXlPOVZYcGNhNkZDd051S3lGZmo0eHV0ZE42NW8xRm5aRWpoQnNKNnNlSGFad1MzOHNkdWtER0xQTFN5Z3lmRERsZnZWWE5CZEJneVRlMDd2VmNPMjloK0g5eCswZUVJTS9CRkFweHc5RUh6K1JocGN6clc1JmZtL3JhRE1sc0NMTFlpMVErRGtPcllvTGdldz0=; _ir=0")
+                this.client.config.pinterest, { autologin: true, q: query }, this.client.config.cookie)
                 .then(x => {
                     const results: dataImageFormat[] = [];
                     const $ = cheerio.load(x.data as string);
@@ -97,35 +96,12 @@ export class AnimeWallpaper {
     }
 
     /**
-     * Scrapes a random anime wallpaper from free4kWallpaper.
-     *
-     * @returns {Promise<dataImageFormat[]>} An array of dataImageFormat objects.
-     */
-    private async scrapeRandomWallpaper(): Promise<dataImageFormat[]> {
-        const randomPage = Math.floor(Math.random() * 20) + 1;
-        const response: { data: string } = await this.client.get.request(`${this.client.config.free4kWallpaper}/anime-wallpapers`, { page: `${randomPage}` });
-        const $ = cheerio.load(response.data);
-
-        const wallpapers: dataImageFormat[] = [];
-        $("#contents .container .row .cbody a img").each((i, elm) => {
-            const title = $(elm).attr("title") as string;
-            const imageUrl = `${this.client.config.free4kWallpaper}/${$(elm).attr("data-src")}`;
-            wallpapers.push({ title, image: imageUrl });
-        });
-
-        if (!wallpapers.length) {
-            throw new WallError("No images found");
-        }
-        return wallpapers;
-    }
-
-    /**
      * Scraping images wallpaper from Wallpapers.com
      * 
      * @param search.title the title of the anime you want to search.
      * @returns {dataImageFormat} A promise that resolves to an array of dataImageFormat objects containing information about the retrieved images.
      */
-    private scrapeFromWallpapersDotCom(search: searchOpt): Promise<dataImageFormat[]> {
+    private scrapeFromWallpapersDotCom(search: searchOptions): Promise<dataImageFormat[]> {
         if (!search || !search.title) throw new WallError("title must be specified");
 
         return new Promise((resolve, reject) => {
@@ -191,7 +167,7 @@ export class AnimeWallpaper {
     * @param search.title the title of anime that you want to search.
     * @returns {dataImageFormat} A promise that resolves to an array of dataImageFormat objects containing information about the retrieved images.
     */
-    private scrapeFromZeroChan(search: searchOpt): Promise<dataImageFormat[]> {
+    private scrapeFromZeroChan(search: searchOptions): Promise<dataImageFormat[]> {
         if (!search.title) throw new WallError("title must be specified");
         return new Promise((resolve, reject) => {
             this.client.get.request(`${this.client.config.zerochan}/${search.title}`, {})
@@ -236,6 +212,36 @@ export class AnimeWallpaper {
                 })
                 .catch((er: Error) => reject(new WallError(er.message)));
         });
-    }}
+    }
+
+    /**
+     * Scrapes images from hdqwalls.com
+     * @param resolution Resolutions of image that you want to search.
+     * @returns {Promise<dataImageFormat[]>} A promise that resolves to an array of dataImageFormat objects containing information about the retrieved images.
+     * @throws {WallError} - If the search query is empty or no images are found.
+     */
+    private scrapeHdqWallpaper(resolution?: resolutionList): Promise<dataImageFormat[]> {
+        if (!resolution) resolution = { resolutions: "0" };
+        const resolutionLength = this.client.config.resolution[resolution.resolutions] || this.client.config.resolution["0"];
+        const page = Math.floor(Math.random() * resolutionLength);
+        return new Promise((resolve, reject) => {
+            this.client.get.request(`${this.client.config.hdqwall}/${resolution.resolutions == "0" ? "" : resolution.resolutions}/page/${page}`, {})
+                .then((x: { data: string }) => {
+                    const $ = cheerio.load(x.data);
+                    const arr: dataImageFormat[] = [];
+                    $("img.thumbnail").each((i, elm) => {
+                        const title = $(elm).attr("alt");
+                        const thumbnail = $(elm).attr("src");
+                        const image = desktopResolution.includes(resolution.resolutions)
+                            ? $(elm).attr("src")!.replace("/thumb", "")
+                            : $(elm).attr("src");
+                        arr.push({ title, thumbnail, image });
+                    });
+                    resolve(arr);
+                })
+                .catch((er: Error) => reject(new WallError(er.message)));
+        });
+    }
+}
 
 export { AnimeSource };
