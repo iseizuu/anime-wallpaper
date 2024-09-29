@@ -1,141 +1,112 @@
-<!doctype html>
-<html class="default no-js">
-<head>
-	<meta charset="utf-8">
-	<meta http-equiv="X-UA-Compatible" content="IE=edge">
-	<title>anime-wallpaper</title>
-	<meta name="description" content="Documentation for anime-wallpaper">
-	<meta name="viewport" content="width=device-width, initial-scale=1">
-	<link rel="stylesheet" href="assets/css/main.css">
-	<script async src="assets/js/search.js" id="search-script"></script>
-</head>
-<body>
-<header>
-	<div class="tsd-page-toolbar">
-		<div class="container">
-			<div class="table-wrap">
-				<div class="table-cell" id="tsd-search" data-index="assets/js/search.json" data-base=".">
-					<div class="field">
-						<label for="tsd-search-field" class="tsd-widget search no-caption">Search</label>
-						<input id="tsd-search-field" type="text" />
-					</div>
-					<ul class="results">
-						<li class="state loading">Preparing search index...</li>
-						<li class="state failure">The search index is not available</li>
-					</ul>
-					<a href="index.html" class="title">anime-wallpaper</a>
-				</div>
-				<div class="table-cell" id="tsd-widgets">
-					<div id="tsd-filter">
-						<a href="#" class="tsd-widget options no-caption" data-toggle="options">Options</a>
-						<div class="tsd-filter-group">
-							<div class="tsd-select" id="tsd-filter-visibility">
-								<span class="tsd-select-label">All</span>
-								<ul class="tsd-select-list">
-									<li data-value="public">Public</li>
-									<li data-value="protected">Public/Protected</li>
-									<li data-value="private" class="selected">All</li>
-								</ul>
-							</div>
-							<input type="checkbox" id="tsd-filter-inherited" checked />
-							<label class="tsd-widget" for="tsd-filter-inherited">Inherited</label>
-							<input type="checkbox" id="tsd-filter-externals" checked />
-							<label class="tsd-widget" for="tsd-filter-externals">Externals</label>
-						</div>
-					</div>
-					<a href="#" class="tsd-widget menu no-caption" data-toggle="menu">Menu</a>
-				</div>
-			</div>
-		</div>
-	</div>
-	<div class="tsd-page-title">
-		<div class="container">
-			<h1>anime-wallpaper</h1>
-		</div>
-	</div>
-</header>
-<div class="container container-main">
-	<div class="row">
-		<div class="col-8 col-content">
-			<div class="tsd-panel tsd-typography">
-				<h1 align="center">Anime Wallpaper</h1>
-				<p align="center">
-					<a href="https://github.com/beyluta/WinWidgets">
-						<img src="https://img.shields.io/npm/v/anime-wallpaper.svg?logo=npm&logoColor=fff&label=Version&color=limegreen" alt="Version" />
-					</a>
-					<a href="https://www.npmjs.com/package/anime-wallpaper">
-						<img src="https://img.shields.io/npm/v/anime-wallpaper.svg?logo=npm&logoColor=fff&label=NPM+package&color=red" alt="Anime Wallpaper on npm" />
-					</a>
-				</p>
-				<p align="center">
-					<img src="https://i.imgur.com/DeP0Nlv.jpeg">
-				</p>
-				<a href="#documentation" id="documentation" style="color: inherit; text-decoration: none;">
-					<h4>[<a href="https://iseizuu.github.io/anime-wallpaper/">Documentation</a>]</h4>
-				</a>
-				<p>Get Anime wallpapers based on scrapping from websites.</p>
-				<ul>
-					<li><a href="https://free4kwallpapers.com/">4K Wallpapers</a></li>
-					<li><a href="https://wallhaven.cc">Wall Haven</a></li>
-					<li><a href="https://www.zerochan.net">ZeroChan</a></li>
-					<li><a href="https://wallpapers.com">Wallpapers.com</a></li>
-					<li><a href="https://www.hoyolab.com/">Hoyolab</a> (New)</li>
-					<li><a href="https://pinterest.com/">Pinterest</a> (New)<br>
-					</li>
-				</ul>
-				<p><a href="https://nodei.co/npm/anime-wallpaper"><img src="https://nodei.co/npm/anime-wallpaper.png?compact=true" alt="Version"></a></p>
-				<a href="#installing" id="installing" style="color: inherit; text-decoration: none;">
-					<h1>Installing</h1>
-				</a>
-				<pre><code><span style="color: #001080">npm</span><span style="color: #000000"> </span><span style="color: #001080">install</span><span style="color: #000000"> </span><span style="color: #001080">anime</span><span style="color: #000000">-</span><span style="color: #001080">wallpaper</span>
-</code></pre>
-				<p>or</p>
-				<pre><code><span style="color: #001080">yarn</span><span style="color: #000000"> </span><span style="color: #001080">add</span><span style="color: #000000"> </span><span style="color: #001080">anime</span><span style="color: #000000">-</span><span style="color: #001080">wallpaper</span>
-</code></pre>
-				<a href="#example-usage-from-website" id="example-usage-from-website" style="color: inherit; text-decoration: none;">
-					<h1>Example Usage from Website</h1>
-				</a>
-				<p>At the head of your file, start by importing the necessary classes</p>
-				<pre><code class="language-js"><span style="color: #0000FF">const</span><span style="color: #000000"> { </span><span style="color: #0070C1">AnimeWallpaper</span><span style="color: #000000">, </span><span style="color: #0070C1">AnimeSource</span><span style="color: #000000"> } = </span><span style="color: #795E26">require</span><span style="color: #000000">(</span><span style="color: #A31515">&#039;anime-wallpaper&#039;</span><span style="color: #000000">);</span>
-<span style="color: #0000FF">const</span><span style="color: #000000"> </span><span style="color: #0070C1">wallpaper</span><span style="color: #000000"> = </span><span style="color: #0000FF">new</span><span style="color: #000000"> </span><span style="color: #795E26">AnimeWallpaper</span><span style="color: #000000">();</span>
-</code></pre>
-				<ul>
-					<li>Getting a random wallpaper from <a href="https://free4kwallpapers.com/">4K Wallpapers</a> <img align="center" width="15" src="https://cdn.discordapp.com/emojis/735119429016485920.webp?size=128&quality=lossless"></li>
-				</ul>
-				<pre><code class="language-js"><span style="color: #0000FF">const</span><span style="color: #000000"> </span><span style="color: #0070C1">wallpaper</span><span style="color: #000000"> = </span><span style="color: #AF00DB">await</span><span style="color: #000000"> </span><span style="color: #001080">wallpaper</span><span style="color: #000000">.</span><span style="color: #795E26">random</span><span style="color: #000000">();</span>
-<span style="color: #AF00DB">return</span><span style="color: #000000"> </span><span style="color: #001080">console</span><span style="color: #000000">.</span><span style="color: #795E26">log</span><span style="color: #000000">(</span><span style="color: #001080">wallpaper</span><span style="color: #000000">)</span>
-</code></pre>
-				<ul>
-					<li>Getting Wallpaper from <a href="https://wallhaven.cc">WallHaven</a> <img align="center" width="15" src="https://cdn.discordapp.com/emojis/735119429016485920.webp?size=128&quality=lossless"></li>
-				</ul>
-				<pre><code class="language-js"><span style="color: #0000FF">const</span><span style="color: #000000"> </span><span style="color: #0070C1">wallpaper</span><span style="color: #000000"> = </span><span style="color: #AF00DB">await</span><span style="color: #000000"> </span><span style="color: #001080">wall</span><span style="color: #000000">.</span><span style="color: #795E26">search</span><span style="color: #000000">({ </span><span style="color: #001080">title:</span><span style="color: #000000"> </span><span style="color: #A31515">&quot;firefly honkai&quot;</span><span style="color: #000000">, </span><span style="color: #001080">page:</span><span style="color: #000000"> </span><span style="color: #098658">1</span><span style="color: #000000">, </span><span style="color: #001080">type:</span><span style="color: #000000"> </span><span style="color: #A31515">&quot;sfw&quot;</span><span style="color: #000000">, </span><span style="color: #001080">aiArt:</span><span style="color: #000000"> </span><span style="color: #0000FF">true</span><span style="color: #000000"> }, </span><span style="color: #001080">AnimeSource</span><span style="color: #000000">.</span><span style="color: #001080">WallHaven</span><span style="color: #000000">);</span>
-<span style="color: #AF00DB">return</span><span style="color: #000000"> </span><span style="color: #001080">console</span><span style="color: #000000">.</span><span style="color: #795E26">log</span><span style="color: #000000">(</span><span style="color: #001080">wallpaper</span><span style="color: #000000">)</span>
-</code></pre>
-				<ul>
-					<li>Getting Wallpaper from <a href="https://wallpapers.com">Wallpapers.com</a> <img align="center" width="15" src="https://cdn.discordapp.com/emojis/735119429016485920.webp?size=128&quality=lossless"></li>
-				</ul>
-				<pre><code class="language-js"><span style="color: #0000FF">const</span><span style="color: #000000"> </span><span style="color: #0070C1">wallpaper</span><span style="color: #000000"> = </span><span style="color: #AF00DB">await</span><span style="color: #000000"> </span><span style="color: #001080">wallpaper</span><span style="color: #000000">.</span><span style="color: #795E26">search</span><span style="color: #000000">({ </span><span style="color: #001080">title:</span><span style="color: #000000"> </span><span style="color: #A31515">&quot;Keqing&quot;</span><span style="color: #000000"> }, </span><span style="color: #001080">AnimeSource</span><span style="color: #000000">.</span><span style="color: #001080">Wallpapers</span><span style="color: #000000">);</span>
-<span style="color: #AF00DB">return</span><span style="color: #000000"> </span><span style="color: #001080">console</span><span style="color: #000000">.</span><span style="color: #795E26">log</span><span style="color: #000000">(</span><span style="color: #001080">wallpaper</span><span style="color: #000000">)</span>
-</code></pre>
-				<ul>
-					<li>Getting Wallpaper from <a href="https://www.zerochan.net">ZeroChan</a> <img align="center" width="15" src="https://cdn.discordapp.com/emojis/735119429016485920.webp?size=128&quality=lossless"></li>
-				</ul>
-				<pre><code class="language-js"><span style="color: #0000FF">const</span><span style="color: #000000"> </span><span style="color: #0070C1">wallpaper</span><span style="color: #000000"> = </span><span style="color: #AF00DB">await</span><span style="color: #000000"> </span><span style="color: #001080">wallpaper</span><span style="color: #000000">.</span><span style="color: #795E26">search</span><span style="color: #000000">({ </span><span style="color: #001080">title:</span><span style="color: #000000"> </span><span style="color: #A31515">&quot;Misaka Mikoto&quot;</span><span style="color: #000000"> }, </span><span style="color: #001080">AnimeSource</span><span style="color: #000000">.</span><span style="color: #001080">ZeroChan</span><span style="color: #000000">);</span>
-<span style="color: #AF00DB">return</span><span style="color: #000000"> </span><span style="color: #001080">console</span><span style="color: #000000">.</span><span style="color: #795E26">log</span><span style="color: #000000">(</span><span style="color: #001080">wallpaper</span><span style="color: #000000">)</span>
-</code></pre>
-				<a href="#hoyolab-example" id="hoyolab-example" style="color: inherit; text-decoration: none;">
-					<h1>Hoyolab Example</h1>
-				</a>
-				<ul>
-					<li>Get fanart from hoyolab <img align="center" width="15" src="https://cdn.discordapp.com/emojis/735119429016485920.webp?size=128&quality=lossless"></li>
-				</ul>
-				<pre><code class="language-js"><span style="color: #0000FF">const</span><span style="color: #000000"> </span><span style="color: #0070C1">wallpaper</span><span style="color: #000000"> = </span><span style="color: #AF00DB">await</span><span style="color: #000000"> </span><span style="color: #001080">wall</span><span style="color: #000000">.</span><span style="color: #795E26">hoyolab</span><span style="color: #000000">({ </span><span style="color: #001080">game:</span><span style="color: #000000"> </span><span style="color: #A31515">&quot;GenshinImpact&quot;</span><span style="color: #000000">, </span><span style="color: #001080">postType:</span><span style="color: #000000"> </span><span style="color: #A31515">&quot;Trending&quot;</span><span style="color: #000000"> });</span>
-<span style="color: #AF00DB">return</span><span style="color: #000000"> </span><span style="color: #001080">console</span><span style="color: #000000">.</span><span style="color: #795E26">log</span><span style="color: #000000">(</span><span style="color: #001080">wallpaper</span><span style="color: #000000">)</span>
-</code></pre>
-				<a href="#result" id="result" style="color: inherit; text-decoration: none;">
-					<h4>Result</h4>
-				</a>
-				<pre><code class="language-txt">{
+<!DOCTYPE html><html class="default" lang="en"><head><meta charset="utf-8"/><meta http-equiv="x-ua-compatible" content="IE=edge"/><title>anime-wallpaper - v3.2.2</title><meta name="description" content="Documentation for anime-wallpaper"/><meta name="viewport" content="width=device-width, initial-scale=1"/><link rel="stylesheet" href="assets/style.css"/><link rel="stylesheet" href="assets/highlight.css"/><script defer src="assets/main.js"></script><script async src="assets/icons.js" id="tsd-icons-script"></script><script async src="assets/search.js" id="tsd-search-script"></script><script async src="assets/navigation.js" id="tsd-nav-script"></script></head><body><script>document.documentElement.dataset.theme = localStorage.getItem("tsd-theme") || "os";document.body.style.display="none";setTimeout(() => app?app.showPage():document.body.style.removeProperty("display"),500)</script><header class="tsd-page-toolbar"><div class="tsd-toolbar-contents container"><div class="table-cell" id="tsd-search" data-base="."><div class="field"><label for="tsd-search-field" class="tsd-widget tsd-toolbar-icon search no-caption"><svg width="16" height="16" viewBox="0 0 16 16" fill="none"><use href="assets/icons.svg#icon-search"></use></svg></label><input type="text" id="tsd-search-field" aria-label="Search"/></div><div class="field"><div id="tsd-toolbar-links"></div></div><ul class="results"><li class="state loading">Preparing search index...</li><li class="state failure">The search index is not available</li></ul><a href="index.html" class="title">anime-wallpaper - v3.2.2</a></div><div class="table-cell" id="tsd-widgets"><a href="#" class="tsd-widget tsd-toolbar-icon menu no-caption" data-toggle="menu" aria-label="Menu"><svg width="16" height="16" viewBox="0 0 16 16" fill="none"><use href="assets/icons.svg#icon-menu"></use></svg></a></div></div></header><div class="container container-main"><div class="col-content"><div class="tsd-page-title"><h2>anime-wallpaper - v3.2.2</h2></div><div class="tsd-panel tsd-typography"><h1 align="center">Anime Wallpaper</h1>
+<p align="center">
+  <a href="https://github.com/beyluta/WinWidgets">
+    <img src="https://img.shields.io/npm/v/anime-wallpaper.svg?logo=npm&logoColor=fff&label=Version&color=limegreen" alt="Version" />
+  </a>
+  <a href="https://www.npmjs.com/package/anime-wallpaper">
+    <img src="https://img.shields.io/npm/v/anime-wallpaper.svg?logo=npm&logoColor=fff&label=NPM+package&color=red" alt="Anime Wallpaper on npm" />
+  </a>
+</p>
+<p align="center" style="center"> 
+    <img src="https://i.imgur.com/DeP0Nlv.jpeg">
+</p>
+<a id="md:documentation" class="tsd-anchor"></a><h4 class="tsd-anchor-link">[<a href="https://iseizuu.github.io/anime-wallpaper/" target="_blank" class="external">Documentation</a>]<a href="#md:documentation" aria-label="Permalink" class="tsd-anchor-icon"><svg viewBox="0 0 24 24"><use href="assets/icons.svg#icon-anchor"></use></svg></a></h4><p>Get Anime wallpapers based on scrapping from websites.</p>
+<table>
+<thead>
+<tr>
+<th>Website</th>
+<th>Type</th>
+<th>Status</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><a href="https://hdqwalls.com" target="_blank" class="external">Hqdwalls</a> [NEW]</td>
+<td>Image</td>
+<td>✔</td>
+</tr>
+<tr>
+<td><a href="https://wallhaven.cc" target="_blank" class="external">Wall Haven</a></td>
+<td>Image</td>
+<td>✔</td>
+</tr>
+<tr>
+<td><a href="https://www.zerochan.net" target="_blank" class="external">ZeroChan</a></td>
+<td>Image</td>
+<td>✔</td>
+</tr>
+<tr>
+<td><a href="https://wallpapers.com" target="_blank" class="external">Wallpapers.com</a></td>
+<td>Image</td>
+<td>✔</td>
+</tr>
+<tr>
+<td><a href="https://www.hoyolab.com/" target="_blank" class="external">Hoyolab</a></td>
+<td>Image</td>
+<td>✔</td>
+</tr>
+<tr>
+<td><a href="https://pinterest.com/" target="_blank" class="external">Pinterest</a></td>
+<td>Image</td>
+<td>✔</td>
+</tr>
+<tr>
+<td><a href="https://moewalls.com" target="_blank" class="external">Moe Walls</a> [NEW]</td>
+<td>Video/Image</td>
+<td>✔</td>
+</tr>
+</tbody>
+</table>
+<br>
+<p><a href="https://nodei.co/npm/anime-wallpaper" target="_blank" class="external"><img src="https://nodei.co/npm/anime-wallpaper.png?compact=true" alt="Version"></a></p>
+<a id="md:installing" class="tsd-anchor"></a><h1 class="tsd-anchor-link">Installing<a href="#md:installing" aria-label="Permalink" class="tsd-anchor-icon"><svg viewBox="0 0 24 24"><use href="assets/icons.svg#icon-anchor"></use></svg></a></h1><pre><code><span class="hl-0">npm</span><span class="hl-1"> </span><span class="hl-0">install</span><span class="hl-1"> </span><span class="hl-0">anime</span><span class="hl-1">-</span><span class="hl-0">wallpaper</span>
+</code><button>Copy</button></pre>
+
+<p>or</p>
+<pre><code><span class="hl-0">yarn</span><span class="hl-1"> </span><span class="hl-0">add</span><span class="hl-1"> </span><span class="hl-0">anime</span><span class="hl-1">-</span><span class="hl-0">wallpaper</span>
+</code><button>Copy</button></pre>
+
+<a id="md:example-usage-from-website" class="tsd-anchor"></a><h1 class="tsd-anchor-link">Example Usage from Website<a href="#md:example-usage-from-website" aria-label="Permalink" class="tsd-anchor-icon"><svg viewBox="0 0 24 24"><use href="assets/icons.svg#icon-anchor"></use></svg></a></h1><p>At the head of your file, start by importing the necessary classes</p>
+<pre><code class="js"><span class="hl-2">const</span><span class="hl-1"> { </span><span class="hl-3">AnimeWallpaper</span><span class="hl-1">, </span><span class="hl-3">AnimeSource</span><span class="hl-1"> } = </span><span class="hl-4">require</span><span class="hl-1">(</span><span class="hl-5">&#39;anime-wallpaper&#39;</span><span class="hl-1">);</span><br/><span class="hl-2">const</span><span class="hl-1"> </span><span class="hl-3">wallpaper</span><span class="hl-1"> = </span><span class="hl-2">new</span><span class="hl-1"> </span><span class="hl-4">AnimeWallpaper</span><span class="hl-1">();</span>
+</code><button type="button">Copy</button></pre>
+
+<ul>
+<li>Getting a random wallpaper from <a href="https://hdqwalls.com" target="_blank" class="external">Hqdwalls</a> <img align="center" width="15" src="https://cdn.discordapp.com/emojis/735119429016485920.webp?size=128&quality=lossless"></li>
+</ul>
+<pre><code class="js"><span class="hl-2">const</span><span class="hl-1"> </span><span class="hl-3">wallpaper</span><span class="hl-1"> = </span><span class="hl-6">await</span><span class="hl-1"> </span><span class="hl-0">wallpaper</span><span class="hl-1">.</span><span class="hl-4">random</span><span class="hl-1">({ </span><span class="hl-0">resolution:</span><span class="hl-1"> </span><span class="hl-5">&quot;1920x1080&quot;</span><span class="hl-1"> });</span><br/><span class="hl-6">return</span><span class="hl-1"> </span><span class="hl-0">console</span><span class="hl-1">.</span><span class="hl-4">log</span><span class="hl-1">(</span><span class="hl-0">wallpaper</span><span class="hl-1">)</span>
+</code><button type="button">Copy</button></pre>
+
+<ul>
+<li>Getting Wallpaper from <a href="https://wallhaven.cc" target="_blank" class="external">WallHaven</a> <img align="center" width="15" src="https://cdn.discordapp.com/emojis/735119429016485920.webp?size=128&quality=lossless"></li>
+</ul>
+<pre><code class="js"><span class="hl-2">const</span><span class="hl-1"> </span><span class="hl-3">wallpaper</span><span class="hl-1"> = </span><span class="hl-6">await</span><span class="hl-1"> </span><span class="hl-0">wall</span><span class="hl-1">.</span><span class="hl-4">search</span><span class="hl-1">({ </span><span class="hl-0">title:</span><span class="hl-1"> </span><span class="hl-5">&quot;firefly honkai&quot;</span><span class="hl-1">, </span><span class="hl-0">page:</span><span class="hl-1"> </span><span class="hl-7">1</span><span class="hl-1">, </span><span class="hl-0">type:</span><span class="hl-1"> </span><span class="hl-5">&quot;sfw&quot;</span><span class="hl-1">, </span><span class="hl-0">aiArt:</span><span class="hl-1"> </span><span class="hl-2">true</span><span class="hl-1"> }, </span><span class="hl-0">AnimeSource</span><span class="hl-1">.</span><span class="hl-0">WallHaven</span><span class="hl-1">);</span><br/><span class="hl-6">return</span><span class="hl-1"> </span><span class="hl-0">console</span><span class="hl-1">.</span><span class="hl-4">log</span><span class="hl-1">(</span><span class="hl-0">wallpaper</span><span class="hl-1">)</span>
+</code><button type="button">Copy</button></pre>
+
+<ul>
+<li>Getting Wallpaper from <a href="https://wallpapers.com" target="_blank" class="external">Wallpapers.com</a> <img align="center" width="15" src="https://cdn.discordapp.com/emojis/735119429016485920.webp?size=128&quality=lossless"></li>
+</ul>
+<pre><code class="js"><span class="hl-2">const</span><span class="hl-1"> </span><span class="hl-3">wallpaper</span><span class="hl-1"> = </span><span class="hl-6">await</span><span class="hl-1"> </span><span class="hl-0">wallpaper</span><span class="hl-1">.</span><span class="hl-4">search</span><span class="hl-1">({ </span><span class="hl-0">title:</span><span class="hl-1"> </span><span class="hl-5">&quot;Keqing&quot;</span><span class="hl-1"> }, </span><span class="hl-0">AnimeSource</span><span class="hl-1">.</span><span class="hl-0">Wallpapers</span><span class="hl-1">);</span><br/><span class="hl-6">return</span><span class="hl-1"> </span><span class="hl-0">console</span><span class="hl-1">.</span><span class="hl-4">log</span><span class="hl-1">(</span><span class="hl-0">wallpaper</span><span class="hl-1">)</span>
+</code><button type="button">Copy</button></pre>
+
+<ul>
+<li>Getting Wallpaper from <a href="https://www.zerochan.net" target="_blank" class="external">ZeroChan</a> <img align="center" width="15" src="https://cdn.discordapp.com/emojis/735119429016485920.webp?size=128&quality=lossless"></li>
+</ul>
+<pre><code class="js"><span class="hl-2">const</span><span class="hl-1"> </span><span class="hl-3">wallpaper</span><span class="hl-1"> = </span><span class="hl-6">await</span><span class="hl-1"> </span><span class="hl-0">wallpaper</span><span class="hl-1">.</span><span class="hl-4">search</span><span class="hl-1">({ </span><span class="hl-0">title:</span><span class="hl-1"> </span><span class="hl-5">&quot;Misaka Mikoto&quot;</span><span class="hl-1"> }, </span><span class="hl-0">AnimeSource</span><span class="hl-1">.</span><span class="hl-0">ZeroChan</span><span class="hl-1">);</span><br/><span class="hl-6">return</span><span class="hl-1"> </span><span class="hl-0">console</span><span class="hl-1">.</span><span class="hl-4">log</span><span class="hl-1">(</span><span class="hl-0">wallpaper</span><span class="hl-1">)</span>
+</code><button type="button">Copy</button></pre>
+
+<a id="md:live-2d" class="tsd-anchor"></a><h1 class="tsd-anchor-link">Live 2D<a href="#md:live-2d" aria-label="Permalink" class="tsd-anchor-icon"><svg viewBox="0 0 24 24"><use href="assets/icons.svg#icon-anchor"></use></svg></a></h1><ul>
+<li>Getting Live 2D from <a href="https://moewalls.com" target="_blank" class="external">Moe Walls</a> <img align="center" width="15" src="https://cdn.discordapp.com/emojis/735119429016485920.webp?size=128&quality=lossless"></li>
+</ul>
+<pre><code class="js"><span class="hl-2">const</span><span class="hl-1"> </span><span class="hl-3">wallpaper</span><span class="hl-1"> = </span><span class="hl-6">await</span><span class="hl-1"> </span><span class="hl-0">wallpaper</span><span class="hl-1">.</span><span class="hl-4">live2d</span><span class="hl-1">(</span><span class="hl-5">&quot;Jane Doe&quot;</span><span class="hl-1">);</span><br/><span class="hl-6">return</span><span class="hl-1"> </span><span class="hl-0">console</span><span class="hl-1">.</span><span class="hl-4">log</span><span class="hl-1">(</span><span class="hl-0">wallpaper</span><span class="hl-1">)</span>
+</code><button type="button">Copy</button></pre>
+
+<a id="md:hoyolab-example" class="tsd-anchor"></a><h1 class="tsd-anchor-link">Hoyolab Example<a href="#md:hoyolab-example" aria-label="Permalink" class="tsd-anchor-icon"><svg viewBox="0 0 24 24"><use href="assets/icons.svg#icon-anchor"></use></svg></a></h1><ul>
+<li>Get fanart from hoyolab <img align="center" width="15" src="https://cdn.discordapp.com/emojis/735119429016485920.webp?size=128&quality=lossless"></li>
+</ul>
+<pre><code class="js"><span class="hl-2">const</span><span class="hl-1"> </span><span class="hl-3">wallpaper</span><span class="hl-1"> = </span><span class="hl-6">await</span><span class="hl-1"> </span><span class="hl-0">wall</span><span class="hl-1">.</span><span class="hl-4">hoyolab</span><span class="hl-1">({ </span><span class="hl-0">game:</span><span class="hl-1"> </span><span class="hl-5">&quot;GenshinImpact&quot;</span><span class="hl-1">, </span><span class="hl-0">postType:</span><span class="hl-1"> </span><span class="hl-5">&quot;Trending&quot;</span><span class="hl-1"> });</span><br/><span class="hl-6">return</span><span class="hl-1"> </span><span class="hl-0">console</span><span class="hl-1">.</span><span class="hl-4">log</span><span class="hl-1">(</span><span class="hl-0">wallpaper</span><span class="hl-1">)</span>
+</code><button type="button">Copy</button></pre>
+
+<a id="md:result" class="tsd-anchor"></a><h4 class="tsd-anchor-link">Result<a href="#md:result" aria-label="Permalink" class="tsd-anchor-icon"><svg viewBox="0 0 24 24"><use href="assets/icons.svg#icon-anchor"></use></svg></a></h4><pre><code class="txt">{
   data: {
     list: [
       {
@@ -147,104 +118,27 @@
     ]
   }
 }
-</code></pre>
-				<a href="#pinterest" id="pinterest" style="color: inherit; text-decoration: none;">
-					<h1>Pinterest</h1>
-				</a>
-				<ul>
-					<li>Getting image from pinterest <img align="center" width="20" src="https://cdn3.emoji.gg/emojis/5505-idle-status.png"></li>
-				</ul>
-				<pre><code class="language-js"><span style="color: #0000FF">const</span><span style="color: #000000"> </span><span style="color: #0070C1">wallpaper</span><span style="color: #000000"> = </span><span style="color: #AF00DB">await</span><span style="color: #000000"> </span><span style="color: #001080">wall</span><span style="color: #000000">.</span><span style="color: #795E26">pinterest</span><span style="color: #000000">(</span><span style="color: #A31515">&quot;Ellen Joe ZzZ&quot;</span><span style="color: #000000">);</span>
-<span style="color: #AF00DB">return</span><span style="color: #000000"> </span><span style="color: #001080">console</span><span style="color: #000000">.</span><span style="color: #795E26">log</span><span style="color: #000000">(</span><span style="color: #001080">wallpaper</span><span style="color: #000000">)</span>
-</code></pre>
-				<ul>
-					<li>nb: sometimes it might be fail when scraping pinterest, just try again and over again :&gt;</li>
-				</ul>
-				<a href="#warning" id="warning" style="color: inherit; text-decoration: none;">
-					<h2>Warning</h2>
-				</a>
-				<p>In some rare cases, the fetching process might fail due to inconsistencies when scraping websites.<br><br></p>
-				<a href="#contributors" id="contributors" style="color: inherit; text-decoration: none;">
-					<h1>Contributors</h1>
-				</a>
-				<p>Fork then clone the project and install its dependencies:</p>
-				<pre><code><span style="color: #001080">npm</span><span style="color: #000000"> </span><span style="color: #001080">i</span>
-</code></pre>
-				<p>In the root folder of the project type the following to compile the .ts into .js</p>
-				<pre><code><span style="color: #001080">tsc</span>
-</code></pre>
-				<hr>
-				<p>© <a href="https://github.com/iseizuu">Aizuu</a></p>
-			</div>
-		</div>
-		<div class="col-4 col-menu menu-sticky-wrap menu-highlight">
-			<nav class="tsd-navigation primary">
-				<ul>
-					<li class=" ">
-						<a href="modules.html">Exports</a>
-					</li>
-					<li class=" tsd-kind-module">
-						<a href="modules/config.html">config</a>
-					</li>
-					<li class=" tsd-kind-module">
-						<a href="modules/hoyo.html">hoyo</a>
-					</li>
-					<li class=" tsd-kind-module">
-						<a href="modules/index.html">index</a>
-					</li>
-					<li class=" tsd-kind-module">
-						<a href="modules/structure_client.html">structure/client</a>
-					</li>
-					<li class=" tsd-kind-module">
-						<a href="modules/typings.html">typings</a>
-					</li>
-					<li class=" tsd-kind-module">
-						<a href="modules/typings_enum.html">typings/enum</a>
-					</li>
-					<li class=" tsd-kind-module">
-						<a href="modules/typings_typing.html">typings/typing</a>
-					</li>
-					<li class=" tsd-kind-module">
-						<a href="modules/utils_error.html">utils/error</a>
-					</li>
-					<li class=" tsd-kind-module">
-						<a href="modules/utils_request.html">utils/request</a>
-					</li>
-					<li class=" tsd-kind-module">
-						<a href="modules/wallpaper.html">wallpaper</a>
-					</li>
-				</ul>
-			</nav>
-			<nav class="tsd-navigation secondary menu-sticky">
-				<ul class="before-current">
-				</ul>
-			</nav>
-		</div>
-	</div>
-</div>
-<footer class="with-border-bottom">
-	<div class="container">
-		<h2>Legend</h2>
-		<div class="tsd-legend-group">
-			<ul class="tsd-legend">
-				<li class="tsd-kind-variable"><span class="tsd-kind-icon">Variable</span></li>
-			</ul>
-			<ul class="tsd-legend">
-				<li class="tsd-kind-enum"><span class="tsd-kind-icon">Enumeration</span></li>
-			</ul>
-			<ul class="tsd-legend">
-				<li class="tsd-kind-interface"><span class="tsd-kind-icon">Interface</span></li>
-			</ul>
-			<ul class="tsd-legend">
-				<li class="tsd-kind-class"><span class="tsd-kind-icon">Class</span></li>
-			</ul>
-		</div>
-	</div>
-</footer>
-<div class="container tsd-generator">
-	<p>Generated using <a href="https://typedoc.org/" target="_blank">TypeDoc</a></p>
-</div>
-<div class="overlay"></div>
-<script src="assets/js/main.js"></script>
-</body>
-</html>
+
+</code><button type="button">Copy</button></pre>
+
+<a id="md:pinterest" class="tsd-anchor"></a><h1 class="tsd-anchor-link">Pinterest<a href="#md:pinterest" aria-label="Permalink" class="tsd-anchor-icon"><svg viewBox="0 0 24 24"><use href="assets/icons.svg#icon-anchor"></use></svg></a></h1><ul>
+<li>Getting image from pinterest <img align="center" width="20" src="https://cdn3.emoji.gg/emojis/5505-idle-status.png"></li>
+</ul>
+<pre><code class="js"><span class="hl-2">const</span><span class="hl-1"> </span><span class="hl-3">wallpaper</span><span class="hl-1"> = </span><span class="hl-6">await</span><span class="hl-1"> </span><span class="hl-0">wall</span><span class="hl-1">.</span><span class="hl-4">pinterest</span><span class="hl-1">(</span><span class="hl-5">&quot;Ellen Joe ZzZ&quot;</span><span class="hl-1">);</span><br/><span class="hl-6">return</span><span class="hl-1"> </span><span class="hl-0">console</span><span class="hl-1">.</span><span class="hl-4">log</span><span class="hl-1">(</span><span class="hl-0">wallpaper</span><span class="hl-1">)</span>
+</code><button type="button">Copy</button></pre>
+
+<ul>
+<li>nb: sometimes it might be fail when scraping pinterest, just try again and over again :&gt;</li>
+</ul>
+<a id="md:warning" class="tsd-anchor"></a><h2 class="tsd-anchor-link">Warning<a href="#md:warning" aria-label="Permalink" class="tsd-anchor-icon"><svg viewBox="0 0 24 24"><use href="assets/icons.svg#icon-anchor"></use></svg></a></h2><p>In some rare cases, the fetching process might fail due to inconsistencies when scraping websites.<br><br></p>
+<a id="md:contributors" class="tsd-anchor"></a><h1 class="tsd-anchor-link">Contributors<a href="#md:contributors" aria-label="Permalink" class="tsd-anchor-icon"><svg viewBox="0 0 24 24"><use href="assets/icons.svg#icon-anchor"></use></svg></a></h1><p>Fork then clone the project and install its dependencies:</p>
+<pre><code><span class="hl-0">npm</span><span class="hl-1"> </span><span class="hl-0">i</span>
+</code><button>Copy</button></pre>
+
+<p>In the root folder of the project type the following to compile the .ts into .js</p>
+<pre><code><span class="hl-0">tsc</span>
+</code><button>Copy</button></pre>
+
+<hr>
+<p>© <a href="https://github.com/iseizuu" target="_blank" class="external">Aizuu</a></p>
+</div></div><div class="col-sidebar"><div class="page-menu"><div class="tsd-navigation settings"><details class="tsd-accordion"><summary class="tsd-accordion-summary"><h3><svg width="20" height="20" viewBox="0 0 24 24" fill="none"><use href="assets/icons.svg#icon-chevronDown"></use></svg>Settings</h3></summary><div class="tsd-accordion-details"><div class="tsd-filter-visibility"><span class="settings-label">Member Visibility</span><ul id="tsd-filter-options"><li class="tsd-filter-item"><label class="tsd-filter-input"><input type="checkbox" id="tsd-filter-protected" name="protected"/><svg width="32" height="32" viewBox="0 0 32 32" aria-hidden="true"><rect class="tsd-checkbox-background" width="30" height="30" x="1" y="1" rx="6" fill="none"></rect><path class="tsd-checkbox-checkmark" d="M8.35422 16.8214L13.2143 21.75L24.6458 10.25" stroke="none" stroke-width="3.5" stroke-linejoin="round" fill="none"></path></svg><span>Protected</span></label></li><li class="tsd-filter-item"><label class="tsd-filter-input"><input type="checkbox" id="tsd-filter-inherited" name="inherited" checked/><svg width="32" height="32" viewBox="0 0 32 32" aria-hidden="true"><rect class="tsd-checkbox-background" width="30" height="30" x="1" y="1" rx="6" fill="none"></rect><path class="tsd-checkbox-checkmark" d="M8.35422 16.8214L13.2143 21.75L24.6458 10.25" stroke="none" stroke-width="3.5" stroke-linejoin="round" fill="none"></path></svg><span>Inherited</span></label></li><li class="tsd-filter-item"><label class="tsd-filter-input"><input type="checkbox" id="tsd-filter-external" name="external"/><svg width="32" height="32" viewBox="0 0 32 32" aria-hidden="true"><rect class="tsd-checkbox-background" width="30" height="30" x="1" y="1" rx="6" fill="none"></rect><path class="tsd-checkbox-checkmark" d="M8.35422 16.8214L13.2143 21.75L24.6458 10.25" stroke="none" stroke-width="3.5" stroke-linejoin="round" fill="none"></path></svg><span>External</span></label></li></ul></div><div class="tsd-theme-toggle"><label class="settings-label" for="tsd-theme">Theme</label><select id="tsd-theme"><option value="os">OS</option><option value="light">Light</option><option value="dark">Dark</option></select></div></div></details></div><details open class="tsd-accordion tsd-page-navigation"><summary class="tsd-accordion-summary"><h3><svg width="20" height="20" viewBox="0 0 24 24" fill="none"><use href="assets/icons.svg#icon-chevronDown"></use></svg>On This Page</h3></summary><div class="tsd-accordion-details"><ul><li><ul><li><ul><li><a href="#md:documentation"><span>[<wbr/>Documentation]</span></a></li></ul></li></ul></li></ul><a href="#md:installing"><span>Installing</span></a><a href="#md:example-usage-from-website"><span>Example <wbr/>Usage from <wbr/>Website</span></a><a href="#md:live-2d"><span>Live 2D</span></a><a href="#md:hoyolab-example"><span>Hoyolab <wbr/>Example</span></a><ul><li><ul><li><ul><li><a href="#md:result"><span>Result</span></a></li></ul></li></ul></li></ul><a href="#md:pinterest"><span>Pinterest</span></a><ul><li><a href="#md:warning"><span>Warning</span></a></li></ul><a href="#md:contributors"><span>Contributors</span></a></div></details></div><div class="site-menu"><nav class="tsd-navigation"><a href="index.html" class="current"><svg class="tsd-kind-icon" viewBox="0 0 24 24"><use href="assets/icons.svg#icon-1"></use></svg><span>anime-wallpaper - v3.2.2</span></a><ul class="tsd-small-nested-navigation" id="tsd-nav-container" data-base="."><li>Loading...</li></ul></nav></div></div></div><footer><p class="tsd-generator">Generated using <a href="https://typedoc.org/" target="_blank">TypeDoc</a></p></footer><div class="overlay"></div></body></html>
