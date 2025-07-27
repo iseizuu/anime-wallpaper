@@ -27,7 +27,7 @@ Get Anime wallpapers based on scrapping from websites.
 
 <br>
 
-[![NPM](https://nodei.co/npm/anime-wallpaper.svg)](https://nodei.co/npm/anime-wallpaper/)
+[![NPM](https://nodei.co/npm/anime-wallpaper.svg)](https://www.npmjs.com/package/anime-wallpaper)
 
 # Installing
 ```
