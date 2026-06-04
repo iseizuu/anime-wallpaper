@@ -205,7 +205,7 @@ export class AnimeWallpaper {
                         const title = $(elm).find("a").attr("title");
                         const url = $(elm).find("a").attr("href");
                         const thumbnail = $(elm).find("img").attr("src") as string;
-                        const video = `https://static.moewalls.com/videos/preview/${regex.exec(thumbnail)?.[1]}/${regex.exec(thumbnail)?.[2]}-preview.mp4`;
+                        const video = `https://moewalls.com/wp-content/uploads/preview/${regex.exec(thumbnail)?.[1]}/${regex.exec(thumbnail)?.[2]}-preview.webm`;
                         arr.push({ title, thumbnail, video, url });
                     });
                     resolve(arr.filter(res => res.title));

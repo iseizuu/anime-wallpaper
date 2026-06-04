@@ -21,3 +21,4 @@ node_modules
 es.json
 CNAME
 yarn.lock
+dist

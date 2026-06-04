@@ -17,13 +17,11 @@ Get Anime wallpapers based on scrapping from websites.
 
 | Website                                  | Type        | Status |
 | ---------------------------------------- | ----------- | ------ |
-| [Hqdwalls](https://hdqwalls.com) [NEW]   | Image       | ✔      |
 | [Wall Haven](https://wallhaven.cc)       | Image       | ✔      |
 | [ZeroChan](https://www.zerochan.net)     | Image       | ✔      |
 | [Wallpapers.com](https://wallpapers.com) | Image       | ✔      |
 | [Hoyolab](https://www.hoyolab.com/)      | Image       | ✔      |
-| [Pinterest](https://pinterest.com/)      | Image       | ✔      |
-| [Moe Walls](https://moewalls.com) [NEW]  | Video/Image | ✔      |
+| [Moe Walls](https://moewalls.com)        | Video/Image | ✔      |
 
 <br>
 
@@ -42,14 +40,7 @@ yarn add anime-wallpaper
 At the head of your file, start by importing the necessary classes
 ```js
 const { AnimeWallpaper, AnimeSource } = require('anime-wallpaper');
-const wallpaper = new AnimeWallpaper();
-```
-
-- Getting a random wallpaper from [Hqdwalls](https://hdqwalls.com) <img align="center" width="15" src="https://cdn.discordapp.com/emojis/735119429016485920.webp?size=128&quality=lossless">
-
-```js
-const wallpaper = await wallpaper.random({ resolution: "1920x1080" });
-return console.log(wallpaper)
+const wall = new AnimeWallpaper();
 ```
 
 - Getting Wallpaper from [WallHaven](https://wallhaven.cc) <img align="center" width="15" src="https://cdn.discordapp.com/emojis/735119429016485920.webp?size=128&quality=lossless">
@@ -66,7 +57,7 @@ const wallpaper = await wallpaper.search({ title: "Keqing" }, AnimeSource.Wallpa
 return console.log(wallpaper)
 ```
 
-- Getting Wallpaper from [ZeroChan](https://www.zerochan.net) <img align="center" width="15" src="https://cdn.discordapp.com/emojis/735119429016485920.webp?size=128&quality=lossless">
+- Getting Wallpaper from [ZeroChan](https://www.zerochan.net) <img align="center" width="15" src="https://cdn3.emoji.gg/emojis/5505-idle-status.png">
 
 ```js
 const wallpaper = await wallpaper.search({ title: "Misaka Mikoto" }, AnimeSource.ZeroChan);
@@ -106,7 +97,7 @@ return console.log(wallpaper)
 
 ```
 
-# Pinterest
+<!-- # Pinterest
 - Getting image from pinterest <img align="center" width="20" src="https://cdn3.emoji.gg/emojis/5505-idle-status.png">
 
 ```js
@@ -114,7 +105,7 @@ const wallpaper = await wall.pinterest("Ellen Joe ZzZ");
 return console.log(wallpaper)
 ```
 
-- nb: sometimes it might be fail when scraping pinterest, just try again and over again :>
+- nb: sometimes it might be fail when scraping pinterest, just try again and over again :> -->
 
 ## Warning
 In some rare cases, the fetching process might fail due to inconsistencies when scraping websites.<br><br>

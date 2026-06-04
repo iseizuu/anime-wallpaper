@@ -1,6 +1,6 @@
 {
   "name": "anime-wallpaper",
-  "version": "3.2.2",
+  "version": "3.2.3",
   "description": "Get Anime wallpapers based on scrapping from websites.",
   "license": "MIT",
   "main": "./dist/index.js",
@@ -17,11 +17,11 @@
   "keywords": [
     "anime",
     "anime-wallpaper",
+    "anime-wallpapers",
     "wallpaper",
     "images",
     "scrape",
-    "hoyolab",
-    "pinterest"
+    "hoyolab"
   ],
   "devDependencies": {
     "@eslint/js": "^9.11.1",
